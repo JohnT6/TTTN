@@ -1,0 +1,336 @@
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    margin: 0;
+    background-color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+}
+
+/* Banner */
+.banner-section {
+    width: 100%;
+    background-color: #000D2D;
+    padding: 30px 20px;
+    /* Chừa khoảng trống trên dưới, bỏ padding 2 bên vì thằng con sẽ tự lo */
+    padding: 40px 0;
+}
+
+.banner-container {
+    position: relative;
+    /* KHÓA LẠI: Trả về 1200px (hoặc 1440px) để nó luôn giữ form cái "Card" ở giữa */
+    max-width: 1200px;
+
+    /* Khi màn hình nhỏ hơn 1200px, nó sẽ tự lùi vào 20px mỗi bên để ko chạm mép */
+    width: calc(100% - 40px);
+
+    margin: 0 auto;
+
+    /* Gắn tỷ lệ vàng của tấm hình vào ngay cái khung này */
+    aspect-ratio: 1920 / 800;
+
+}
+
+.main-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: -114px;
+
+    box-shadow: 0px 0px 10px rgba(0, 85, 255, 0.5);
+    border-radius: 20px;
+}
+
+.btn-history {
+
+    position: absolute;
+    bottom: 30px;
+
+    right: 80px;
+
+
+
+    background-color: rgba(9, 58, 136, 0.50);
+    border: 2px solid #3B82F6;
+    color: #ffffff;
+    min-width: 230px;
+    padding: 10px 26px;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.22;
+    cursor: pointer;
+
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 1);
+
+    transition: all 0.35s ease-in-out;
+}
+
+
+.btn-history:hover {
+    background-color: rgba(59, 130, 246, 0.50);
+
+}
+
+
+.game-list-section {
+    max-width: 1080px;
+    margin: 80px auto 56px;
+    /* padding: 0 20px; */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    color: #093A88;
+    font-size: 3.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0;
+}
+
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+
+    border-radius: 8px;
+
+    padding: 10px 15px;
+
+    width: 240px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.35s ease;
+
+    color: #a0a0a0;
+}
+
+
+.search-box:focus-within {
+    border-color: #FF7900;
+
+    color: #FF7900;
+}
+
+
+.search-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+
+    transition: all 0.35s ease;
+}
+
+
+.search-box input {
+    border: none;
+    outline: none;
+
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    color: #333;
+    background: transparent;
+}
+
+
+.search-box input::placeholder {
+    color: #a0a0a0;
+    font-weight: 400;
+}
+
+/* Tabs */
+.category-tabs {
+    display: flex;
+    /* flex-wrap: wrap;s */
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.tab-btn {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    /* width: 206px; */
+    /* height: 48px; */
+    padding: 5px 20px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+    border-radius: 8px;
+    background: #F5F5F5;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+
+    /* font-size: 1.6rem; */
+    /* font-style: normal; */
+    font-weight: bold;
+    /* line-height: 1.22; */
+
+    transition: all 0.35s ease;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    border-color: #FF7900;
+    background: #FFF;
+    box-shadow: unset;
+    color: #FF7900;
+}
+
+.tab-btn .quantity {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 45px;
+    border-radius: 100px;
+    background: rgba(146, 146, 146, 0.20);
+}
+
+.tab-btn:hover .quantity,
+.tab-btn.active .quantity {
+    background: rgba(249, 115, 22, 0.25);
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1% 5%;
+}
+
+.game-card {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    height: 248px;
+    text-align: center;
+    cursor: pointer;
+    /* transition: transform 0.2s; */
+}
+
+
+.game-image-wrapper {
+    position: relative;
+    border-radius: 15px;
+    width: 100%;
+    height: 175px;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.35s ease;
+
+}
+
+.game-card:hover .game-image-wrapper {
+    box-shadow: 0px 0px 15px rgba(255, 121, 0, 0.7);
+}
+
+
+
+
+.mye-coin-card .game-title {
+    color: #FF7900;
+}
+
+
+.mye-coin-card .game-image-wrapper {
+    box-shadow: none;
+    border-radius: 60px;
+}
+
+
+.mye-coin-card .game-img {
+    filter: drop-shadow(0px 0px 0px transparent);
+
+    transition: all 0.3s ease;
+}
+
+.game-card:hover.mye-coin-card .game-img {
+    transform: unset;
+}
+
+
+.mye-coin-card:hover .game-img {
+    filter: drop-shadow(0px 0px 20px #FF7900);
+}
+
+/* -------------------------------------- */
+
+.game-img {
+    /* width: 100%;
+    height: 100%; */
+    width: 170px;
+    object-fit: contain;
+    display: block;
+    border-radius: 15px;
+    transition: all 0.35s ease;
+}
+
+.game-card:hover .game-img {
+    transform: scale(1.1);
+}
+
+
+.game-title {
+    margin-top: 15px;
+    color: #282828;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.22;
+    transition: all 0.35s ease;
+}
+
+.game-card:hover .game-title {
+    color: #FF7900;
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #004282;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #FF7900;
+    cursor: unset;
+}

@@ -1,0 +1,266 @@
+.mye-header {
+    position: sticky;
+    top: 10;
+    z-index: 1000;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0 35px;
+}
+
+.logo {
+    height: 50px;
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-right: 48px;
+}
+
+.logo img {
+    height: 130px;
+    object-fit: contain;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #093A88;
+    margin: 0 20px;
+    font-size: 1.9rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+    color: #FF7900;
+
+}
+
+.main-nav a.active {
+    border-bottom: 3px solid #FF7900;
+    padding-bottom: 1px;
+    font-weight: bold;
+}
+
+.btn-login {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    padding: 10px 22px;
+
+
+    background-image: url('./images/BUTTON ĐĂNG NHẬP.png');
+    background-size: 100% 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-left: 59px;
+    transform: translateY(3px);
+
+
+    transition: all 0.35s ease-in-out;
+}
+
+
+.btn-login:hover {
+    background-image: url('./images/BUTTON ĐĂNG NHẬP (HOVER).png');
+
+
+    transform: scale(1.05);
+    transform: translateY(2px);
+}
+
+
+.user-logged-in {
+    position: relative;
+    margin-left: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.user-profile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.user-profile-toggle:hover {
+    background-color: #f5f5f5;
+
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+
+    right: 0;
+    width: 260px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+
+.user-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.dropdown-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dropdown-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-name {
+    color: #282828;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.dropdown-id {
+    color: #888;
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #eaeaea;
+    margin: 0;
+}
+
+.dropdown-list {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.dropdown-list li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #444;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.dropdown-list li a svg {
+    color: #888;
+    transition: color 0.2s;
+}
+
+.dropdown-list li a:hover {
+    background-color: rgba(255, 121, 0, 0.1);
+    color: #FF7900;
+}
+
+.dropdown-list li a:hover svg {
+    color: #FF7900;
+}
+
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.user-name {
+    color: #FF7900;
+
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.user-id {
+    color: #093A88;
+
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+
+.user-balance {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-left: 10px;
+
+}
+
+.coin-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.coin-amount {
+    color: #093A88;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+}

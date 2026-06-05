@@ -1,0 +1,42 @@
+.mye-footer {
+    background-color: #92929233;
+    padding: 40px 20px 28px;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #282828;
+    margin-top: 56px;
+}
+
+.footer-logo {
+    height: 80px;
+    margin-right: 0;
+}
+
+.footer-logo img {
+    margin: 0 auto;
+    height: 190px;
+    object-fit: contain;
+}
+
+.mye-footer p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* .footer-links {
+    margin: 15px 0;
+}*/
+
+.footer-links a {
+    color: #666;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #e67e22;
+}
+
+/* .copyright {
+    margin-top: 20px;
+    color: #999;
+} */
