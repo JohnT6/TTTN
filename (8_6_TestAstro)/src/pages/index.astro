@@ -1,0 +1,40 @@
+---
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+console.log("Run this in server not client")
+
+const menuItems = ['Trang chủ', 'Sản phẩm', 'Liên hệ'];	
+---
+
+<!-- <Layout>
+	<Welcome />
+</Layout> -->
+<html>
+  <body>
+   <div class="w-7xl mx-auto my-0">
+   	 <header>
+			<div class="flex justify-between bg-amber-200 px-[20px] py-[30px]">
+				<h1 class="text-orange-500">Hello, World!</h1>
+				<ul class="flex gap-x-6">
+					<!-- <li>hi</li>
+					<li>hi</li>
+					<li>hi</li> -->
+					{menuItems.lis}
+				</ul>
+				<button class="cursor-pointer">Sign in</button>
+			</div>
+		</header>
+   </div>
+
+  </body>
+</html>
+<!-- <style>
+  h1 {
+    color: orange;
+  }
+</style> -->
