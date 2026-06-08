@@ -1,0 +1,22 @@
+---
+const menuItems = ['Trang chu', 'San pham', 'Lien he'];	
+---
+
+<div class="w-7xl mx-auto my-0">
+   	 <header>
+			<div class="flex justify-between items-center bg-amber-200 px-[20px] py-[30px]">
+				<h1 class="text-orange-500">Hello, World!</h1>
+				<ul class="flex gap-x-6">
+					<!-- <li>hi</li>
+					<li>hi</li>
+					<li>hi</li> -->
+					{menuItems.map(item => (
+						<li class="text-blue-400 cursor-pointer hover:text-blue-800">
+							{item}
+						</li>
+					))}
+				</ul>
+				<button class="cursor-pointer bg-cyan-100 p-2.5 rounded-sm hover:bg-blue-400">Sign in</button>
+			</div>
+		</header>
+</div>

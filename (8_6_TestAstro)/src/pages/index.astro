@@ -1,5 +1,7 @@
 ---
 import Welcome from '../components/Welcome.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 
@@ -8,33 +10,10 @@ import '../styles/global.css';
 
 console.log("Run this in server not client")
 
-const menuItems = ['Trang chủ', 'Sản phẩm', 'Liên hệ'];	
 ---
 
-<!-- <Layout>
-	<Welcome />
-</Layout> -->
-<html>
-  <body>
-   <div class="w-7xl mx-auto my-0">
-   	 <header>
-			<div class="flex justify-between bg-amber-200 px-[20px] py-[30px]">
-				<h1 class="text-orange-500">Hello, World!</h1>
-				<ul class="flex gap-x-6">
-					<!-- <li>hi</li>
-					<li>hi</li>
-					<li>hi</li> -->
-					{menuItems.lis}
-				</ul>
-				<button class="cursor-pointer">Sign in</button>
-			</div>
-		</header>
-   </div>
-
-  </body>
-</html>
-<!-- <style>
-  h1 {
-    color: orange;
-  }
-</style> -->
+<Layout>
+	<Header />
+  <div class="h-[500px]"></div>
+	<Footer />
+</Layout>
