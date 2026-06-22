@@ -7,6 +7,8 @@ import AdminHero from './components/admin-hero';
 import AdminSenHong from './components/admin-senhong';
 import AdminCacBan from './components/admin.cacban';
 import AdminGioiThieu from './components/admin.gioithieu';
+import AdminHeader from './components/admin-header';
+import AdminHoiVien from './components/admin-hoivien';
 
 //Config — đăng ký 5 components với fields + defaultProps + render.
 
@@ -646,7 +648,7 @@ export const puckConfig = {
             textContents: {
               type: 'array', label: 'Các đoạn văn bản (Khối Văn bản)',
               arrayFields: {
-                content: { type: 'textarea', label: 'Nội dung' },
+                content: { type: 'textarea', label: 'Nội dung', contentEditable: true },
                 color: { type: 'text', label: 'Màu chữ', default: '#4b5563' },
                 size: { type: 'text', label: 'Cỡ chữ', default: '15px' },
                 weight: {
@@ -663,7 +665,7 @@ export const puckConfig = {
             introText: {
               type: 'object', label: 'Lời giới thiệu (Khối Nhân sự)',
               objectFields: {
-                text: { type: 'textarea', label: 'Nội dung' },
+                text: { type: 'textarea', label: 'Nội dung', contentEditable: true },
                 color: { type: 'text', label: 'Màu chữ', default: '#4b5563' },
                 size: { type: 'text', label: 'Cỡ chữ', default: '14px' }
               }
@@ -674,20 +676,20 @@ export const puckConfig = {
                 labelColor: { type: 'text', label: 'Màu chữ Nhãn', default: '#1f2937' },
                 valueColor: { type: 'text', label: 'Màu chữ Nội dung', default: '#4b5563' },
                 textSize: { type: 'text', label: 'Cỡ chữ chung', default: '13px' },
-                lbl1: { type: 'text', label: 'Tên nhãn 1', default: 'Họ tên:' },
-                lbl2: { type: 'text', label: 'Tên nhãn 2', default: 'Chức vụ CLB:' },
-                lbl3: { type: 'text', label: 'Tên nhãn 3', default: 'Chức vụ DN:' },
-                lbl4: { type: 'text', label: 'Tên nhãn 4', default: 'Doanh nghiệp:' }
+                lbl1: { type: 'text', label: 'Tên nhãn 1', default: 'Họ tên:', contentEditable: true },
+                lbl2: { type: 'text', label: 'Tên nhãn 2', default: 'Chức vụ CLB:', contentEditable: true },
+                lbl3: { type: 'text', label: 'Tên nhãn 3', default: 'Chức vụ DN:', contentEditable: true },
+                lbl4: { type: 'text', label: 'Tên nhãn 4', default: 'Doanh nghiệp:', contentEditable: true }
               }
             },
             members: {
               type: 'array', label: 'Danh sách nhân sự',
               arrayFields: {
                 avatar: { type: 'text', label: 'URL Avatar' },
-                val1: { type: 'text', label: 'Thông tin 1 (Họ tên)' },
-                val2: { type: 'text', label: 'Thông tin 2' },
-                val3: { type: 'text', label: 'Thông tin 3' },
-                val4: { type: 'text', label: 'Thông tin 4' }
+                val1: { type: 'text', label: 'Thông tin 1 (Họ tên)', contentEditable: true },
+                val2: { type: 'text', label: 'Thông tin 2', contentEditable: true },
+                val3: { type: 'text', label: 'Thông tin 3', contentEditable: true },
+                val4: { type: 'text', label: 'Thông tin 4', contentEditable: true }
               },
               getItemSummary: (item) => item?.val1 || 'Nhân sự mới'
             }
@@ -727,6 +729,156 @@ export const puckConfig = {
       },
       render: (props) => <AdminGioiThieu {...props} />
     },
+    Header: {
+      label: 'Header (Menu)',
+      fields: {
+        logoUrl: { type: 'text', label: 'URL Logo' },
+        showLogoText: {
+          type: 'radio',
+          label: 'Hiển thị chữ cạnh Logo?',
+          options: [
+            { label: 'Có', value: true },
+            { label: 'Không', value: false }
+          ]
+        },
+        logoTitle: { type: 'text', label: 'Tiêu đề Logo' },
+        logoDescription: { type: 'text', label: 'Mô tả Logo' },
+        navItems: {
+          type: 'array',
+          label: 'Menu Điều hướng',
+          arrayFields: {
+            label: { type: 'text', label: 'Tên Menu' },
+            url: { type: 'text', label: 'Đường dẫn (URL) - Dùng nếu không phải Mega Menu' },
+            isMegaMenu: {
+              type: 'radio',
+              label: 'Là Mega Menu?',
+              options: [
+                { label: 'Không', value: false },
+                { label: 'Có', value: true }
+              ]
+            },
+            subLinks: {
+              type: 'array',
+              label: 'Danh sách liên kết con (Mega Menu)',
+              arrayFields: {
+                columnTitle: { type: 'text', label: 'Tên nhóm/cột (ví dụ: Về CLB)' },
+                label: { type: 'text', label: 'Tên liên kết' },
+                url: { type: 'text', label: 'Đường dẫn liên kết' },
+                description: { type: 'text', label: 'Mô tả ngắn' }
+              },
+              getItemSummary: (item) => `${item.columnTitle || 'Chưa phân nhóm'} - ${item.label || 'Chưa đặt tên'}`
+            }
+          },
+          getItemSummary: (item) => item.label || 'Menu mới'
+        }
+      },
+      defaultProps: {
+        logoUrl: '/logo.png',
+        showLogoText: true,
+        logoTitle: 'CÂU LẠC BỘ DOANH NHÂN ĐỒNG THÁP',
+        logoDescription: 'Tại TP.Hồ Chí Minh',
+        navItems: [
+          { label: 'Trang chủ', url: '#', isMegaMenu: false },
+          {
+            label: 'Giới thiệu',
+            url: '#',
+            isMegaMenu: true,
+            subLinks: [
+              { columnTitle: 'VỀ CÂU LẠC BỘ', label: 'Giới thiệu chung', url: '#', description: 'Lịch sử hình thành và sứ mệnh' },
+              { columnTitle: 'VỀ CÂU LẠC BỘ', label: 'Ban chấp hành', url: '#', description: 'Đội ngũ lãnh đạo CLB nhiệm kỳ mới' },
+              { columnTitle: 'VỀ CÂU LẠC BỘ', label: 'Quy chế hoạt động', url: '#', description: 'Các quy định chính thức của hội' },
+              { columnTitle: 'ĐỐI TÁC & HOẠT ĐỘNG', label: 'Hợp tác quốc tế', url: '#', description: 'Các dự án kết nối toàn cầu' },
+              { columnTitle: 'ĐỐI TÁC & HOẠT ĐỘNG', label: 'Hoạt động xã hội', url: '#', description: 'Chương trình thiện nguyện vì cộng đồng' }
+            ]
+          },
+          { label: 'Hội viên', url: '#', isMegaMenu: false },
+          { label: 'Hoạt động ban', url: '#', isMegaMenu: false },
+          { label: 'Tin tức & Sự kiện', url: '#', isMegaMenu: false },
+          { label: 'Liên hệ', url: '#', isMegaMenu: false }
+        ]
+      },
+      render: (props) => <AdminHeader {...props} />
+    },
+
+    HoiVien: {
+      label: 'Hội Viên',
+      fields: {
+        background: {
+          type: 'object', label: 'Background',
+          objectFields: {
+            type: {
+              type: 'select', label: 'Loại nền',
+              options: [
+                { label: 'Màu sắc', value: 'color' },
+                { label: 'Gradient', value: 'gradient' },
+                { label: 'Hình ảnh', value: 'image' }
+              ]
+            },
+            color: { type: 'text', label: 'Màu nền', default: '#e0f2fe' },
+            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#bae6fd' },
+            gradientTo: { type: 'text', label: 'Gradient đến', default: '#f0f9ff' },
+            gradientDirection: { type: 'text', label: 'Hướng', default: 'to bottom' },
+            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
+          }
+        },
+        title: {
+          type: 'object', label: 'Tiêu đề chính',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', contentEditable: true },
+            size: { type: 'text', label: 'Cỡ chữ', default: '28px' },
+            background: {
+              type: 'object', label: 'Màu tiêu đề',
+              objectFields: {
+                type: {
+                  type: 'select', label: 'Loại màu',
+                  options: [
+                    { label: 'Màu sắc', value: 'color' },
+                    { label: 'Gradient', value: 'gradient' }
+                  ]
+                },
+                color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
+                gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#1e3a8a' },
+                gradientTo: { type: 'text', label: 'Gradient Đến', default: '#0284c7' },
+                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+              }
+            }
+          }
+        },
+        logoRadius: {
+          type: 'object', label: 'Bo góc nền logo',
+          objectFields: {
+            tl: { type: 'text', label: 'Trên - Trái', default: '16px' },
+            tr: { type: 'text', label: 'Trên - Phải', default: '16px' },
+            br: { type: 'text', label: 'Dưới - Phải', default: '16px' },
+            bl: { type: 'text', label: 'Dưới - Trái', default: '16px' }
+          }
+        },
+        logos: {
+          type: 'array', label: 'Danh sách Logo hội viên',
+          arrayFields: {
+            logoUrl: { type: 'text', label: 'URL Logo' },
+            alt: { type: 'text', label: 'Tên hội viên / Alt text' },
+            link: { type: 'text', label: 'Đường dẫn liên kết' }
+          },
+          getItemSummary: (item) => item.alt || 'Hội viên mới'
+        }
+      },
+      defaultProps: {
+        background: { type: 'gradient', gradientFrom: '#bae6fd', gradientTo: '#f0f9ff', gradientDirection: 'to bottom' },
+        title: {
+          text: 'Hội Viên CLB Doanh Nhân Đồng Tháp Tại TP. Hồ Chí Minh',
+          size: '26px',
+          background: { type: 'color', color: '#1e3a8a' }
+        },
+        logoRadius: { tl: '16px', tr: '16px', br: '16px', bl: '16px' },
+        logos: [
+          { logoUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop&text=HAPPYFOOD', alt: 'HAPPYFOOD', link: '#' },
+          { logoUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop&text=ECOBOOK', alt: 'ECOBOOK', link: '#' },
+          { logoUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop&text=COMOON', alt: 'COMOON', link: '#' }
+        ]
+      },
+      render: (props) => <AdminHoiVien {...props} />
+    },
   },
 
 
@@ -735,7 +887,8 @@ export const puckConfig = {
   categoryGroups: [
     { title: 'Cơ bản', components: ['Heading', 'Text', 'Image'] },
     { title: 'Layout', components: ['Section'] },
-    { title: 'Nâng cao', components: ['Hero'] }
+    { title: 'Nâng cao', components: ['Hero'] },
+    { title: 'Câu Lạc Bộ', components: ['Header', 'SenHong', 'CacBan', 'GioiThieu', 'HoiVien'] }
   ],
 
   // Root config
