@@ -11,13 +11,13 @@ const AdminHeader = ({
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [expandedMobileItems, setExpandedMobileItems] = useState({});
     
-    // Sử dụng lazy initializer để tránh lỗi "Calling setState synchronously within an effect"
-    const [isEditing] = useState(() => {
+    const [isEditing, setIsEditing] = useState(false);
+
+    useEffect(() => {
         if (typeof document !== 'undefined') {
-            return !!document.querySelector('.puck-app') || !!document.querySelector('[class*="Puck"]');
+            setIsEditing(!!document.querySelector('.puck-app') || !!document.querySelector('[class*="Puck"]'));
         }
-        return false;
-    });
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,6 +28,7 @@ const AdminHeader = ({
             }
         };
         window.addEventListener('scroll', handleScroll);
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -56,9 +57,9 @@ const AdminHeader = ({
         <header
             className={`w-full h-20 transition-all duration-300 ${isEditing
                 ? 'relative bg-[#1e3a8a] z-50'
-                : `fixed top-0 left-0 z-9999 ${isScrolled || isMobileMenuOpen
+                : `fixed top-0 left-0 z-[9999] ${isScrolled || isMobileMenuOpen
                     ? 'bg-[#1e3a8a] shadow-lg'
-                    : 'absolute bg-transparent'
+                    : 'bg-transparent'
                 }`
                 }`}
         >

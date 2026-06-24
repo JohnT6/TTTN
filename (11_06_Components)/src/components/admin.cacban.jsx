@@ -2,8 +2,8 @@ import { getBackgroundStyle, getButtonStyle, getCustomRadius, getTitleStyle } fr
 
 const AdminCacBan = ({ background = {}, title = {}, subtitle = {}, cards = [] }) => {
     return (
-        <section className="py-14 px-4" style={getBackgroundStyle(background)}>
-            <div className="max-w-7xl mx-auto text-center mb-14">
+        <section className="py-10 md:py-14 px-4" style={getBackgroundStyle(background)}>
+            <div className="max-w-7xl mx-auto text-center mb-10 md:mb-14">
                 {title.text && (
                     <h2 className="font-bold mb-3 uppercase tracking-wide" style={getTitleStyle(title)}>
                         {title.text}

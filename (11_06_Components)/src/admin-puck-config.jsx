@@ -9,6 +9,13 @@ import AdminCacBan from './components/admin.cacban';
 import AdminGioiThieu from './components/admin.gioithieu';
 import AdminHeader from './components/admin-header';
 import AdminHoiVien from './components/admin-hoivien';
+import AdminHanhTrinh from './components/admin.hanhtrinh';
+import AdminGiaTri from './components/admin.giatri';
+import AdminQuanTam from './components/admin.quantam';
+import AdminFooter from './components/admin.footer';
+import AdminGioiThieuDoanhNhan from './components/admin.gioiThieuDoanhNhan';
+import AdminTrangHoiVien from './components/admin.tranghoivien';
+import ImageField from './components/admin.inlineImage';
 
 //Config — đăng ký 5 components với fields + defaultProps + render.
 
@@ -100,9 +107,11 @@ export const puckConfig = {
             type: {
               type: 'select', label: 'Loại',
               options: [
-                { label: 'Màu', value: 'color' },
+                { label: 'Màu sắc', value: 'color' },
                 { label: 'Gradient', value: 'gradient' },
-                { label: 'Ảnh', value: 'image' }
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
               ]
             },
             color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
@@ -153,9 +162,11 @@ export const puckConfig = {
             type: {
               type: 'select', label: 'Loại',
               options: [
-                { label: 'Màu', value: 'color' },
+                { label: 'Màu sắc', value: 'color' },
                 { label: 'Gradient', value: 'gradient' },
-                { label: 'Ảnh', value: 'image' }
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
               ]
             },
             color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
@@ -207,7 +218,9 @@ export const puckConfig = {
               options: [
                 { label: 'Màu sắc', value: 'color' },
                 { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' }
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Hình ảnh & Màu sắc', value: 'image_color' },
+                { label: 'Hình ảnh & Gradient', value: 'image_gradient' }
               ]
             },
             color: { type: 'text', label: 'Màu nền (Mã Hex)', default: '#1e3a8a' },
@@ -229,10 +242,18 @@ export const puckConfig = {
           type: 'object',
           label: 'Bo góc cụm sen hồng',
           objectFields: {
-            tl: { type: 'text', label: 'Trên - Trái', default: '13px' },
-            tr: { type: 'text', label: 'Trên - Phải', default: '90px' },
-            br: { type: 'text', label: 'Dưới - Phải', default: '13px' },
-            bl: { type: 'text', label: 'Dưới - Trái', default: '90px' }
+            type: {
+              type: 'select', label: 'Kiểu bo góc',
+              options: [
+                { label: 'Bo 4 góc', value: 'all' },
+                { label: 'Bo từng góc', value: 'custom' }
+              ]
+            },
+            all: { type: 'text', label: 'Bán kính bo 4 góc', default: '16px' },
+            tl: { type: 'text', label: 'Trên - Trái (Từng góc)', default: '13px' },
+            tr: { type: 'text', label: 'Trên - Phải (Từng góc)', default: '90px' },
+            br: { type: 'text', label: 'Dưới - Phải (Từng góc)', default: '13px' },
+            bl: { type: 'text', label: 'Dưới - Trái (Từng góc)', default: '90px' }
           }
         },
         eyebrow: {
@@ -241,7 +262,10 @@ export const puckConfig = {
           objectFields: {
             text: { type: 'text', label: 'Nội dung', contentEditable: true },
             color: { type: 'text', label: 'Màu chữ nhỏ', default: '#ffffff' },
-            size: { type: 'text', label: 'Cỡ chữ nhỏ', default: '14px' }
+            size: { type: 'text', label: 'Cỡ chữ nhỏ', default: '14px' },
+            weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] },
+            style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+            decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] }
           }
         },
         title: {
@@ -250,6 +274,9 @@ export const puckConfig = {
           objectFields: {
             text: { type: 'text', label: 'Nội dung', contentEditable: true },
             size: { type: 'text', label: 'Kích thước chữ tiêu đề', default: '60px' },
+            weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] },
+            style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+            decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] },
             background: {
               type: 'object', label: 'Màu tiêu đề',
               objectFields: {
@@ -257,7 +284,10 @@ export const puckConfig = {
                   type: 'select', label: 'Loại màu',
                   options: [
                     { label: 'Màu sắc', value: 'color' },
-                    { label: 'Gradient', value: 'gradient' }
+                    { label: 'Gradient', value: 'gradient' },
+                    { label: 'Hình ảnh', value: 'image' },
+                    { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                    { label: 'Ảnh & Màu sắc', value: 'image_color' }
                   ]
                 },
                 color: { type: 'text', label: 'Màu (Hex)', default: '#fde047' },
@@ -274,7 +304,10 @@ export const puckConfig = {
           objectFields: {
             text: { type: 'textarea', label: 'Nội dung', contentEditable: true },
             color: { type: 'text', label: 'Màu Description', default: '#ffffff' },
-            size: { type: 'text', label: 'Cỡ Description', default: '14px' }
+            size: { type: 'text', label: 'Cỡ Description', default: '14px' },
+            weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] },
+            style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+            decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] }
           }
         },
         button: {
@@ -284,6 +317,9 @@ export const puckConfig = {
             text: { type: 'text', label: 'Chữ trong nút', contentEditable: true },
             textColor: { type: 'text', label: 'Màu chữ nút', default: '#ffffff' },
             textSize: { type: 'text', label: 'Cỡ chữ nút', default: '16px' },
+            weight: { type: 'select', label: 'Độ đậm nút', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }, { label: 'Siêu đậm', value: '900' }] },
+            style: { type: 'select', label: 'Kiểu chữ nút', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+            decoration: { type: 'select', label: 'Gạch chân nút', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] },
             align: {
               type: 'select', label: 'Vị trí nút',
               options: [
@@ -299,7 +335,10 @@ export const puckConfig = {
                   type: 'select', label: 'Loại màu',
                   options: [
                     { label: 'Màu sắc', value: 'color' },
-                    { label: 'Gradient', value: 'gradient' }
+                    { label: 'Gradient', value: 'gradient' },
+                    { label: 'Hình ảnh', value: 'image' },
+                    { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                    { label: 'Ảnh & Màu sắc', value: 'image_color' }
                   ]
                 },
                 color: { type: 'text', label: 'Màu nền', default: '#3b82f6' },
@@ -313,17 +352,25 @@ export const puckConfig = {
               type: 'object',
               label: 'Bo góc nút',
               objectFields: {
-                tl: { type: 'text', label: 'Trên - Trái', default: '9999px' },
-                tr: { type: 'text', label: 'Trên - Phải', default: '9999px' },
-                br: { type: 'text', label: 'Dưới - Phải', default: '9999px' },
-                bl: { type: 'text', label: 'Dưới - Trái', default: '9999px' }
+                type: {
+                  type: 'select', label: 'Kiểu bo góc',
+                  options: [
+                    { label: 'Bo 4 góc', value: 'all' },
+                    { label: 'Bo từng góc', value: 'custom' }
+                  ]
+                },
+                all: { type: 'text', label: 'Bán kính bo 4 góc', default: '9999px' },
+                tl: { type: 'text', label: 'Trên - Trái (Từng góc)', default: '9999px' },
+                tr: { type: 'text', label: 'Trên - Phải (Từng góc)', default: '9999px' },
+                br: { type: 'text', label: 'Dưới - Phải (Từng góc)', default: '9999px' },
+                bl: { type: 'text', label: 'Dưới - Trái (Từng góc)', default: '9999px' }
               }
             }
           }
         }
       },
       defaultProps: {
-        background: { type: 'color', color: '#1e3a8a', gradientFrom: '#1e3a8a', gradientTo: '#764ba2', gradientDirection: 'to bottom right' },
+        background: { type: 'image_gradient', imageUrl: 'https://webdemo.hexagon.xyz/medias/hieuunghero.webp', color: '#1e3a8a', gradientFrom: '#1e3a8a', gradientTo: '#764ba2', gradientDirection: 'to bottom right' },
         align: 'left',
         blockRadius: { tl: '13px', tr: '90px', br: '13px', bl: '90px' },
         eyebrow: {
@@ -364,7 +411,9 @@ export const puckConfig = {
               options: [
                 { label: 'Màu sắc', value: 'color' },
                 { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' }
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
               ]
             },
             color: { type: 'text', label: 'Màu nền', default: '#eef2ff' },
@@ -386,7 +435,10 @@ export const puckConfig = {
                   type: 'select', label: 'Loại màu',
                   options: [
                     { label: 'Màu sắc', value: 'color' },
-                    { label: 'Gradient', value: 'gradient' }
+                    { label: 'Gradient', value: 'gradient' },
+                    { label: 'Hình ảnh', value: 'image' },
+                    { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                    { label: 'Ảnh & Màu sắc', value: 'image_color' }
                   ]
                 },
                 color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
@@ -416,7 +468,9 @@ export const puckConfig = {
                   options: [
                     { label: 'Màu sắc', value: 'color' },
                     { label: 'Gradient', value: 'gradient' },
-                    { label: 'Hình ảnh', value: 'image' }
+                    { label: 'Hình ảnh', value: 'image' },
+                    { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                    { label: 'Ảnh & Màu sắc', value: 'image_color' }
                   ]
                 },
                 color: { type: 'text', label: 'Màu nền', default: '#3b82f6' },
@@ -460,7 +514,10 @@ export const puckConfig = {
                       type: 'select', label: 'Loại màu',
                       options: [
                         { label: 'Màu sắc', value: 'color' },
-                        { label: 'Gradient', value: 'gradient' }
+                        { label: 'Gradient', value: 'gradient' },
+                        { label: 'Hình ảnh', value: 'image' },
+                        { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                        { label: 'Ảnh & Màu sắc', value: 'image_color' }
                       ]
                     },
                     color: { type: 'text', label: 'Màu nền', default: 'transparent' },
@@ -592,7 +649,9 @@ export const puckConfig = {
               options: [
                 { label: 'Màu sắc', value: 'color' },
                 { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' }
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
               ]
             },
             color: { type: 'text', label: 'Màu nền', default: '#f5f7fa' },
@@ -619,7 +678,10 @@ export const puckConfig = {
                   type: 'select', label: 'Loại',
                   options: [
                     { label: 'Màu sắc', value: 'color' },
-                    { label: 'Gradient', value: 'gradient' }
+                    { label: 'Gradient', value: 'gradient' },
+                    { label: 'Hình ảnh', value: 'image' },
+                    { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                    { label: 'Ảnh & Màu sắc', value: 'image_color' }
                   ]
                 },
                 color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
@@ -811,7 +873,9 @@ export const puckConfig = {
               options: [
                 { label: 'Màu sắc', value: 'color' },
                 { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' }
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
               ]
             },
             color: { type: 'text', label: 'Màu nền', default: '#e0f2fe' },
@@ -833,7 +897,10 @@ export const puckConfig = {
                   type: 'select', label: 'Loại màu',
                   options: [
                     { label: 'Màu sắc', value: 'color' },
-                    { label: 'Gradient', value: 'gradient' }
+                    { label: 'Gradient', value: 'gradient' },
+                    { label: 'Hình ảnh', value: 'image' },
+                    { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                    { label: 'Ảnh & Màu sắc', value: 'image_color' }
                   ]
                 },
                 color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
@@ -856,11 +923,22 @@ export const puckConfig = {
         logos: {
           type: 'array', label: 'Danh sách Logo hội viên',
           arrayFields: {
-            logoUrl: { type: 'text', label: 'URL Logo' },
+            logoUrl: {
+              type: 'custom',
+              label: 'Ảnh Logo',
+              render: (props) => <ImageField {...props} />
+            },
             alt: { type: 'text', label: 'Tên hội viên / Alt text' },
             link: { type: 'text', label: 'Đường dẫn liên kết' }
           },
           getItemSummary: (item) => item.alt || 'Hội viên mới'
+        },
+        scroll: {
+          type: 'object', label: 'Hiệu ứng cuộn',
+          objectFields: {
+            direction: { type: 'select', label: 'Chiều cuộn', options: [{ label: 'Phải sang trái', value: 'left' }, { label: 'Trái sang phải', value: 'right' }] },
+            speed: { type: 'text', label: 'Tốc độ (VD: 20s, 15s)', default: '20s' }
+          }
         }
       },
       defaultProps: {
@@ -871,6 +949,7 @@ export const puckConfig = {
           background: { type: 'color', color: '#1e3a8a' }
         },
         logoRadius: { tl: '16px', tr: '16px', br: '16px', bl: '16px' },
+        scroll: { direction: 'left', speed: '20s' },
         logos: [
           { logoUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop&text=HAPPYFOOD', alt: 'HAPPYFOOD', link: '#' },
           { logoUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop&text=ECOBOOK', alt: 'ECOBOOK', link: '#' },
@@ -879,6 +958,947 @@ export const puckConfig = {
       },
       render: (props) => <AdminHoiVien {...props} />
     },
+
+    HanhTrinh: {
+      label: 'Hành Trình',
+      fields: {
+        background: {
+          type: 'object', label: 'Background',
+          objectFields: {
+            type: {
+              type: 'select', label: 'Loại nền',
+              options: [
+                { label: 'Màu sắc', value: 'color' },
+                { label: 'Gradient', value: 'gradient' },
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
+              ]
+            },
+            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
+            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
+            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
+            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
+            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
+          }
+        },
+        title: {
+          type: 'object',
+          label: 'Tiêu đề chính',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', contentEditable: true },
+            size: { type: 'text', label: 'Kích thước chữ', default: '28px' },
+            weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] },
+            style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+            decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] },
+            background: {
+              type: 'object', label: 'Màu tiêu đề',
+              objectFields: {
+                type: {
+                  type: 'select', label: 'Loại màu',
+                  options: [
+                    { label: 'Màu sắc', value: 'color' },
+                    { label: 'Gradient', value: 'gradient' },
+                    { label: 'Hình ảnh', value: 'image' },
+                    { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                    { label: 'Ảnh & Màu sắc', value: 'image_color' }
+                  ]
+                },
+                color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
+                gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#1e3a8a' },
+                gradientTo: { type: 'text', label: 'Gradient Đến', default: '#3b82f6' },
+                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+              }
+            }
+          }
+        },
+        alignItems: {
+          type: 'select', label: 'Căn lề danh sách',
+          options: [
+            { label: 'Trái', value: 'left' },
+            { label: 'Giữa', value: 'center' },
+            { label: 'Phải', value: 'right' }
+          ]
+        },
+        items: {
+          type: 'array',
+          label: 'Danh sách mục',
+          defaultItemProps: {
+            numberValue: '100',
+            suffix: '+',
+            description: 'Mục mới thêm',
+            numberConfig: { color: '#1e3a8a', size: '48px', weight: 'bold', style: 'normal', decoration: 'none' },
+            descConfig: { color: '#1e3a8a', size: '14px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            numberValue: { type: 'text', label: 'Số (để đếm)', contentEditable: true },
+            suffix: { type: 'text', label: 'Ký tự sau số (vd: +)', contentEditable: true },
+
+            numberConfig: {
+              type: 'object',
+              label: 'Định dạng Số',
+              objectFields: {
+                color: { type: 'text', label: 'Màu số', default: '#1e3a8a' },
+                size: { type: 'text', label: 'Cỡ số', default: '48px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }, { label: 'Siêu đậm', value: '900' }] },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] }
+              }
+            },
+
+            description: { type: 'textarea', label: 'Mô tả ngắn', contentEditable: true },
+            descConfig: {
+              type: 'object',
+              label: 'Định dạng Mô tả',
+              objectFields: {
+                color: { type: 'text', label: 'Màu mô tả', default: '#1e3a8a' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '14px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] }
+              }
+            }
+          },
+          getItemSummary: (item) => (item.numberValue || '') + (item.suffix || '')
+        }
+      },
+      defaultProps: {
+        alignItems: 'center',
+        background: { type: 'image_gradient', imageUrl: 'https://webdemo.hexagon.xyz/medias/hoa.webp', gradientFrom: '#e0e7ff', gradientTo: '#f3e8ff', gradientDirection: 'to bottom right' },
+        title: {
+          text: 'HÀNH TRÌNH KIẾN TẠO & GẮN KẾT GIÁ TRỊ', size: '28px', weight: 'bold',
+          background: { type: 'color', color: '#1e3a8a', gradientFrom: '#1e3a8a', gradientTo: '#3b82f6', gradientDirection: 'to right' }
+        },
+        items: [
+          {
+            numberValue: '500', suffix: '+', description: 'Hội viên là các doanh nghiệp và doanh nhân tiêu biểu tại TP.HCM',
+            numberConfig: { color: '#1e3a8a', size: '48px', weight: '900' },
+            descConfig: { color: '#1e3a8a', size: '14px', weight: 'bold' }
+          },
+          {
+            numberValue: '20', suffix: '+', description: 'Năm hình thành và phát triển mạng lưới kết nối đồng hương',
+            numberConfig: { color: '#1e3a8a', size: '48px', weight: '900' },
+            descConfig: { color: '#1e3a8a', size: '14px', weight: 'bold' }
+          },
+          {
+            numberValue: '1000', suffix: '+', description: 'Cơ hội giao thương và kết nối đầu tư được khởi tạo mỗi năm',
+            numberConfig: { color: '#1e3a8a', size: '48px', weight: '900' },
+            descConfig: { color: '#1e3a8a', size: '14px', weight: 'bold' }
+          },
+          {
+            numberValue: '100', suffix: '+', description: 'Chương trình thiện nguyện và hoạt động hướng về quê hương',
+            numberConfig: { color: '#1e3a8a', size: '48px', weight: '900' },
+            descConfig: { color: '#1e3a8a', size: '14px', weight: 'bold' }
+          }
+        ]
+      },
+      render: (props) => <AdminHanhTrinh {...props} />
+    },
+
+    GiaTri: {
+      label: 'Giá Trị',
+      fields: {
+        background: {
+          type: 'object', label: 'Background',
+          objectFields: {
+            type: {
+              type: 'select', label: 'Loại nền',
+              options: [
+                { label: 'Màu sắc', value: 'color' },
+                { label: 'Gradient', value: 'gradient' },
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
+              ]
+            },
+            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
+            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
+            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
+            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
+            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
+          }
+        },
+        title: {
+          type: 'object', label: 'Tiêu đề chính',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', contentEditable: true },
+            size: { type: 'text', label: 'Kích thước chữ', default: '28px' },
+            weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }, { label: 'Siêu đậm', value: '900' }] },
+            style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+            decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] },
+            background: {
+              type: 'object', label: 'Màu tiêu đề',
+              objectFields: {
+                type: { type: 'select', label: 'Loại màu', options: [{ label: 'Màu sắc', value: 'color' }, { label: 'Gradient', value: 'gradient' }, { label: 'Hình ảnh', value: 'image' }, { label: 'Ảnh & Gradient', value: 'image_gradient' }, { label: 'Ảnh & Màu sắc', value: 'image_color' }] },
+                color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
+                gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#1e3a8a' },
+                gradientTo: { type: 'text', label: 'Gradient Đến', default: '#3b82f6' },
+                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+              }
+            }
+          }
+        },
+        button: {
+          type: 'object', label: 'Nút Xem Thêm',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung nút', contentEditable: true },
+            url: { type: 'text', label: 'Đường dẫn' },
+            textConfig: {
+              type: 'object', label: 'Định dạng chữ',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#1e3a8a' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '14px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] }
+              }
+            }
+          }
+        },
+        alignItems: {
+          type: 'select', label: 'Căn lề danh sách',
+          options: [
+            { label: 'Trái', value: 'left' },
+            { label: 'Giữa', value: 'center' },
+            { label: 'Phải', value: 'right' }
+          ]
+        },
+        items: {
+          type: 'array', label: 'Danh sách mục',
+          defaultItemProps: {
+            imageUrl: 'https://webdemo.hexagon.xyz/medias/icon_1%201-2.png',
+            radius: { type: 'custom', tl: '70px', tr: '15px', br: '70px', bl: '15px' },
+            title: 'Tiêu đề mới',
+            description: 'Mô tả giá trị khi tham gia cộng đồng.',
+            titleConfig: { color: '#0b4c8c', size: '15px', weight: 'bold', style: 'normal', decoration: 'none' },
+            descConfig: { color: '#4b5563', size: '14px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            imageUrl: { type: 'custom', label: 'Ảnh Icon', render: (props) => <ImageField {...props} /> },
+            radius: {
+              type: 'object', label: 'Bo góc thẻ',
+              objectFields: {
+                type: { type: 'select', label: 'Kiểu bo góc', options: [{ label: 'Bo 4 góc', value: 'all' }, { label: 'Bo từng góc', value: 'custom' }] },
+                all: { type: 'text', label: 'Bo tất cả', default: '24px' },
+                tl: { type: 'text', label: 'Trên - Trái', default: '70px' },
+                tr: { type: 'text', label: 'Trên - Phải', default: '15px' },
+                br: { type: 'text', label: 'Dưới - Phải', default: '70px' },
+                bl: { type: 'text', label: 'Dưới - Trái', default: '15px' }
+              }
+            },
+            title: { type: 'text', label: 'Tiêu đề', contentEditable: true },
+            description: { type: 'textarea', label: 'Mô tả ngắn', contentEditable: true },
+            titleConfig: {
+              type: 'object', label: 'Định dạng Tiêu đề',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0b4c8c' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '15px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }, { label: 'Siêu đậm', value: '900' }] },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] }
+              }
+            },
+            descConfig: {
+              type: 'object', label: 'Định dạng Mô tả',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#4b5563' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '14px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }] },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] }
+              }
+            }
+          },
+          getItemSummary: (item) => item.title || 'Mục mới'
+        }
+      },
+      defaultProps: {
+        alignItems: 'left',
+        background: { type: 'image', imageUrl: 'https://webdemo.hexagon.xyz/medias/bg-giatri.png' },
+        title: { text: 'GIÁ TRỊ KHI THAM GIA CỘNG ĐỒNG', size: '24px', weight: '900', background: { type: 'color', color: '#0b4c8c' } },
+        button: { text: 'Xem thêm', url: '#', textConfig: { color: '#0b4c8c', size: '14px', weight: 'bold' } },
+        items: [
+          {
+            imageUrl: 'https://webdemo.hexagon.xyz/medias/icon_1%201-2.png', radius: { type: 'custom', tl: '70px', tr: '15px', br: '70px', bl: '15px' }, title: 'Kết nối chất lượng', description: 'Tiếp cận mạng lưới doanh nhân uy tín, mở rộng cơ hội hợp tác thực tế.',
+            titleConfig: { color: '#0b4c8c', size: '15px', weight: 'bold' }, descConfig: { color: '#4b5563', size: '14px', weight: 'normal' }
+          },
+          {
+            imageUrl: 'https://webdemo.hexagon.xyz/medias/icon_1%201-1.png', radius: { type: 'custom', tl: '70px', tr: '15px', br: '70px', bl: '15px' }, title: 'Phát triển kiến thức', description: 'Cập nhật xu hướng, nâng cao tư duy quản trị và kỹ năng kinh doanh.',
+            titleConfig: { color: '#0b4c8c', size: '15px', weight: 'bold' }, descConfig: { color: '#4b5563', size: '14px', weight: 'normal' }
+          },
+          {
+            imageUrl: 'https://webdemo.hexagon.xyz/medias/icon_1%201.png', radius: { type: 'custom', tl: '70px', tr: '15px', br: '70px', bl: '15px' }, title: 'Cơ hội hợp tác', description: 'Tham gia các dự án, hoạt động kết nối và xúc tiến thương mại.',
+            titleConfig: { color: '#0b4c8c', size: '15px', weight: 'bold' }, descConfig: { color: '#4b5563', size: '14px', weight: 'normal' }
+          }
+        ]
+      },
+      render: (props) => <AdminGiaTri {...props} />
+    },
+
+    QuanTam: {
+      label: 'Quan Tâm (Liên hệ)',
+      fields: {
+        background: {
+          type: 'object', label: 'Background',
+          objectFields: {
+            type: {
+              type: 'select', label: 'Loại nền',
+              options: [
+                { label: 'Màu sắc', value: 'color' },
+                { label: 'Gradient', value: 'gradient' },
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
+              ]
+            },
+            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
+            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
+            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
+            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
+            imageUrl: { type: 'text', label: 'URL ảnh nền' }
+          }
+        },
+        title: {
+          type: 'object', label: 'Tiêu đề chính',
+          objectFields: {
+            text: { type: 'textarea', label: 'Nội dung tiêu đề', contentEditable: true },
+            color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+            size: { type: 'text', label: 'Cỡ chữ', default: '24px' },
+            weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }, { label: 'Rất đậm', value: '900' }] }
+          }
+        },
+        email: {
+          type: 'object', label: 'Email',
+          objectFields: {
+            text: { type: 'text', label: 'Email', contentEditable: true },
+            url: { type: 'text', label: 'Đường dẫn (mailto:)' },
+            radius: {
+              type: 'object', label: 'Bo góc thẻ',
+              objectFields: {
+                tl: { type: 'text', label: 'Trái trên', default: '9999px' },
+                tr: { type: 'text', label: 'Phải trên', default: '9999px' },
+                br: { type: 'text', label: 'Phải dưới', default: '9999px' },
+                bl: { type: 'text', label: 'Trái dưới', default: '9999px' }
+              }
+            },
+            textConfig: {
+              type: 'object', label: 'Định dạng chữ',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] }
+              }
+            }
+          }
+        },
+        phone: {
+          type: 'object', label: 'Điện thoại',
+          objectFields: {
+            text: { type: 'text', label: 'Số điện thoại', contentEditable: true },
+            url: { type: 'text', label: 'Đường dẫn (tel:)' },
+            radius: {
+              type: 'object', label: 'Bo góc thẻ',
+              objectFields: {
+                tl: { type: 'text', label: 'Trái trên', default: '9999px' },
+                tr: { type: 'text', label: 'Phải trên', default: '9999px' },
+                br: { type: 'text', label: 'Phải dưới', default: '9999px' },
+                bl: { type: 'text', label: 'Trái dưới', default: '9999px' }
+              }
+            },
+            textConfig: {
+              type: 'object', label: 'Định dạng chữ',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] }
+              }
+            }
+          }
+        },
+        button: {
+          type: 'object', label: 'Nút hành động',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung nút', contentEditable: true },
+            url: { type: 'text', label: 'Đường dẫn' },
+            radius: {
+              type: 'object', label: 'Bo góc nút',
+              objectFields: {
+                tl: { type: 'text', label: 'Trái trên', default: '9999px' },
+                tr: { type: 'text', label: 'Phải trên', default: '9999px' },
+                br: { type: 'text', label: 'Phải dưới', default: '9999px' },
+                bl: { type: 'text', label: 'Trái dưới', default: '9999px' }
+              }
+            },
+            textConfig: {
+              type: 'object', label: 'Định dạng chữ',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#ffffff' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }] }
+              }
+            }
+          }
+        }
+      },
+      defaultProps: {
+        background: { type: 'image', imageUrl: 'https://webdemo.hexagon.xyz/medias/bg-lienhe.png' },
+        title: { text: 'QUAN TÂM VÀ HỢP TÁC\nVỚI CÁC CHƯƠNG TRÌNH HOẠT ĐỘNG\nCỦA CLB DOANH NHÂN ĐỒNG THÁP TẠI TP.HCM', size: '24px', weight: 'bold', color: '#0368B0' },
+        email: { text: 'info@dte.hunghau.vn', url: 'mailto:info@dte.hunghau.vn', radius: { tl: '9999px', tr: '9999px', br: '9999px', bl: '9999px' }, textConfig: { color: '#0368B0', size: '16px', weight: 'bold' } },
+        phone: { text: '1800 1568', url: 'tel:1800 1568', radius: { tl: '9999px', tr: '9999px', br: '9999px', bl: '9999px' }, textConfig: { color: '#0368B0', size: '16px', weight: 'bold' } },
+        button: { text: 'Đăng ký hội viên', url: '#', radius: { tl: '9999px', tr: '9999px', br: '9999px', bl: '9999px' }, textConfig: { color: '#ffffff', size: '16px', weight: 'bold' } }
+      },
+      render: (props) => <AdminQuanTam {...props} />
+    },
+
+    Footer: {
+      label: 'Footer',
+      fields: {
+        background: {
+          type: 'object', label: 'Background',
+          objectFields: {
+            type: {
+              type: 'select', label: 'Loại nền',
+              options: [
+                { label: 'Màu sắc', value: 'color' },
+                { label: 'Gradient', value: 'gradient' },
+                { label: 'Hình ảnh', value: 'image' },
+                { label: 'Ảnh & Gradient', value: 'image_gradient' },
+                { label: 'Ảnh & Màu sắc', value: 'image_color' }
+              ]
+            },
+            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
+            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
+            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
+            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
+            imageUrl: { type: 'text', label: 'URL ảnh nền' }
+          }
+        },
+        logo: {
+          type: 'object', label: 'Logo',
+          objectFields: {
+            type: { type: 'select', label: 'Kiểu Logo', options: [{ label: 'Chỉ hình ảnh', value: 'logo_only' }, { label: 'Hình ảnh + Chữ', value: 'logo_text' }] },
+            imageUrl: { type: 'custom', label: 'Ảnh Logo', render: (props) => <ImageField {...props} /> },
+            text1: { type: 'text', label: 'Dòng chữ 1', contentEditable: true },
+            text2: { type: 'text', label: 'Dòng chữ 2', contentEditable: true },
+            url: { type: 'text', label: 'Đường dẫn' },
+            textConfig: {
+              type: 'object', label: 'Định dạng chữ',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch dưới', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        contact: {
+          type: 'object', label: 'Thông tin liên hệ',
+          objectFields: {
+            title: { type: 'text', label: 'Tiêu đề', contentEditable: true },
+            titleConfig: {
+              type: 'object', label: 'Định dạng Tiêu đề',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '18px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch dưới', value: 'underline' }], default: 'none' }
+              }
+            },
+            address: { type: 'textarea', label: 'Địa chỉ', contentEditable: true },
+            email: { type: 'text', label: 'Email', contentEditable: true },
+            phone: { type: 'text', label: 'Hotline', contentEditable: true },
+
+            textConfig: {
+              type: 'object', label: 'Định dạng chữ',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '14px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch dưới', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        columns: {
+          type: 'array', label: 'Các cột liên kết',
+          defaultItemProps: {
+            title: 'Cột mới',
+            titleConfig: { color: '#0368B0', size: '18px', weight: 'bold', style: 'normal', decoration: 'none' },
+            linkConfig: { color: '#0368B0', size: '14px', weight: 'normal', style: 'normal', decoration: 'none' },
+            links: [{ text: 'Liên kết mới', url: '#' }]
+          },
+          arrayFields: {
+            title: { type: 'text', label: 'Tên cột', contentEditable: true },
+            titleConfig: {
+              type: 'object', label: 'Định dạng Tiêu đề cột',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '18px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch dưới', value: 'underline' }], default: 'none' }
+              }
+            },
+            linkConfig: {
+              type: 'object', label: 'Định dạng liên kết (áp dụng cho tất cả liên kết dưới đây)',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '14px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch dưới', value: 'underline' }], default: 'none' }
+              }
+            },
+            links: {
+              type: 'array', label: 'Danh sách liên kết',
+              defaultItemProps: { text: 'Liên kết mới', url: '#' },
+              arrayFields: {
+                text: { type: 'text', label: 'Tên liên kết', contentEditable: true },
+                url: { type: 'text', label: 'Đường dẫn' }
+              },
+              getItemSummary: (item) => item.text || 'Liên kết mới'
+            }
+
+          },
+          getItemSummary: (item) => item.title || 'Cột mới'
+        },
+        bottomBar: {
+          type: 'object', label: 'Thanh dưới cùng',
+          objectFields: {
+            copyright: { type: 'text', label: 'Bản quyền', contentEditable: true },
+            copyrightConfig: {
+              type: 'object', label: 'Định dạng chữ',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#ffffff' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '14px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch dưới', value: 'underline' }], default: 'none' }
+              }
+            },
+            socials: {
+              type: 'array', label: 'Mạng xã hội',
+              defaultItemProps: { iconUrl: 'https://webdemo.hexagon.xyz/medias/facebook.svg', alt: 'social', url: '#' },
+              arrayFields: {
+                iconUrl: { type: 'custom', label: 'Icon', render: (props) => <ImageField {...props} /> },
+                alt: { type: 'text', label: 'Tên mạng xã hội (alt)' },
+                url: { type: 'text', label: 'Đường dẫn' }
+              },
+              getItemSummary: (item) => 'Social Link'
+            }
+          }
+        }
+      },
+      defaultProps: {
+        background: { type: 'image_gradient', imageUrl: 'https://webdemo.hexagon.xyz/medias/hieuungfooter.webp', gradientFrom: '#e8b4f8', gradientTo: '#6a7be8', gradientDirection: 'to bottom' },
+        logo: {
+          type: 'logo_text',
+          imageUrl: '/logo.png',
+          text1: 'CÂU LẠC BỘ DOANH NHÂN ĐỒNG THÁP',
+          text2: 'TẠI TP. HỒ CHÍ MINH',
+          url: '/',
+          textConfig: { color: '#0368B0', size: '16px', weight: 'bold', style: 'normal', decoration: 'none' }
+        },
+        contact: {
+          title: 'TRỤ SỞ CHÍNH',
+          address: 'Phòng Đồng Tháp, HungHau Campus, Trường Đại học Văn Hiến, Đại lộ Nguyễn Văn Linh, Khu đô thị Nam Thành Phố, Thành phố Hồ Chí Minh',
+          email: 'info@dte.hunghau.vn',
+          phone: '1800 1568',
+          titleConfig: { color: '#0368B0', size: '18px', weight: 'bold', style: 'normal', decoration: 'none' },
+          textConfig: { color: '#0368B0', size: '14px', weight: 'normal', style: 'normal', decoration: 'none' }
+        },
+        columns: [
+          {
+            title: 'Liên kết trang',
+            links: [
+              { text: 'Trang chủ', url: '/' },
+              { text: 'Tin tức và sự kiện', url: '#' },
+              { text: 'Về chúng tôi', url: '#' },
+              { text: 'Các lĩnh vực hoạt động', url: '#' },
+              { text: 'Doanh nghiệp hội viên', url: '#' },
+              { text: 'Đăng kí', url: '#' },
+              { text: 'Hoạt động Ban', url: '#' }
+            ],
+            titleConfig: { color: '#0368B0', size: '18px', weight: 'bold', style: 'normal', decoration: 'none' },
+            linkConfig: { color: '#0368B0', size: '14px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          {
+            title: 'Khác',
+            links: [
+              { text: 'MYH', url: '#' },
+              { text: 'MYC', url: '#' },
+              { text: 'HHF', url: '#' },
+              { text: 'HHE', url: '#' },
+              { text: 'HHA', url: '#' },
+              { text: 'COWE', url: '#' },
+              { text: 'HIIN', url: '#' },
+              { text: 'HYV', url: '#' }
+            ],
+            titleConfig: { color: '#0368B0', size: '18px', weight: 'bold', style: 'normal', decoration: 'none' },
+            linkConfig: { color: '#0368B0', size: '14px', weight: 'normal', style: 'normal', decoration: 'none' }
+          }
+        ],
+        bottomBar: {
+          copyright: 'Copyright © CLB Doanh nhân Đồng Tháp. All rights reserved',
+          copyrightConfig: { color: '#ffffff', size: '14px', weight: 'normal', style: 'normal', decoration: 'none' },
+          socials: [
+            { iconUrl: 'https://webdemo.hexagon.xyz/medias/facebook.svg', alt: 'facebook', url: '#' },
+            { iconUrl: 'https://webdemo.hexagon.xyz/medias/tiktok.png', alt: 'tiktok', url: '#' },
+            { iconUrl: 'https://webdemo.hexagon.xyz/medias/youtube.png', alt: 'youtube', url: '#' },
+            { iconUrl: 'https://webdemo.hexagon.xyz/medias/linkedin.svg', alt: 'linkedin', url: '#' }
+          ]
+        }
+      },
+      render: (props) => <AdminFooter {...props} />
+    },
+    GioiThieuDoanhNhan: {
+      fields: {
+        background: {
+          type: 'object', label: 'Cấu hình nền',
+          objectFields: {
+            type: { type: 'select', label: 'Loại nền', options: [{ label: 'Màu sắc', value: 'color' }, { label: 'Hình ảnh', value: 'image' }, { label: 'Hình ảnh & Màu', value: 'image_color' }, { label: 'Hình ảnh & Gradient', value: 'image_gradient' }, { label: 'Gradient', value: 'gradient' }] },
+            color: { type: 'text', label: 'Mã màu', default: '#ffffff' },
+            imageUrl: { type: 'text', label: 'URL Hình ảnh', default: '' },
+            gradientFrom: { type: 'text', label: 'Màu Gradient (Từ)', default: '' },
+            gradientTo: { type: 'text', label: 'Màu Gradient (Đến)', default: '' },
+            gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to bottom right' }
+          }
+        },
+        title: {
+          type: 'object', label: 'Tiêu đề chính',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', default: 'GIỚI THIỆU DOANH NHÂN ĐỒNG THÁP' },
+            config: {
+              type: 'object', label: 'Định dạng Tiêu đề',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '32px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'bold' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        image: {
+          type: 'object', label: 'Hình ảnh',
+          objectFields: {
+            url: { type: 'text', label: 'Đường dẫn ảnh', default: 'https://webdemo.hexagon.xyz/medias/2513.jpg' },
+            alt: { type: 'text', label: 'Mô tả ảnh (SEO)', default: 'Giới thiệu' },
+            radius: {
+              type: 'object', label: 'Bo góc ảnh',
+              objectFields: {
+                type: { type: 'select', label: 'Kiểu bo góc', options: [{ label: 'Tất cả 4 góc', value: 'all' }, { label: 'Tùy chỉnh từng góc', value: 'custom' }] },
+                all: { type: 'text', label: 'Bo góc (Tất cả)', default: '8px' },
+                tl: { type: 'text', label: 'Góc trên trái', default: '8px' },
+                tr: { type: 'text', label: 'Góc trên phải', default: '8px' },
+                br: { type: 'text', label: 'Góc dưới phải', default: '8px' },
+                bl: { type: 'text', label: 'Góc dưới trái', default: '8px' }
+              }
+            }
+          }
+        },
+        subtitle: {
+          type: 'object', label: 'Tiêu đề phụ',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', default: 'Kết nối – Đồng hành – Phát triển' },
+            config: {
+              type: 'object', label: 'Định dạng',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '24px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'bold' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        paragraphs: {
+          type: 'array', label: 'Các đoạn văn bản',
+          getItemSummary: (item) => item.text || 'Đoạn văn',
+          defaultItemProps: {
+            text: 'Nhập nội dung đoạn văn...',
+            config: { color: '#666666', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            text: { type: 'textarea', label: 'Nội dung' },
+            config: {
+              type: 'object', label: 'Định dạng',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#666666' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        quotes: {
+          type: 'array', label: 'Hộp trích dẫn (Tầm nhìn, Sứ mệnh)',
+          getItemSummary: (item) => item.label || 'Trích dẫn',
+          defaultItemProps: {
+            label: 'Tiêu đề', text: 'Nội dung',
+            config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            label: { type: 'text', label: 'Tiêu đề in đậm (VD: Tầm nhìn)' },
+            text: { type: 'textarea', label: 'Nội dung' },
+            config: {
+              type: 'object', label: 'Định dạng',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#333333' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        stats: {
+          type: 'array', label: 'Hành trình / Số liệu',
+          getItemSummary: (item) => `${item.number}${item.suffix || ''} - ${item.label}`,
+          defaultItemProps: {
+            number: '100', suffix: '+', label: 'Nhãn',
+            numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' },
+            labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            number: { type: 'text', label: 'Số liệu đích (VD: 500)' },
+            suffix: { type: 'text', label: 'Hậu tố (VD: +, %)' },
+            label: { type: 'text', label: 'Mô tả số liệu' },
+            numberConfig: {
+              type: 'object', label: 'Định dạng Số',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '36px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'bold' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            },
+            labelConfig: {
+              type: 'object', label: 'Định dạng Mô tả',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#666666' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '15px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        }
+      },
+      defaultProps: {
+        background: { type: 'color', color: '#ffffff' },
+        title: { text: 'GIỚI THIỆU DOANH NHÂN ĐỒNG THÁP', config: { color: '#0368B0', size: '32px', weight: 'bold', style: 'normal', decoration: 'none' } },
+        image: { url: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Doanh nhân', radius: { type: 'all', all: '16px', tl: '0px', tr: '0px', bl: '0px', br: '0px' } },
+        subtitle: { text: 'Kết nối – Đồng hành – Phát triển', config: { color: '#0368B0', size: '24px', weight: 'bold', style: 'normal', decoration: 'none' } },
+        paragraphs: [
+          { text: 'Cộng đồng Doanh nhân Đồng Tháp hướng đến việc xây dựng môi trường kết nối giữa các doanh nghiệp, thúc đẩy hợp tác và tạo ra nhiều giá trị bền vững cho địa phương.', config: { color: '#666666', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { text: 'Với tinh thần đổi mới, sáng tạo và phát triển lâu dài, cộng đồng doanh nhân luôn đóng vai trò quan trọng trong việc thúc đẩy kinh tế, hỗ trợ khởi nghiệp và nâng cao năng lực cạnh tranh.', config: { color: '#666666', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } }
+        ],
+        quotes: [
+          { label: 'Tầm nhìn', text: 'Xây dựng mạng lưới doanh nhân năng động, hiện đại và hội nhập.', config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { label: 'Sứ mệnh', text: 'Kết nối doanh nghiệp – chia sẻ tri thức – tạo giá trị phát triển bền vững.', config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } }
+        ],
+        stats: [
+          { number: '500', suffix: '+', label: 'Doanh nghiệp tham gia', numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' }, labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { number: '50', suffix: '+', label: 'Sự kiện kết nối mỗi năm', numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' }, labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { number: '100', suffix: '%', label: 'Hướng đến phát triển bền vững', numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' }, labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' } }
+        ]
+      },
+      render: (props) => <AdminGioiThieuDoanhNhan {...props} />
+    },
+    TrangHoiVien: {
+      fields: {
+        background: {
+          type: 'object', label: 'Cấu hình nền',
+          objectFields: {
+            type: { type: 'select', label: 'Loại nền', options: [{ label: 'Màu sắc', value: 'color' }, { label: 'Hình ảnh', value: 'image' }, { label: 'Hình ảnh & Màu', value: 'image_color' }, { label: 'Hình ảnh & Gradient', value: 'image_gradient' }, { label: 'Gradient', value: 'gradient' }] },
+            color: { type: 'text', label: 'Mã màu', default: '#ffffff' },
+            imageUrl: { type: 'text', label: 'URL Hình ảnh', default: '' },
+            gradientFrom: { type: 'text', label: 'Màu Gradient (Từ)', default: '' },
+            gradientTo: { type: 'text', label: 'Màu Gradient (Đến)', default: '' },
+            gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to bottom right' }
+          }
+        },
+        title: {
+          type: 'object', label: 'Tiêu đề chính',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', default: 'HỘI VIÊN' },
+            config: {
+              type: 'object', label: 'Định dạng Tiêu đề',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '32px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'bold' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        image: {
+          type: 'object', label: 'Hình ảnh',
+          objectFields: {
+            url: { type: 'text', label: 'Đường dẫn ảnh', default: 'https://webdemo.hexagon.xyz/medias/2513.jpg' },
+            alt: { type: 'text', label: 'Mô tả ảnh (SEO)', default: 'Hội viên' },
+            radius: {
+              type: 'object', label: 'Bo góc ảnh',
+              objectFields: {
+                type: { type: 'select', label: 'Kiểu bo góc', options: [{ label: 'Tất cả 4 góc', value: 'all' }, { label: 'Tùy chỉnh từng góc', value: 'custom' }] },
+                all: { type: 'text', label: 'Bo góc (Tất cả)', default: '8px' },
+                tl: { type: 'text', label: 'Góc trên trái', default: '8px' },
+                tr: { type: 'text', label: 'Góc trên phải', default: '8px' },
+                br: { type: 'text', label: 'Góc dưới phải', default: '8px' },
+                bl: { type: 'text', label: 'Góc dưới trái', default: '8px' }
+              }
+            }
+          }
+        },
+        subtitle: {
+          type: 'object', label: 'Tiêu đề phụ',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', default: 'Cộng đồng doanh nhân cùng phát triển' },
+            config: {
+              type: 'object', label: 'Định dạng',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '24px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'bold' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        paragraphs: {
+          type: 'array', label: 'Các đoạn văn bản',
+          getItemSummary: (item) => item.text || 'Đoạn văn',
+          defaultItemProps: {
+            text: 'Nhập nội dung đoạn văn...',
+            config: { color: '#666666', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            text: { type: 'textarea', label: 'Nội dung' },
+            config: {
+              type: 'object', label: 'Định dạng',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#666666' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        benefitsTitle: {
+          type: 'object', label: 'Tiêu đề Quyền lợi',
+          objectFields: {
+            text: { type: 'text', label: 'Nội dung', default: 'Quyền lợi hội viên' },
+            config: {
+              type: 'object', label: 'Định dạng',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '18px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'bold' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        benefits: {
+          type: 'array', label: 'Danh sách quyền lợi',
+          getItemSummary: (item) => item.text || 'Quyền lợi',
+          defaultItemProps: {
+            text: 'Nội dung quyền lợi',
+            config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            text: { type: 'text', label: 'Nội dung' },
+            config: {
+              type: 'object', label: 'Định dạng',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#333333' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '16px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        },
+        stats: {
+          type: 'array', label: 'Số liệu thống kê',
+          getItemSummary: (item) => `${item.number}${item.suffix || ''} - ${item.label}`,
+          defaultItemProps: {
+            number: '100', suffix: '+', label: 'Nhãn',
+            numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' },
+            labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' }
+          },
+          arrayFields: {
+            number: { type: 'text', label: 'Số liệu đích (VD: 800)' },
+            suffix: { type: 'text', label: 'Hậu tố (VD: +, %)' },
+            label: { type: 'text', label: 'Mô tả số liệu' },
+            numberConfig: {
+              type: 'object', label: 'Định dạng Số',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#0368B0' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '36px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'bold' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            },
+            labelConfig: {
+              type: 'object', label: 'Định dạng Mô tả',
+              objectFields: {
+                color: { type: 'text', label: 'Màu chữ', default: '#666666' },
+                size: { type: 'text', label: 'Cỡ chữ', default: '15px' },
+                weight: { type: 'select', label: 'Độ đậm', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In đậm', value: 'bold' }], default: 'normal' },
+                style: { type: 'select', label: 'Kiểu chữ', options: [{ label: 'Bình thường', value: 'normal' }, { label: 'In nghiêng', value: 'italic' }], default: 'normal' },
+                decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }], default: 'none' }
+              }
+            }
+          }
+        }
+      },
+      defaultProps: {
+        background: { type: 'color', color: '#ffffff' },
+        title: { text: 'HỘI VIÊN', config: { color: '#0368B0', size: '32px', weight: 'bold', style: 'normal', decoration: 'none' } },
+        image: { url: 'https://images.unsplash.com/vector-1742570608453-43dc1b4164e5?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Hội viên', radius: { type: 'all', all: '16px', tl: '0px', tr: '0px', bl: '0px', br: '0px' } },
+        subtitle: { text: 'Cộng đồng doanh nhân cùng phát triển', config: { color: '#0368B0', size: '24px', weight: 'bold', style: 'normal', decoration: 'none' } },
+        paragraphs: [
+          { text: 'Hội viên là lực lượng nòng cốt tạo nên sự kết nối, chia sẻ và phát triển trong cộng đồng doanh nghiệp Đồng Tháp.', config: { color: '#666666', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { text: 'Việc tham gia hội viên mở ra cơ hội mở rộng mạng lưới, trao đổi kinh nghiệm, tiếp cận chương trình hỗ trợ và đồng hành trong các hoạt động xúc tiến thương mại.', config: { color: '#666666', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } }
+        ],
+        benefitsTitle: { text: 'Quyền lợi hội viên', config: { color: '#0368B0', size: '18px', weight: 'bold', style: 'normal', decoration: 'none' } },
+        benefits: [
+          { text: 'Tham gia các chương trình kết nối doanh nghiệp', config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { text: 'Tiếp cận hoạt động đào tạo và hội thảo chuyên đề', config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { text: 'Nhận thông tin thị trường và cơ hội hợp tác', config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { text: 'Tham gia các hoạt động cộng đồng doanh nhân', config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { text: 'Đồng hành cùng các chương trình phát triển địa phương', config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' } }
+        ],
+        stats: [
+          { number: '800', suffix: '+', label: 'Hội viên', numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' }, labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { number: '120', suffix: '+', label: 'Đối tác', numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' }, labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { number: '40', suffix: '+', label: 'Sự kiện / năm', numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' }, labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' } },
+          { number: '12', suffix: '', label: 'Nhóm kết nối', numberConfig: { color: '#0368B0', size: '36px', weight: 'bold', style: 'normal', decoration: 'none' }, labelConfig: { color: '#666666', size: '15px', weight: 'normal', style: 'normal', decoration: 'none' } }
+        ]
+      },
+      render: (props) => <AdminTrangHoiVien {...props} />
+    }
   },
 
 
@@ -888,7 +1908,7 @@ export const puckConfig = {
     { title: 'Cơ bản', components: ['Heading', 'Text', 'Image'] },
     { title: 'Layout', components: ['Section'] },
     { title: 'Nâng cao', components: ['Hero'] },
-    { title: 'Câu Lạc Bộ', components: ['Header', 'SenHong', 'CacBan', 'GioiThieu', 'HoiVien'] }
+    { title: 'Câu Lạc Bộ', components: ['Header', 'SenHong', 'CacBan', 'GioiThieu', 'HanhTrinh', 'GiaTri', 'HoiVien'] }
   ],
 
   // Root config

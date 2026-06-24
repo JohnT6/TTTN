@@ -1,4 +1,4 @@
-import { getBackgroundStyle, getButtonStyle, getCustomRadius, getTitleStyle } from './admin.styleUtils';
+import { getBackgroundStyle, getButtonStyle, getCustomRadius, getTitleStyle, getTextStyle } from './admin.styleUtils';
 
 const AdminSenHong = ({ background = {}, align, blockRadius = {}, eyebrow = {}, title = {}, description = {}, button = {} }) => {
     const alignFlex = align === 'left' ? 'justify-start' : align === 'right' ? 'justify-end' : 'justify-center';
@@ -6,29 +6,40 @@ const AdminSenHong = ({ background = {}, align, blockRadius = {}, eyebrow = {}, 
     const btnJustify = button.align === 'left' ? 'justify-start' : button.align === 'right' ? 'justify-end' : 'justify-center';
 
     return (
-        <section className="relative py-32 px-14 overflow-hidden" style={getBackgroundStyle(background)}>
-            <div className={`relative w-full flex ${alignFlex}`}>
+        <section 
+            className="relative w-full overflow-hidden flex items-center min-h-[500px] md:min-h-[700px] py-12 md:py-20 px-4 md:px-14" 
+            style={getBackgroundStyle(background)}
+        >
+            <div className={`relative w-full flex ${alignFlex} max-w-7xl mx-auto z-10`}>
                 <div
-                    className="bg-white/10 backdrop-blur-none border border-white/10 p-6 md:p-8 shadow-2xl"
-                    style={{ borderRadius: getCustomRadius(blockRadius) }}
+                    className="inline-flex flex-col justify-start items-center gap-5 sm:gap-8 w-full max-w-[620px] p-6 sm:p-8 md:p-12"
+                    style={{ 
+                        borderRadius: getCustomRadius(blockRadius),
+                        background: 'rgba(255, 255, 255, 0.19)',
+                        outline: '1px solid rgba(255, 255, 255, 0.32)',
+                        outlineOffset: '-1px',
+                        backdropFilter: 'blur(9px)',
+                        WebkitBackdropFilter: 'blur(9px)',
+                        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.25)'
+                    }}
                 >
                     {eyebrow.text && <p
-                        className="font-bold tracking-widest uppercase mb-3 opacity-90"
-                        style={{ color: eyebrow.color, fontSize: eyebrow.size }}
+                        className="font-medium tracking-[0.12em] uppercase mb-0 w-full text-left"
+                        style={getTextStyle(eyebrow)}
                     >
                         {eyebrow.text}
                     </p>}
 
                     {title.text && <h2
-                        className="font-extrabold mb-3 leading-tight drop-shadow-md"
+                        className="font-extrabold mb-0 leading-[1.1] w-full text-left"
                         style={getTitleStyle(title)}
                     >
                         {title.text}
                     </h2>}
 
                     {description.text && <p
-                        className="mb-8 leading-relaxed opacity-95 w-118"
-                        style={{ color: description.color, fontSize: description.size }}
+                        className="mb-0 leading-[1.7] opacity-80 w-full text-left"
+                        style={getTextStyle(description)}
                     >
                         {description.text}
                     </p>}
