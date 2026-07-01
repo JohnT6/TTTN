@@ -12,15 +12,23 @@ import AdminFooter from './components/admin.footer';
 import AdminGioiThieuDoanhNhan from './components/admin.gioiThieuDoanhNhan';
 import AdminTrangHoiVien from './components/admin.tranghoivien';
 import ImageField from './components/admin.inlineImage';
+import AdminBackgroundField from './components/admin.backgroundField';
+import { GRADIENT_DIRECTIONS } from './components/admin.styleUtils';
 
 //Config — đăng ký 5 components với fields + defaultProps + render.
+
+
 
 export const puckConfig = {
   components: {
     Header: {
       label: 'Header (Menu)',
       fields: {
-        logoUrl: { type: 'text', label: 'URL Logo' },
+        logoUrl: {
+          type: 'custom',
+          label: 'URL Logo',
+          render: (props) => <ImageField {...props} />
+        },
         showLogoText: {
           type: 'radio',
           label: 'Hiển thị chữ cạnh Logo?',
@@ -29,10 +37,19 @@ export const puckConfig = {
             { label: 'Không', value: false }
           ]
         },
-        logoTitle: { type: 'text', label: 'Tiêu đề Logo' },
-        logoDescription: { type: 'text', label: 'Mô tả Logo' },
+        logoTitle: {
+          type: 'custom',
+          label: 'Tiêu đề Logo',
+          render: (props) => <ImageField {...props} />
+        },
+        logoDescription: {
+          type: 'custom',
+          label: 'Mô tả Logo',
+          render: (props) => <ImageField {...props} />
+        },
         navItems: {
           type: 'array',
+          
           label: 'Menu Điều hướng',
           arrayFields: {
             label: { type: 'text', label: 'Tên Menu' },
@@ -47,6 +64,7 @@ export const puckConfig = {
             },
             subLinks: {
               type: 'array',
+              
               label: 'Danh sách liên kết con (Mega Menu)',
               arrayFields: {
                 columnTitle: { type: 'text', label: 'Tên nhóm/cột (ví dụ: Về CLB)' },
@@ -92,24 +110,8 @@ export const puckConfig = {
       label: 'Khối Sen Hồng',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Hình ảnh & Màu sắc', value: 'image_color' },
-                { label: 'Hình ảnh & Gradient', value: 'image_gradient' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền (Mã Hex)', default: '#1e3a8a' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#1e3a8a' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
-            gradientDirection: { type: 'text', label: 'Hướng', default: 'to bottom right' },
-            imageUrl: { type: 'text', label: 'URL Ảnh nền / GIF (nếu có)' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         align: {
           type: 'select', label: 'Vị trí cụm sen hồng',
@@ -160,6 +162,7 @@ export const puckConfig = {
             decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] },
             background: {
               type: 'object', label: 'Màu tiêu đề',
+              
               objectFields: {
                 type: {
                   type: 'select', label: 'Loại màu',
@@ -174,7 +177,7 @@ export const puckConfig = {
                 color: { type: 'text', label: 'Màu (Hex)', default: '#fde047' },
                 gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#fde047' },
                 gradientTo: { type: 'text', label: 'Gradient Đến', default: '#f59e0b' },
-                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
               }
             }
           }
@@ -211,6 +214,7 @@ export const puckConfig = {
             },
             background: {
               type: 'object', label: 'Nền nút',
+              
               objectFields: {
                 type: {
                   type: 'select', label: 'Loại màu',
@@ -225,7 +229,7 @@ export const puckConfig = {
                 color: { type: 'text', label: 'Màu nền', default: '#3b82f6' },
                 gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#3b82f6' },
                 gradientTo: { type: 'text', label: 'Gradient Đến', default: '#1e3a8a' },
-                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' },
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' },
                 hoverColor: { type: 'text', label: 'Màu Hover', default: "#1e40af" }
               }
             },
@@ -285,24 +289,8 @@ export const puckConfig = {
       label: 'Hội Viên',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Ảnh & Gradient', value: 'image_gradient' },
-                { label: 'Ảnh & Màu sắc', value: 'image_color' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền', default: '#e0f2fe' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#bae6fd' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#f0f9ff' },
-            gradientDirection: { type: 'text', label: 'Hướng', default: 'to bottom' },
-            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         title: {
           type: 'object', label: 'Tiêu đề chính',
@@ -311,6 +299,7 @@ export const puckConfig = {
             size: { type: 'text', label: 'Cỡ chữ', default: '28px' },
             background: {
               type: 'object', label: 'Màu tiêu đề',
+              
               objectFields: {
                 type: {
                   type: 'select', label: 'Loại màu',
@@ -325,7 +314,7 @@ export const puckConfig = {
                 color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
                 gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#1e3a8a' },
                 gradientTo: { type: 'text', label: 'Gradient Đến', default: '#0284c7' },
-                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
               }
             }
           }
@@ -340,7 +329,8 @@ export const puckConfig = {
           }
         },
         logos: {
-          type: 'array', label: 'Danh sách Logo hội viên',
+          type: 'array', 
+          label: 'Danh sách Logo hội viên',
           arrayFields: {
             logoUrl: {
               type: 'custom',
@@ -382,27 +372,12 @@ export const puckConfig = {
       label: 'Giới Thiệu / Cơ Cấu',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Ảnh & Gradient', value: 'image_gradient' },
-                { label: 'Ảnh & Màu sắc', value: 'image_color' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền', default: '#f5f7fa' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#eef2ff' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#f3e8ff' },
-            gradientDirection: { type: 'text', label: 'Hướng', default: 'to bottom right' },
-            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         cards: {
-          type: 'array', label: 'Danh sách Khối',
+          type: 'array', 
+          label: 'Danh sách Khối',
           arrayFields: {
             cardType: {
               type: 'select', label: 'Loại khối',
@@ -427,7 +402,7 @@ export const puckConfig = {
                 color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
                 gradientFrom: { type: 'text', label: 'Gradient từ', default: '#ffffff' },
                 gradientTo: { type: 'text', label: 'Gradient đến', default: '#f8fafc' },
-                gradientDirection: { type: 'text', label: 'Hướng', default: 'to bottom' }
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
               }
             },
             radius: {
@@ -448,7 +423,8 @@ export const puckConfig = {
               }
             },
             textContents: {
-              type: 'array', label: 'Các đoạn văn bản (Khối Văn bản)',
+              type: 'array', 
+              label: 'Các đoạn văn bản (Khối Văn bản)',
               arrayFields: {
                 content: { type: 'textarea', label: 'Nội dung', contentEditable: true },
                 color: { type: 'text', label: 'Màu chữ', default: '#4b5563' },
@@ -463,7 +439,41 @@ export const puckConfig = {
               },
               getItemSummary: (item) => item?.content?.substring(0, 20) || 'Đoạn văn mới'
             },
-            bottomImage: { type: 'text', label: 'URL Ảnh góc dưới (Khối Văn bản)' },
+            bottomImage: {
+              type: 'custom',
+              label: 'URL Ảnh góc dưới (Khối Văn bản)',
+              render: (props) => <ImageField {...props} />
+            },
+            imageLayout: {
+              type: 'radio', label: 'Bố cục ảnh (Khối Văn bản)',
+              options: [
+                { label: '1 ảnh tràn đáy', value: 'full_bottom' },
+                { label: '2 ảnh 2 góc', value: 'two_corners' }
+              ]
+            },
+            bottomImage2: {
+              type: 'custom',
+              label: 'URL Ảnh góc phải (Khối Văn bản - 2 ảnh)',
+              render: (props) => <ImageField {...props} />
+            },
+            buttonRadius: {
+              type: 'object',
+              label: 'Bo góc nút chuyển trang',
+              objectFields: {
+                type: {
+                  type: 'select', label: 'Kiểu bo góc',
+                  options: [
+                    { label: 'Bo 4 góc', value: 'all' },
+                    { label: 'Bo từng góc', value: 'custom' }
+                  ]
+                },
+                all: { type: 'text', label: 'Bán kính bo 4 góc', default: '9999px' },
+                tl: { type: 'text', label: 'Trên - Trái (Từng góc)', default: '9999px' },
+                tr: { type: 'text', label: 'Trên - Phải (Từng góc)', default: '9999px' },
+                br: { type: 'text', label: 'Dưới - Phải (Từng góc)', default: '9999px' },
+                bl: { type: 'text', label: 'Dưới - Trái (Từng góc)', default: '9999px' }
+              }
+            },
             introText: {
               type: 'object', label: 'Lời giới thiệu (Khối Nhân sự)',
               objectFields: {
@@ -485,9 +495,14 @@ export const puckConfig = {
               }
             },
             members: {
-              type: 'array', label: 'Danh sách nhân sự',
+              type: 'array', 
+              label: 'Danh sách nhân sự',
               arrayFields: {
-                avatar: { type: 'text', label: 'URL Avatar' },
+                avatar: {
+                  type: 'custom',
+                  label: 'URL Avatar',
+                  render: (props) => <ImageField {...props} />
+                },
                 val1: { type: 'text', label: 'Thông tin 1 (Họ tên)', contentEditable: true },
                 val2: { type: 'text', label: 'Thông tin 2', contentEditable: true },
                 val3: { type: 'text', label: 'Thông tin 3', contentEditable: true },
@@ -511,9 +526,10 @@ export const puckConfig = {
               { content: 'CLB Doanh nhân Đồng Tháp tại TP.HCM là nơi hội tụ các doanh nghiệp, nhà quản lý và cá nhân khởi nghiệp trên địa bàn tỉnh.', color: '#4b5563', size: '15px', weight: 'normal' },
               { content: 'Với tinh thần kết nối - đồng hành - sẻ chia, CLB đóng vai trò thúc đẩy giá trị kinh doanh trong bối cảnh hội nhập và chuyển đổi số.', color: '#4b5563', size: '15px', weight: 'normal' }
             ],
-            bottomImage: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600&auto=format&fit=crop'
+            bottomImage: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600&auto=format&fit=crop', imageLayout: 'full_bottom', bottomImage2: ''
           },
           {
+            buttonRadius: { type: 'all', all: '9999px' },
             cardType: 'people',
             background: { type: 'color', color: '#ffffff' },
             radius: { tl: '16px', tr: '16px', br: '16px', bl: '16px' },
@@ -536,24 +552,8 @@ export const puckConfig = {
       label: 'Các Ban Chuyên Môn',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Ảnh & Gradient', value: 'image_gradient' },
-                { label: 'Ảnh & Màu sắc', value: 'image_color' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền', default: '#eef2ff' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#eef2ff' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#ffffff' },
-            gradientDirection: { type: 'text', label: 'Hướng', default: 'to bottom right' },
-            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         title: {
           type: 'object', label: 'Tiêu đề chính',
@@ -562,6 +562,7 @@ export const puckConfig = {
             size: { type: 'text', label: 'Cỡ chữ', default: '28px' },
             background: {
               type: 'object', label: 'Màu tiêu đề',
+              
               objectFields: {
                 type: {
                   type: 'select', label: 'Loại màu',
@@ -576,7 +577,7 @@ export const puckConfig = {
                 color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
                 gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#1e3a8a' },
                 gradientTo: { type: 'text', label: 'Gradient Đến', default: '#3b82f6' },
-                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
               }
             }
           }
@@ -590,7 +591,8 @@ export const puckConfig = {
           }
         },
         cards: {
-          type: 'array', label: 'Danh sách các ban',
+          type: 'array', 
+          label: 'Danh sách các ban',
           arrayFields: {
             background: {
               type: 'object', label: 'Nền khối',
@@ -608,8 +610,12 @@ export const puckConfig = {
                 color: { type: 'text', label: 'Màu nền', default: '#3b82f6' },
                 gradientFrom: { type: 'text', label: 'Gradient từ', default: '#3b82f6' },
                 gradientTo: { type: 'text', label: 'Gradient đến', default: '#1e3a8a' },
-                gradientDirection: { type: 'text', label: 'Hướng', default: 'to bottom right' },
-                imageUrl: { type: 'text', label: 'URL Ảnh nền' }
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' },
+                imageUrl: {
+                  type: 'custom',
+                  label: 'URL Ảnh nền',
+                  render: (props) => <ImageField {...props} />
+                }
               }
             },
             radius: {
@@ -628,7 +634,11 @@ export const puckConfig = {
                 { label: 'Mã SVG', value: 'svg' }
               ]
             },
-            iconUrl: { type: 'text', label: 'URL hoặc đường dẫn file' },
+            iconUrl: {
+              type: 'custom',
+              label: 'URL hoặc đường dẫn file',
+              render: (props) => <ImageField {...props} />
+            },
             iconSvg: { type: 'text', label: "Nhập mã <svg> vào đây" },
             title: { type: 'text', label: 'Tên Ban', contentEditable: true },
             titleColor: { type: 'text', label: 'Màu Tên Ban', default: '#fde047' },
@@ -641,6 +651,7 @@ export const puckConfig = {
                 textSize: { type: 'text', label: 'Cỡ chữ', default: '12px' },
                 background: {
                   type: 'object', label: 'Nền nút',
+                  
                   objectFields: {
                     type: {
                       type: 'select', label: 'Loại màu',
@@ -655,7 +666,7 @@ export const puckConfig = {
                     color: { type: 'text', label: 'Màu nền', default: 'transparent' },
                     gradientFrom: { type: 'text', label: 'Gradient Từ', default: 'transparent' },
                     gradientTo: { type: 'text', label: 'Gradient Đến', default: 'transparent' },
-                    gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' },
+                    gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' },
                     hoverColor: { type: 'text', label: 'Màu Hover', default: "rgba(255,255,255,0.1)" }
                   }
                 },
@@ -774,24 +785,8 @@ export const puckConfig = {
       label: 'Hành Trình',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Ảnh & Gradient', value: 'image_gradient' },
-                { label: 'Ảnh & Màu sắc', value: 'image_color' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
-            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
-            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         title: {
           type: 'object',
@@ -804,6 +799,7 @@ export const puckConfig = {
             decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] },
             background: {
               type: 'object', label: 'Màu tiêu đề',
+              
               objectFields: {
                 type: {
                   type: 'select', label: 'Loại màu',
@@ -818,7 +814,7 @@ export const puckConfig = {
                 color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
                 gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#1e3a8a' },
                 gradientTo: { type: 'text', label: 'Gradient Đến', default: '#3b82f6' },
-                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
               }
             }
           }
@@ -833,6 +829,7 @@ export const puckConfig = {
         },
         items: {
           type: 'array',
+          
           label: 'Danh sách mục',
           defaultItemProps: {
             numberValue: '100',
@@ -910,24 +907,8 @@ export const puckConfig = {
       label: 'Giá Trị',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Ảnh & Gradient', value: 'image_gradient' },
-                { label: 'Ảnh & Màu sắc', value: 'image_color' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
-            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
-            imageUrl: { type: 'text', label: 'URL Ảnh nền' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         title: {
           type: 'object', label: 'Tiêu đề chính',
@@ -939,12 +920,13 @@ export const puckConfig = {
             decoration: { type: 'select', label: 'Gạch chân', options: [{ label: 'Không', value: 'none' }, { label: 'Gạch chân', value: 'underline' }] },
             background: {
               type: 'object', label: 'Màu tiêu đề',
+              
               objectFields: {
                 type: { type: 'select', label: 'Loại màu', options: [{ label: 'Màu sắc', value: 'color' }, { label: 'Gradient', value: 'gradient' }, { label: 'Hình ảnh', value: 'image' }, { label: 'Ảnh & Gradient', value: 'image_gradient' }, { label: 'Ảnh & Màu sắc', value: 'image_color' }] },
                 color: { type: 'text', label: 'Màu (Hex)', default: '#1e3a8a' },
                 gradientFrom: { type: 'text', label: 'Gradient Từ', default: '#1e3a8a' },
                 gradientTo: { type: 'text', label: 'Gradient Đến', default: '#3b82f6' },
-                gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to right' }
+                gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
               }
             }
           }
@@ -975,7 +957,8 @@ export const puckConfig = {
           ]
         },
         items: {
-          type: 'array', label: 'Danh sách mục',
+          type: 'array', 
+          label: 'Danh sách mục',
           defaultItemProps: {
             imageUrl: 'https://webdemo.hexagon.xyz/medias/icon_1%201-2.png',
             radius: { type: 'custom', tl: '70px', tr: '15px', br: '70px', bl: '15px' },
@@ -1050,24 +1033,8 @@ export const puckConfig = {
       label: 'Quan Tâm (Liên hệ)',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Ảnh & Gradient', value: 'image_gradient' },
-                { label: 'Ảnh & Màu sắc', value: 'image_color' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
-            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
-            imageUrl: { type: 'text', label: 'URL ảnh nền' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         title: {
           type: 'object', label: 'Tiêu đề chính',
@@ -1165,24 +1132,8 @@ export const puckConfig = {
       label: 'Footer',
       fields: {
         background: {
-          type: 'object', label: 'Background',
-          objectFields: {
-            type: {
-              type: 'select', label: 'Loại nền',
-              options: [
-                { label: 'Màu sắc', value: 'color' },
-                { label: 'Gradient', value: 'gradient' },
-                { label: 'Hình ảnh', value: 'image' },
-                { label: 'Ảnh & Gradient', value: 'image_gradient' },
-                { label: 'Ảnh & Màu sắc', value: 'image_color' }
-              ]
-            },
-            color: { type: 'text', label: 'Màu nền', default: '#ffffff' },
-            gradientFrom: { type: 'text', label: 'Gradient từ', default: '#667eea' },
-            gradientTo: { type: 'text', label: 'Gradient đến', default: '#764ba2' },
-            gradientDirection: { type: 'text', label: 'Hướng gradient', default: 'to right' },
-            imageUrl: { type: 'text', label: 'URL ảnh nền' }
-          }
+          type: 'custom', label: 'Background',
+          render: (props) => <AdminBackgroundField {...props} />
         },
         logo: {
           type: 'object', label: 'Logo',
@@ -1235,7 +1186,8 @@ export const puckConfig = {
           }
         },
         columns: {
-          type: 'array', label: 'Các cột liên kết',
+          type: 'array', 
+          label: 'Các cột liên kết',
           defaultItemProps: {
             title: 'Cột mới',
             titleConfig: { color: '#0368B0', size: '18px', weight: 'bold', style: 'normal', decoration: 'none' },
@@ -1265,7 +1217,8 @@ export const puckConfig = {
               }
             },
             links: {
-              type: 'array', label: 'Danh sách liên kết',
+              type: 'array', 
+              label: 'Danh sách liên kết',
               defaultItemProps: { text: 'Liên kết mới', url: '#' },
               arrayFields: {
                 text: { type: 'text', label: 'Tên liên kết', contentEditable: true },
@@ -1292,7 +1245,8 @@ export const puckConfig = {
               }
             },
             socials: {
-              type: 'array', label: 'Mạng xã hội',
+              type: 'array', 
+              label: 'Mạng xã hội',
               defaultItemProps: { iconUrl: 'https://webdemo.hexagon.xyz/medias/facebook.svg', alt: 'social', url: '#' },
               arrayFields: {
                 iconUrl: { type: 'custom', label: 'Icon', render: (props) => <ImageField {...props} /> },
@@ -1369,15 +1323,26 @@ export const puckConfig = {
 
     GioiThieuDoanhNhan: {
       fields: {
+        layout: {
+          type: 'radio', label: 'Bố cục',
+          options: [
+            { label: 'Ảnh trái - Chữ phải', value: 'image_left' },
+            { label: 'Ảnh phải - Chữ trái', value: 'image_right' }
+          ]
+        },
         background: {
           type: 'object', label: 'Cấu hình nền',
           objectFields: {
             type: { type: 'select', label: 'Loại nền', options: [{ label: 'Màu sắc', value: 'color' }, { label: 'Hình ảnh', value: 'image' }, { label: 'Hình ảnh & Màu', value: 'image_color' }, { label: 'Hình ảnh & Gradient', value: 'image_gradient' }, { label: 'Gradient', value: 'gradient' }] },
             color: { type: 'text', label: 'Mã màu', default: '#ffffff' },
-            imageUrl: { type: 'text', label: 'URL Hình ảnh', default: '' },
+            imageUrl: {
+              type: 'custom',
+              label: 'URL Hình ảnh',
+              render: (props) => <ImageField {...props} />
+            },
             gradientFrom: { type: 'text', label: 'Màu Gradient (Từ)', default: '' },
             gradientTo: { type: 'text', label: 'Màu Gradient (Đến)', default: '' },
-            gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to bottom right' }
+            gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
           }
         },
         title: {
@@ -1400,7 +1365,11 @@ export const puckConfig = {
           type: 'object', label: 'Hình ảnh',
           objectFields: {
             url: { type: 'text', label: 'Đường dẫn ảnh', default: 'https://webdemo.hexagon.xyz/medias/2513.jpg' },
-            alt: { type: 'text', label: 'Mô tả ảnh (SEO)', default: 'Giới thiệu' },
+            alt: {
+              type: 'custom',
+              label: 'Mô tả ảnh (SEO)',
+              render: (props) => <ImageField {...props} />
+            },
             radius: {
               type: 'object', label: 'Bo góc ảnh',
               objectFields: {
@@ -1431,7 +1400,8 @@ export const puckConfig = {
           }
         },
         paragraphs: {
-          type: 'array', label: 'Các đoạn văn bản',
+          type: 'array', 
+          label: 'Các đoạn văn bản',
           getItemSummary: (item) => item.text || 'Đoạn văn',
           defaultItemProps: {
             text: 'Nhập nội dung đoạn văn...',
@@ -1452,7 +1422,8 @@ export const puckConfig = {
           }
         },
         quotes: {
-          type: 'array', label: 'Hộp trích dẫn (Tầm nhìn, Sứ mệnh)',
+          type: 'array', 
+          label: 'Hộp trích dẫn (Tầm nhìn, Sứ mệnh)',
           getItemSummary: (item) => item.label || 'Trích dẫn',
           defaultItemProps: {
             label: 'Tiêu đề', text: 'Nội dung',
@@ -1474,7 +1445,8 @@ export const puckConfig = {
           }
         },
         stats: {
-          type: 'array', label: 'Hành trình / Số liệu',
+          type: 'array', 
+          label: 'Hành trình / Số liệu',
           getItemSummary: (item) => `${item.number}${item.suffix || ''} - ${item.label}`,
           defaultItemProps: {
             number: '100', suffix: '+', label: 'Nhãn',
@@ -1509,6 +1481,7 @@ export const puckConfig = {
         }
       },
       defaultProps: {
+        layout: 'image_left',
         background: { type: 'color', color: '#ffffff' },
         title: { text: 'GIỚI THIỆU DOANH NHÂN ĐỒNG THÁP', config: { color: '#0368B0', size: '32px', weight: 'bold', style: 'normal', decoration: 'none' } },
         image: { url: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Doanh nhân', radius: { type: 'all', all: '16px', tl: '0px', tr: '0px', bl: '0px', br: '0px' } },
@@ -1532,15 +1505,26 @@ export const puckConfig = {
 
     TrangHoiVien: {
       fields: {
+        layout: {
+          type: 'radio', label: 'Bố cục',
+          options: [
+            { label: 'Ảnh trái - Chữ phải', value: 'image_left' },
+            { label: 'Ảnh phải - Chữ trái', value: 'image_right' }
+          ]
+        },
         background: {
           type: 'object', label: 'Cấu hình nền',
           objectFields: {
             type: { type: 'select', label: 'Loại nền', options: [{ label: 'Màu sắc', value: 'color' }, { label: 'Hình ảnh', value: 'image' }, { label: 'Hình ảnh & Màu', value: 'image_color' }, { label: 'Hình ảnh & Gradient', value: 'image_gradient' }, { label: 'Gradient', value: 'gradient' }] },
             color: { type: 'text', label: 'Mã màu', default: '#ffffff' },
-            imageUrl: { type: 'text', label: 'URL Hình ảnh', default: '' },
+            imageUrl: {
+              type: 'custom',
+              label: 'URL Hình ảnh',
+              render: (props) => <ImageField {...props} />
+            },
             gradientFrom: { type: 'text', label: 'Màu Gradient (Từ)', default: '' },
             gradientTo: { type: 'text', label: 'Màu Gradient (Đến)', default: '' },
-            gradientDirection: { type: 'text', label: 'Hướng Gradient', default: 'to bottom right' }
+            gradientDirection: { type: 'select', label: 'Hướng Gradient', options: GRADIENT_DIRECTIONS, default: 'to bottom right' }
           }
         },
         title: {
@@ -1563,7 +1547,11 @@ export const puckConfig = {
           type: 'object', label: 'Hình ảnh',
           objectFields: {
             url: { type: 'text', label: 'Đường dẫn ảnh', default: 'https://webdemo.hexagon.xyz/medias/2513.jpg' },
-            alt: { type: 'text', label: 'Mô tả ảnh (SEO)', default: 'Hội viên' },
+            alt: {
+              type: 'custom',
+              label: 'Mô tả ảnh (SEO)',
+              render: (props) => <ImageField {...props} />
+            },
             radius: {
               type: 'object', label: 'Bo góc ảnh',
               objectFields: {
@@ -1594,7 +1582,8 @@ export const puckConfig = {
           }
         },
         paragraphs: {
-          type: 'array', label: 'Các đoạn văn bản',
+          type: 'array', 
+          label: 'Các đoạn văn bản',
           getItemSummary: (item) => item.text || 'Đoạn văn',
           defaultItemProps: {
             text: 'Nhập nội dung đoạn văn...',
@@ -1631,13 +1620,15 @@ export const puckConfig = {
           }
         },
         benefits: {
-          type: 'array', label: 'Danh sách quyền lợi',
+          type: 'array', 
+          label: 'Danh sách quyền lợi',
           getItemSummary: (item) => item.text || 'Quyền lợi',
           defaultItemProps: {
             text: 'Nội dung quyền lợi',
             config: { color: '#333333', size: '16px', weight: 'normal', style: 'normal', decoration: 'none' }
           },
           arrayFields: {
+            customSvg: { type: 'textarea', label: 'Icon (Mã SVG tuỳ chỉnh)' },
             text: { type: 'text', label: 'Nội dung' },
             config: {
               type: 'object', label: 'Định dạng',
@@ -1652,7 +1643,8 @@ export const puckConfig = {
           }
         },
         stats: {
-          type: 'array', label: 'Số liệu thống kê',
+          type: 'array', 
+          label: 'Số liệu thống kê',
           getItemSummary: (item) => `${item.number}${item.suffix || ''} - ${item.label}`,
           defaultItemProps: {
             number: '100', suffix: '+', label: 'Nhãn',
@@ -1687,6 +1679,7 @@ export const puckConfig = {
         }
       },
       defaultProps: {
+        layout: 'image_left',
         background: { type: 'color', color: '#ffffff' },
         title: { text: 'HỘI VIÊN', config: { color: '#0368B0', size: '32px', weight: 'bold', style: 'normal', decoration: 'none' } },
         image: { url: 'https://images.unsplash.com/vector-1742570608453-43dc1b4164e5?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Hội viên', radius: { type: 'all', all: '16px', tl: '0px', tr: '0px', bl: '0px', br: '0px' } },

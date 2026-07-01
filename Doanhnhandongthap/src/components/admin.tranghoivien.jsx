@@ -13,6 +13,7 @@ const AdminTrangHoiVien = ({
     benefitsTitle = {},
     benefits = [], 
     stats = [],
+    layout = 'image_left',
     id
 }) => {
     let dispatch = null;
@@ -61,7 +62,7 @@ const AdminTrangHoiVien = ({
                 )}
 
                 {/* Phần nội dung 2 cột */}
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+                <div className={`flex flex-col gap-8 lg:gap-16 items-center ${layout === 'image_right' ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
                     
                     {/* Cột trái: Hình ảnh */}
                     {image.url && (
@@ -111,7 +112,11 @@ const AdminTrangHoiVien = ({
                                 <div className="flex flex-col">
                                     {benefits.map((b, idx) => (
                                         <div key={idx} className={`flex items-start gap-3 py-3 ${idx !== benefits.length - 1 ? 'border-b border-gray-200' : ''}`}>
-                                            <span className="text-[#F58220] font-bold mt-0.5">✓</span>
+                                            {b.customSvg ? (
+                                                <span className="shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-[#F58220]" dangerouslySetInnerHTML={{ __html: b.customSvg }} />
+                                            ) : (
+                                                <span className="shrink-0 text-[#F58220] font-bold mt-0.5 text-lg">✓</span>
+                                            )}
                                             <span style={b.config ? getTextStyle(b.config) : { color: '#333' }}>{b.text}</span>
                                         </div>
                                     ))}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePuck } from '@measured/puck';
+import { usePuck } from '@puckeditor/core';
 import { getBackgroundStyle, getTitleStyle, getTextStyle, getCustomRadius } from './admin.styleUtils';
 import { Counter } from './admin.utils';
 import { useInlineImage } from './admin.useInlineImage';

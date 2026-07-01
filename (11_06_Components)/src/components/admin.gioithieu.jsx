@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { usePuck } from '@measured/puck';
+import { usePuck } from '@puckeditor/core';
 import { flushSync } from 'react-dom';
 import { getBackgroundStyle, getCustomRadius, getResponsiveFontSize } from './admin.styleUtils';
 import { showImageModal } from './admin.inlineImageModal';

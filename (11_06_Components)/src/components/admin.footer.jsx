@@ -1,6 +1,6 @@
 import React from 'react';
 import { getBackgroundStyle, getTitleStyle, getTextStyle } from './admin.styleUtils';
-import { usePuck } from '@measured/puck';
+import { usePuck } from '@puckeditor/core';
 
 const AdminFooter = ({ 
     background = {}, 

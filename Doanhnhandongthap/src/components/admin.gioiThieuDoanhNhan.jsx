@@ -12,6 +12,7 @@ const AdminGioiThieuDoanhNhan = ({
     paragraphs = [],
     quotes = [],
     stats = [],
+    layout = 'image_left',
     id
 }) => {
     let dispatch = null;
@@ -60,7 +61,7 @@ const AdminGioiThieuDoanhNhan = ({
                 )}
 
                 {/* Phần nội dung 2 cột */}
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-[50px] items-center">
+                <div className={`flex flex-col gap-8 lg:gap-[50px] items-center ${layout === 'image_right' ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
 
                     {/* Cột trái: Hình ảnh */}
                     {image.url && (

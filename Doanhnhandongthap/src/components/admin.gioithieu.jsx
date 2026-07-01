@@ -36,7 +36,7 @@ const PeopleBlock = ({ card, cardIndex, isEditing, getEditProps }) => {
                     const originalIndex = safePage * itemsPerPage + mIdx;
                     return (
                         <div key={originalIndex} className="flex items-center gap-5 bg-gray-50/50 p-3 rounded-xl border border-gray-100/50 hover:bg-gray-50 transition-colors shrink-0">
-                            <div 
+                            <div
                                 className={`relative shrink-0 rounded-full`}
                                 {...getEditProps(JSON.stringify({ cardIndex, type: 'avatar', memberIndex: originalIndex }))}
                             >
@@ -46,7 +46,7 @@ const PeopleBlock = ({ card, cardIndex, isEditing, getEditProps }) => {
                                     className="w-16 h-16 rounded-full object-cover shadow-sm border-2 border-white bg-white block pointer-events-none"
                                 />
                             </div>
-                            
+
                             <div style={{ fontSize: getResponsiveFontSize(lblConfig.textSize || '13px'), lineHeight: '1.6' }}>
                                 {lblConfig.lbl1 && member.val1 && <p><span className="font-bold" style={{ color: lblConfig.labelColor }}>{lblConfig.lbl1}</span> <span style={{ color: lblConfig.valueColor }}>{member.val1}</span></p>}
                                 {lblConfig.lbl2 && member.val2 && <p><span className="font-bold" style={{ color: lblConfig.labelColor }}>{lblConfig.lbl2}</span> <span style={{ color: lblConfig.valueColor }}>{member.val2}</span></p>}
@@ -59,8 +59,8 @@ const PeopleBlock = ({ card, cardIndex, isEditing, getEditProps }) => {
             </div>
 
             {totalPages > 1 && (
-                <div className="shrink-0 flex items-center justify-center gap-3 mt-4 pt-2">
-                    <button onClick={handlePrev} type="button" className="w-8 h-8 flex items-center justify-center bg-[#e0f2fe] text-[#0369a1] rounded hover:bg-[#bae6fd] transition-colors font-bold select-none cursor-pointer relative z-20">‹</button>
+                <div className="shrink-0 flex items-center justify-center gap-3 mt-4 pt-2 mb-8">
+                    <button onClick={handlePrev} type="button" className="w-10 h-10 flex items-center justify-center bg-[#e0f2fe] text-[#0369a1] hover:bg-[#bae6fd] transition-colors font-bold select-none cursor-pointer relative z-20 overflow-hidden" style={{ borderRadius: getCustomRadius(card.buttonRadius || { type: 'all', all: '9999px' }) }}>‹</button>
                     <div className="flex gap-1.5 items-center">
                         {Array.from({ length: totalPages }).map((_, i) => (
                             <span
@@ -70,7 +70,7 @@ const PeopleBlock = ({ card, cardIndex, isEditing, getEditProps }) => {
                             ></span>
                         ))}
                     </div>
-                    <button onClick={handleNext} type="button" className="w-8 h-8 flex items-center justify-center bg-[#e0f2fe] text-[#0369a1] rounded hover:bg-[#bae6fd] transition-colors font-bold select-none cursor-pointer relative z-20">›</button>
+                    <button onClick={handleNext} type="button" className="w-10 h-10 flex items-center justify-center bg-[#e0f2fe] text-[#0369a1] hover:bg-[#bae6fd] transition-colors font-bold select-none cursor-pointer relative z-20 overflow-hidden" style={{ borderRadius: getCustomRadius(card.buttonRadius || { type: 'all', all: '9999px' }) }}>›</button>
                 </div>
             )}
         </div>
@@ -104,6 +104,8 @@ const AdminGioiThieu = ({ background = {}, cards = [], id, puck }) => {
                 if (newCards[cardIndex]) {
                     if (fieldType === 'bottom') {
                         newCards[cardIndex] = { ...newCards[cardIndex], bottomImage: newValue };
+                    } else if (fieldType === 'bottom2') {
+                        newCards[cardIndex] = { ...newCards[cardIndex], bottomImage2: newValue };
                     } else if (fieldType === 'avatar' && memberIndex !== null) {
                         const newMembers = [...(newCards[cardIndex].members || [])];
                         if (newMembers[memberIndex]) {
@@ -158,7 +160,7 @@ const AdminGioiThieu = ({ background = {}, cards = [], id, puck }) => {
                     return (
                         <div
                             key={index}
-                            className="relative w-full md:w-[calc(50%-1rem)] max-w-137.5 h-162.5 p-8 lg:p-10 shadow-xl overflow-hidden flex flex-col"
+                            className="relative w-full md:w-[calc(50%-1rem)] max-w-137.5 h-162.5 p-8 pb-0 lg:pb-0 lg:p-10 shadow-xl overflow-hidden flex flex-col"
                             style={{
                                 ...getBackgroundStyle(card.background),
                                 borderRadius: getCustomRadius(card.radius)
@@ -186,18 +188,40 @@ const AdminGioiThieu = ({ background = {}, cards = [], id, puck }) => {
                                             </p>
                                         ))}
                                     </div>
-                                    {card.bottomImage && (
-                                        <div 
-                                            className={`shrink-0 w-[calc(100%+4rem)] lg:w-[calc(100%+5rem)] h-55 -mx-8 lg:-mx-10 mt-6 overflow-hidden relative z-0`}
-                                            {...getEditProps(JSON.stringify({ cardIndex: index, type: 'bottom' }))}
-                                        >
+                                    {card.imageLayout === 'two_corners' ? (
+                                        <div className="shrink-0 w-[calc(100%+4rem)] lg:w-[calc(100%+5rem)] h-55 -mx-8 lg:-mx-10 mt-auto overflow-hidden relative z-0 flex justify-between pointer-events-none">
                                             <div className="absolute inset-0 bg-linear-to-t from-transparent to-white/20 z-10 pointer-events-none"></div>
-                                            <img
-                                                src={card.bottomImage}
-                                                alt="decor"
-                                                className="w-full h-full object-cover block pointer-events-none"
-                                            />
+                                            {card.bottomImage ? (
+                                                <div 
+                                                    className="w-[calc(50%-1rem)] h-full flex-shrink-0 relative pointer-events-auto"
+                                                    {...getEditProps(JSON.stringify({ cardIndex: index, type: 'bottom' }))}
+                                                >
+                                                    <img src={card.bottomImage} alt="decor left" className="w-full h-full object-cover object-left pointer-events-none" />
+                                                </div>
+                                            ) : <div className="w-[calc(50%-1rem)] h-full flex-shrink-0"></div>}
+                                            {card.bottomImage2 ? (
+                                                <div 
+                                                    className="w-[calc(50%-1rem)] h-full flex-shrink-0 relative pointer-events-auto"
+                                                    {...getEditProps(JSON.stringify({ cardIndex: index, type: 'bottom2' }))}
+                                                >
+                                                    <img src={card.bottomImage2} alt="decor right" className="w-full h-full object-cover object-right pointer-events-none" />
+                                                </div>
+                                            ) : <div className="w-[calc(50%-1rem)] h-full flex-shrink-0"></div>}
                                         </div>
+                                    ) : (
+                                        card.bottomImage && (
+                                            <div
+                                                className={`shrink-0 w-[calc(100%+4rem)] lg:w-[calc(100%+5rem)] h-55 -mx-8 lg:-mx-10 mt-auto overflow-hidden relative z-0`}
+                                                {...getEditProps(JSON.stringify({ cardIndex: index, type: 'bottom' }))}
+                                            >
+                                                <div className="absolute inset-0 bg-linear-to-t from-transparent to-white/20 z-10 pointer-events-none"></div>
+                                                <img
+                                                    src={card.bottomImage}
+                                                    alt="decor"
+                                                    className="w-full h-full object-cover block pointer-events-none"
+                                                />
+                                            </div>
+                                        )
                                     )}
                                 </>
                             )}

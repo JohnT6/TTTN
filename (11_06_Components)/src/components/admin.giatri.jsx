@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { getBackgroundStyle, getTitleStyle, getTextStyle, getCustomRadius } from './admin.styleUtils';
-import { usePuck } from '@measured/puck';
+import { usePuck } from '@puckeditor/core';
 import { useInlineImage } from './admin.useInlineImage';
 
 const AdminGiaTri = ({ id, background = {}, title = {}, button = {}, items = [], alignItems = 'center' }) => {

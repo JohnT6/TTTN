@@ -1,16 +1,4 @@
 // Hàm xử lý background
-
-export const GRADIENT_DIRECTIONS = [
-    { value: 'to right', label: 'Trái → Phải' },
-    { value: 'to left', label: 'Phải → Trái' },
-    { value: 'to bottom', label: 'Trên → Dưới' },
-    { value: 'to top', label: 'Dưới → Trên' },
-    { value: 'to bottom right', label: 'Góc trên-trái → dưới-phải' },
-    { value: 'to bottom left', label: 'Góc trên-phải → dưới-trái' },
-    { value: 'to top right', label: 'Góc dưới-trái → trên-phải' },
-    { value: 'to top left', label: 'Góc dưới-phải → trên-trái' }
-];
-
 export const getBackgroundStyle = (background = {}) => {
     const bg = background || {};
     if (bg.type === "image" && bg.imageUrl) {
@@ -120,3 +108,11 @@ export const getButtonStyle = (buttonConfig = {}) => {
     }
     return style;
 };
+
+export const GRADIENT_DIRECTIONS = [
+{ value: 'to right', label: 'Trái → Phải' },
+{ value: 'to left', label: 'Phải → Trái' },
+{ value: 'to bottom', label: 'Trên → Dưới' },
+{ value: 'to bottom right', label: 'Góc trên-trái → dưới-phải' },
+{ value: 'to bottom left', label: 'Góc trên-phải → dưới-trái' }
+];
