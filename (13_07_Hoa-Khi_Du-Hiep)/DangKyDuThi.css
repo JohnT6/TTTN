@@ -1,0 +1,399 @@
+/* DangKyDuThi.css - Responsive implementation based on Figma Node 1:2 */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: url("images/BGTRANGVOTING.png") no-repeat top center;
+    background-size: cover;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+    background-color: #7b1fa2; /* Màu tím */
+    border-bottom: 2px solid #ea80fc;
+    position: relative;
+    z-index: 999;
+}
+
+.topbar-icon {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.logo-container {
+    position: absolute;
+    top: -107px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.main-top-logo {
+    width: 100%;
+    max-width: 465px; /* Kích thước chuẩn từ Figma */
+}
+
+.btn-login-custom {
+    background-color: #0084ff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+.btn-login-custom:hover {
+    background-color: #006bce;
+    transform: scale(1.05);
+}
+
+
+/* ================= MENU BAR ================= */
+.text-visual-img {
+    width: 100%;
+    max-width: 550px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 150px; /* Đẩy xuống sau logo */
+}
+
+.nav-bar-bg {
+    width: 100%;
+    max-width: 1120px;
+    height: auto;
+    z-index: 0;
+    top: 65%;
+}
+
+.menu-img {
+    width: 100%;
+    max-width: 178px;
+    height: auto;
+}
+
+.btn-thamgia-wrapper {
+    margin: 0 30px;
+    position: relative;
+    top: 30px; /* Thụt xuống để thò đáy qua thanh ngang */
+    z-index: 5;
+    display: inline-block;
+}
+
+.btn-thamgia-img {
+    width: 100%;
+    max-width: 210px;
+    height: auto;
+    margin-bottom: 120px;
+}
+
+/* ================= FORM SECTION ================= */
+.form-section {
+    max-width: 1120px; /* Khớp với độ rộng của thanh menu ngang bên trên */
+    margin: 0 auto;
+}
+
+.title-dkdt {
+    max-width: 450px;
+}
+
+.upload-main-box {
+    background: url('images/themanh.png') no-repeat center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Trả lại kích thước to chà bá như cũ */
+    border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-sub-box {
+    background: url('images/themanhnho.png') no-repeat center;
+    background-size: 100% 100%;
+    width: 30%;
+    height: 100px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.cmnd-upload {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: 1;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+#box-cmnd-front {
+    background-image: url('images/mattruoc.png');
+}
+
+#box-cmnd-back {
+    background-image: url('images/matsau.png');
+}
+
+.text-note {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.file-input-hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Character Info */
+.info-line {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.highlight {
+    color: #ffd859; /* Màu vàng từ text Figma */
+    font-weight: 700;
+}
+
+/* Gender Radio Buttons */
+/* RADIO BUTTONS (Thi Miss / Thi Misster) */
+.custom-radio {
+    cursor: pointer;
+}
+.radio-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #fff; /* Solid white for unselected */
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+input[type="radio"]:checked + .radio-circle {
+    background-color: transparent;
+    border: 3px solid #fff;
+}
+input[type="radio"]:checked + .radio-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #00d2ff; /* Chấm xanh khi chọn */
+    border-radius: 50%;
+}
+.gender-img {
+    height: 45px; /* Figma: 202x65 -> cao khoang 45-50px */
+}
+
+/* Input Boxes */
+.bg-input-img {
+    display: block;
+}
+
+.custom-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 70%;
+    background: transparent;
+    border: none;
+    color: #7D037F; /* Đổi màu chữ theo yêu cầu */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    z-index: 10; /* Đảm bảo input nằm trên cùng để có thể click và gõ chữ */
+}
+.custom-input::placeholder {
+    color: #7D037F;
+    opacity: 0.8;
+}
+/* Select dropdown styles */
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent; /* fallback */
+}
+.custom-select option {
+    background-color: #7b1fa2;
+    color: #fff;
+}
+
+/* Textarea styles */
+.textarea-input {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%; /* Text area chiếm nhiều diện tích hơn */
+    resize: none;
+    overflow-y: auto;
+}
+
+/* CMND Upload */
+.cmnd-upload {
+    width: 48%;
+}
+
+/* Submit Button */
+.btn-submit {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Hover effects for buttons that swap images and show text */
+.btn-hover-effect {
+    text-decoration: none;
+}
+.btn-hover-effect .normal-img {
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-hover-effect:hover .normal-img {
+    opacity: 0;
+}
+.btn-hover-effect .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-hover-effect:hover .hover-img {
+    opacity: 1;
+}
+.btn-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    pointer-events: none;
+    opacity: 0; /* Chỉ hiện khi hover */
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    line-height: 1.2;
+}
+.btn-hover-effect:hover .btn-text-overlay {
+    opacity: 1;
+}
+
+.text-thamgia {
+    font-size: 23px; /* Giảm cỡ chữ để vừa vặn như ảnh gốc */
+    width: 70%;
+    top: 27.5%; /* Điều chỉnh nhẹ để ngay giữa khiên */
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.text-menu {
+    font-size: 16px; /* Giảm kích thước font cho nút menu */
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.text-action {
+    font-size: 22.5px; /* Kích thước font của ĐỒNG Ý và HỦY BỎ */
+    white-space: nowrap;
+}
+
+.submit-img {
+    max-width: 250px;
+}
+
+/* RESPONSIVE MAPPING */
+@media (max-width: 991px) {
+    .logo-container {
+        top: -60px;
+    }
+    .main-top-logo {
+        max-width: 300px;
+    }
+    .text-visual-img {
+        margin-top: 100px;
+    }
+    .nav-bar-bg {
+        display: none; /* Ẩn nền thanh ngang trên mobile do rớt dòng */
+    }
+    .btn-thamgia-wrapper {
+        top: 0; /* Reset vị trí lồi lõm trên mobile */
+    }
+}
+
+/* ================= MODAL POPUP ================= */
+.custom-modal .modal-content {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.btn-close-custom {
+    position: absolute;
+    top: 27px;
+    right: 27px;
+    z-index: 1060;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-close-custom:hover {
+    transform: scale(1.1);
+}
+
+/* Nút tắt riêng biệt cho Thể Lệ và Hướng Dẫn (dễ dàng ghi đè) */
+.btn-close-thele-hd {
+    top: 74px;
+    right: 48px;
+
+}
+
+.popup-text-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    overflow-y: auto;
+    color: white;
+}
+
+/* Custom scrollbar cho popup text */
+.popup-text-content::-webkit-scrollbar {
+    width: 6px;
+}
+.popup-text-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.popup-text-content::-webkit-scrollbar-thumb {
+    background: #ea80fc;
+    border-radius: 10px;
+}

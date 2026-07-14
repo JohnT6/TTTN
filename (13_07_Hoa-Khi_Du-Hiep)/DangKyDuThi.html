@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đăng Ký Dự Thi - Miss & Mister</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="DangKyDuThi.css?v=8" />
+        <script src="DangKyDuThi.js?v=5"></script>
+    </head>
+    <body>
+        <!-- Topbar -->
+        <div class="topbar py-2">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <img
+                        src="images/iconapp.png"
+                        alt="App Icon"
+                        class="topbar-icon"
+                    />
+                </div>
+                <div class="logo-container">
+                    <img
+                        src="images/Logo-HaoKhiDuHiep.png"
+                        alt="Logo Hào Khí Du Hiệp"
+                        class="img-fluid main-top-logo"
+                    />
+                </div>
+                <div class="d-flex align-items-center gap-4 text-white">
+                    <a href="#" class="text-white fs-4"
+                        ><i class="fa-solid fa-house"></i
+                    ></a>
+                    <a href="#" class="text-white fs-4"
+                        ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+                    <button class="btn btn-login-custom rounded-0 text-white fw-bold px-4 py-2">ĐĂNG NHẬP</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <div class="main-nav-container mt-4 text-center position-relative z-2">
+            <!-- Text VISUAL CỰC PHẨM -->
+            <div class="mb-4 mt-4">
+                <img
+                    src="images/text.png"
+                    alt="Visual Cực Phẩm"
+                    class="img-fluid text-visual-img"
+                />
+            </div>
+
+            <!-- Các nút menu tĩnh -->
+            <div
+                class="d-flex justify-content-center align-items-center flex-wrap gap-2 menu-buttons position-relative mt-5"
+            >
+                <img
+                    src="images/khungdautrang.png"
+                    alt="Khung Menu"
+                    class="nav-bar-bg position-absolute start-50 translate-middle"
+                />
+
+                <a
+                    href="#"
+                    id="btn-the-le"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/thele.png"
+                        alt="Thể Lệ"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhovertrai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">THỂ LỆ</span>
+                </a>
+                <a
+                    href="#"
+                    id="btn-huong-dan"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/hd.png"
+                        alt="Hướng Dẫn"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhovertrai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">HƯỚNG DẪN</span>
+                </a>
+
+                <a
+                    href="#"
+                    class="mx-3 btn-thamgia-wrapper position-relative z-2 btn-hover-effect"
+                >
+                    <img
+                        src="images/thamgiangaycochu.png"
+                        alt="Tham Gia Ngay"
+                        class="btn-thamgia-img normal-img"
+                    />
+                    <img
+                        src="images/thamgiangayhover.png"
+                        alt="Tham Gia Ngay Hover"
+                        class="btn-thamgia-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-thamgia"
+                        >THAM GIA NGAY</span
+                    >
+                </a>
+                <a
+                    href="#"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/taigame.png"
+                        alt="Tải Game"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhoverphai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">TẢI GAME</span>
+                </a>
+                <a
+                    href="#"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/napthe.png"
+                        alt="Nạp Thẻ"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhoverphai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">NẠP THẺ</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <main class="container mt-5 form-section position-relative z-2">
+            <!-- Tiêu đề Form -->
+            <div class="text-center mb-5">
+                <img
+                    src="images/đkdt.png"
+                    alt="Đăng Ký Dự Thi"
+                    class="img-fluid title-dkdt"
+                />
+            </div>
+
+            <form class="dkdt-form">
+                <div class="row gx-5">
+                    <!-- Cột Trái: Upload Ảnh (Rộng hơn cột phải) -->
+                    <div class="col-lg-7 mb-4">
+                        <div class="upload-main-box mb-3 position-relative cursor-pointer">
+                            <input type="file" class="file-input-hidden" accept="image/*" />
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="upload-sub-box cursor-pointer position-relative">
+                                <input type="file" class="file-input-hidden" accept="image/*" />
+                            </div>
+                            <div class="upload-sub-box cursor-pointer position-relative">
+                                <input type="file" class="file-input-hidden" accept="image/*" />
+                            </div>
+                            <div class="upload-sub-box cursor-pointer position-relative">
+                                <input type="file" class="file-input-hidden" accept="image/*" />
+                            </div>
+                        </div>
+                        <p class="text-white fst-italic text-note text-center w-100">
+                            *Bắt buộc phải đăng ký đủ 4 ảnh dự thi
+                        </p>
+                    </div>
+
+                    <!-- Cột Phải: Nhập liệu (Hẹp hơn cột trái) -->
+                    <div class="col-lg-5">
+                        <!-- Thông tin Nhân vật -->
+                        <div class="character-info mb-4">
+                            <div class="info-line">
+                                Nhân vật:
+                                <span class="highlight">Lục Trà Bạc Hà</span>
+                            </div>
+                            <div class="info-line">
+                                Bang hội:
+                                <span class="highlight">Lạc Viên</span>
+                            </div>
+                            <div class="info-line">
+                                Máy chủ:
+                                <span class="highlight">S1 - Lý Bạch</span>
+                            </div>
+                        </div>
+
+                        <!-- Giới tính -->
+                        <div
+                            class="gender-selection d-flex align-items-center mb-4 gap-4"
+                        >
+                            <label
+                                class="gender-radio custom-radio d-flex align-items-center gap-2 cursor-pointer"
+                            >
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    value="miss"
+                                    checked
+                                    class="d-none"
+                                />
+                                <span class="radio-circle"></span>
+                                <img
+                                    src="images/thimiss.png"
+                                    alt="Miss"
+                                    class="gender-img"
+                                />
+                            </label>
+                            <label
+                                class="gender-radio custom-radio d-flex align-items-center gap-2 cursor-pointer"
+                            >
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    value="mister"
+                                    class="d-none"
+                                />
+                                <span class="radio-circle"></span>
+                                <img
+                                    src="images/thimisster.png"
+                                    alt="Mister"
+                                    class="gender-img"
+                                />
+                            </label>
+                        </div>
+
+                        <!-- Địa chỉ -->
+                        <div
+                            class="form-group mb-3 position-relative form-box-large"
+                        >
+                            <img
+                                src="images/box text.png"
+                                alt="Box text"
+                                class="bg-input-img w-100"
+                            />
+                            <input
+                                type="text"
+                                class="custom-input"
+                                placeholder="Nhập địa chỉ liên hệ nhận thưởng"
+                            />
+                        </div>
+
+                        <!-- SĐT và Khu vực -->
+                        <div class="row gx-3 mb-3">
+                            <div
+                                class="col-sm-6 form-group position-relative form-box-short mb-3 mb-sm-0"
+                            >
+                                <img
+                                    src="images/boxtextngan.png"
+                                    alt="Box text ngắn"
+                                    class="bg-input-img w-100"
+                                />
+                                <input
+                                    type="text"
+                                    class="custom-input"
+                                    placeholder="Nhập số điện thoại"
+                                />
+                            </div>
+                            <div
+                                class="col-sm-6 form-group position-relative form-box-short"
+                            >
+                                <img
+                                    src="images/boxtextngan.png"
+                                    alt="Box text ngắn"
+                                    class="bg-input-img w-100"
+                                />
+                                <select class="custom-input custom-select">
+                                    <option value="" disabled selected hidden>
+                                        Chọn khu vực
+                                    </option>
+                                    <option value="mb">Miền Bắc</option>
+                                    <option value="mt">Miền Trung</option>
+                                    <option value="mn">Miền Nam</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Upload CMND -->
+                        <div class="form-group mb-4">
+                            <label class="text-white d-block mb-3 info-line"
+                                >Nhập ảnh CMND/CCCD mặt trước và sau</label
+                            >
+                            <div class="d-flex gap-4">
+                                <div class="cmnd-upload cursor-pointer position-relative" id="box-cmnd-front">
+                                    <input type="file" class="file-input-hidden" accept="image/*" />
+                                </div>
+                                <div class="cmnd-upload cursor-pointer position-relative" id="box-cmnd-back">
+                                    <input type="file" class="file-input-hidden" accept="image/*" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Giới thiệu -->
+                        <div
+                            class="form-group mb-3 position-relative form-box-xl"
+                        >
+                            <img
+                                src="images/boxtext bự.png"
+                                alt="Box bự"
+                                class="bg-input-img w-100"
+                            />
+                            <textarea
+                                class="custom-input textarea-input"
+                                placeholder="Nhập nội dung giới thiệu(không quá 300 kí tự)"
+                                maxlength="300"
+                            ></textarea>
+                        </div>
+
+                        <!-- Video dự thi -->
+                        <div
+                            class="form-group mb-4 position-relative form-box-large"
+                        >
+                            <img
+                                src="images/box text.png"
+                                alt="Box text"
+                                class="bg-input-img w-100"
+                            />
+                            <input
+                                type="text"
+                                class="custom-input"
+                                placeholder="Nhập video dự thi"
+                            />
+                        </div>
+
+                        <!-- Nút Đồng Ý và Hủy Bỏ (Nằm dưới cột phải) -->
+                        <div class="d-flex justify-content-between mt-4 pb-5">
+                            <button type="button" id="btn-dong-y" class="btn-submit w-50 pe-2">
+                                <div class="position-relative btn-hover-effect">
+                                    <img src="images/buttondongy.png" alt="ĐỒNG Ý" class="img-fluid w-100 normal-img" />
+                                    <img src="images/buttonhoverform.png" alt="ĐỒNG Ý Hover" class="img-fluid w-100 hover-img" />
+                                    <span class="btn-text-overlay text-action">ĐỒNG Ý</span>
+                                </div>
+                            </button>
+                            <button type="button" class="btn-submit w-50 ps-2">
+                                <div class="position-relative btn-hover-effect">
+                                    <img src="images/buttonhuybo.png" alt="HỦY BỎ" class="img-fluid w-100 normal-img" />
+                                    <img src="images/buttonhoverform.png" alt="HỦY BỎ Hover" class="img-fluid w-100 hover-img" />
+                                    <span class="btn-text-overlay text-action">HỦY BỎ</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+
+        <!-- Modals -->
+        <!-- Modal Thể Lệ -->
+        <div class="modal fade custom-modal" id="modalTheLe" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom btn-close-thele-hd" data-bs-dismiss="modal" aria-label="Close">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <div class="modal-body p-0">
+                        <img src="images/popup_thele.png" class="img-fluid w-100" alt="Thể Lệ" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Hướng Dẫn -->
+        <div class="modal fade custom-modal" id="modalHuongDan" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom btn-close-thele-hd" data-bs-dismiss="modal" aria-label="Close">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <div class="modal-body p-0">
+                        <img src="images/popup_huongdan.png" class="img-fluid w-100" alt="Hướng Dẫn" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Đồng Ý -->
+        <div class="modal fade custom-modal" id="modalDongY" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 500px;">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <div class="modal-body p-0 position-relative">
+                        <img src="images/popup_thongbao.png" class="img-fluid w-100" alt="Đồng Ý" />
+                        <div class="popup-text-content d-flex justify-content-center align-items-center">
+                            <h5 class="text-white text-center fw-bold mb-0" style="font-size: 1.3rem;">ĐÃ ĐĂNG KÝ THÀNH CÔNG</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="DangKyDuThi.js?v=6"></script>
+    </body>
+</html>
