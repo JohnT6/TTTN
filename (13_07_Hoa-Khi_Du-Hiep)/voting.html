@@ -1,0 +1,1284 @@
+﻿<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Voting - Hào Khí Du Hiệp</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="voting.css?v=21" />
+        <script src="DangKyDuThi.js?v=5"></script>
+    </head>
+    <body>
+        <!-- Topbar -->
+        <div class="topbar py-2">
+            <div
+                class="container d-flex justify-content-between align-items-center"
+            >
+                <div class="d-flex align-items-center gap-3">
+                    <img
+                        src="images/iconapp.png"
+                        alt="App Icon"
+                        class="topbar-icon"
+                    />
+                </div>
+                <div class="logo-container">
+                    <img
+                        src="images/Logo-HaoKhiDuHiep.png"
+                        alt="Logo Hào Khí Du Hiệp"
+                        class="img-fluid main-top-logo"
+                    />
+                </div>
+                <div class="d-flex align-items-center gap-4 text-white">
+                    <a href="#" class="text-white fs-4"
+                        ><i class="fa-solid fa-house"></i
+                    ></a>
+                    <a href="#" class="text-white fs-4"
+                        ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+                    <button
+                        class="btn btn-login-custom rounded-0 text-white fw-bold px-4 py-2"
+                    >
+                        ĐĂNG NHẬP
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <div class="main-nav-container mt-4 text-center position-relative z-2">
+            <!-- Text VISUAL CỰC PHẨM -->
+            <div class="mb-4 mt-4">
+                <img
+                    src="images/text.png"
+                    alt="Visual Cực Phẩm"
+                    class="img-fluid text-visual-img"
+                />
+            </div>
+
+            <!-- Các nút menu tĩnh -->
+            <div
+                class="d-flex justify-content-center align-items-center flex-wrap gap-2 menu-buttons position-relative mt-5"
+            >
+                <img
+                    src="images/khungdautrang.png"
+                    alt="Khung Menu"
+                    class="nav-bar-bg position-absolute start-50 translate-middle"
+                />
+
+                <a
+                    href="#"
+                    id="btn-huong-dan"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/hd.png"
+                        alt="Hướng Dẫn"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhovertrai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">HƯỚNG DẪN</span>
+                </a>
+                <a
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalNhanHoaFree"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/hoafree.png"
+                        alt="Hoa Free"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhovertrai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">HOA FREE</span>
+                </a>
+
+                <a
+                    href="#"
+                    class="mx-3 btn-thamgia-wrapper position-relative z-2"
+                >
+                    <img
+                        src="images/thamgiangaycochu.png"
+                        alt="Tham Gia Ngay"
+                        class="btn-thamgia-img normal-img"
+                    />
+                    <img
+                        src="images/thamgiangayhover.png"
+                        alt="Tham Gia Ngay Hover"
+                        class="btn-thamgia-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-thamgia"
+                        >THAM GIA NGAY</span
+                    >
+                </a>
+                <a
+                    href="#"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/quatichluy.png"
+                        alt="Quà Tích Lũy"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhoverphai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">QUÀ TÍCH LŨY</span>
+                </a>
+                <a
+                    href="#"
+                    class="position-relative z-1 btn-hover-effect menu-btn-item"
+                >
+                    <img
+                        src="images/naphoa.png"
+                        alt="Nạp Hoa"
+                        class="menu-img normal-img"
+                    />
+                    <img
+                        src="images/buttonhoverphai.png"
+                        class="menu-img hover-img"
+                    />
+                    <span class="btn-text-overlay text-menu">NẠP HOA</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content cho Voting -->
+        <main
+            class="container position-relative z-1 mb-5"
+            style="margin-top: 50px"
+        >
+            <!-- Phần Title Danh sách thí sinh -->
+            <div class="text-center mb-5">
+                <img
+                    src="images/danhsachthisinh.png"
+                    alt="Danh Sách Thí Sinh"
+                    class="img-fluid"
+                    style="max-width: 600px"
+                />
+            </div>
+
+            <!-- Khu vực Card Thí Sinh -->
+            <!-- Search & Filter Area -->
+            <div class="row mb-5 gx-3 px-lg-5 justify-content-center">
+                <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                    <select class="form-select filter-select">
+                        <option>Sắp xếp</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                    <select class="form-select filter-select">
+                        <option>Chọn giới tính</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                    <select class="form-select filter-select">
+                        <option>Chọn máy chủ</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="position-relative">
+                        <input
+                            type="text"
+                            class="form-control filter-search"
+                            placeholder="Tìm thí sinh theo Số Báo Danh"
+                        />
+                        <span
+                            class="position-absolute end-0 top-50 translate-middle-y pe-3"
+                            style="pointer-events: none"
+                        >
+                            <img
+                                src="images/gg_search-found.svg"
+                                alt="Search"
+                                style="width: 20px; height: 20px"
+                            />
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 px-lg-5" id="danh-sach-thi-sinh">
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div
+                        class="contestant-card-simple cursor-pointer btn-hover-effect"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalThongTin"
+                    >
+                        <img
+                            src="images/card.png"
+                            class="w-100 d-block"
+                            alt="Card"
+                        />
+                        <div class="card-rank-badge-simple">
+                            <img src="images/xephang.png" alt="Rank" /> 999
+                        </div>
+                        <div class="card-votes-badge-simple">
+                            9999 <img src="images/hoa.png" alt="Hoa" />
+                        </div>
+                        <div class="card-info-area-simple">
+                            <h5 class="contestant-name-simple">
+                                Tên thí sinh - SBD 1234
+                            </h5>
+                            <p class="contestant-server-simple">
+                                Server 01 - Lý Bạch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phân Trang (Pagination) -->
+            <div
+                class="d-flex justify-content-center mt-5 mb-5 gap-2 pagination-container"
+            >
+                <div
+                    class="pagination-btn btn-trung cursor-pointer text-white d-flex align-items-center justify-content-center fw-bold"
+                >
+                    Đầu
+                </div>
+                <div
+                    class="pagination-btn btn-lon cursor-pointer text-white d-flex align-items-center justify-content-center fw-bold"
+                >
+                    Trang Trước
+                </div>
+                <div
+                    class="pagination-btn btn-nho cursor-pointer text-white d-flex align-items-center justify-content-center fw-bold"
+                >
+                    1
+                </div>
+                <div
+                    class="pagination-btn btn-nho cursor-pointer text-white d-flex align-items-center justify-content-center fw-bold"
+                >
+                    2
+                </div>
+                <div
+                    class="pagination-btn btn-nho cursor-pointer text-white d-flex align-items-center justify-content-center fw-bold"
+                >
+                    3
+                </div>
+                <div
+                    class="pagination-btn btn-lon cursor-pointer text-white d-flex align-items-center justify-content-center fw-bold"
+                >
+                    Trang Sau
+                </div>
+                <div
+                    class="pagination-btn btn-trung cursor-pointer text-white d-flex align-items-center justify-content-center fw-bold"
+                >
+                    Cuối
+                </div>
+            </div>
+
+            <!-- Quà tích luỹ -->
+            <div class="text-center mt-5 mb-4 pt-4">
+                <img
+                    src="images/tichluymocdoiqua.png"
+                    alt="Tích Lũy Mốc Đổi Quà"
+                    class="img-fluid"
+                    style="max-width: 600px"
+                />
+                <h4 class="text-white fw-bold mt-2" style="font-size: 1.2rem">
+                    Đã tích lũy
+                    <span
+                        style="color: #ffeb3b; font-size: 1.5rem; margin: 0 5px"
+                        >0</span
+                    >
+                    hoa
+                </h4>
+            </div>
+
+            <div class="row mb-5 pb-5">
+                <div class="col-12">
+                    <div
+                        class="rewards-container mx-auto position-relative"
+                        style="max-width: 1200px"
+                    >
+                        <!-- Thanh Progress Bar (thanh.png) -->
+                        <div class="progress-bar-bg-new">
+                            <!-- Milestone 1 -->
+                            <div class="milestone-new" style="left: 15%">
+                                <img
+                                    src="images/hoa 2.png"
+                                    alt="Hoa"
+                                    class="milestone-icon"
+                                />
+                                <div class="milestone-text">50 Hoa</div>
+                                <div class="milestone-box">
+                                    <div class="item-grid">
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                    </div>
+                                </div>
+                                <div class="milestone-btn">
+                                    <img
+                                        src="images/buttonnhan.png"
+                                        alt="Nhận"
+                                        class="w-100 normal-img"
+                                    />
+                                    <img
+                                        src="images/buttonhoverform.png"
+                                        alt="Nhận Hover"
+                                        class="w-100 hover-img"
+                                    />
+                                    <span class="btn-text btn-text-overlay"
+                                        >NHẬN</span
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Milestone 2 -->
+                            <div class="milestone-new" style="left: 38.3%">
+                                <img
+                                    src="images/hoa 2.png"
+                                    alt="Hoa"
+                                    class="milestone-icon"
+                                />
+                                <div class="milestone-text">150 Hoa</div>
+                                <div class="milestone-box">
+                                    <div class="item-grid">
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                    </div>
+                                </div>
+                                <div class="milestone-btn">
+                                    <img
+                                        src="images/buttonnhan.png"
+                                        alt="Nhận"
+                                        class="w-100 normal-img"
+                                    />
+                                    <img
+                                        src="images/buttonhoverform.png"
+                                        alt="Nhận Hover"
+                                        class="w-100 hover-img"
+                                    />
+                                    <span class="btn-text btn-text-overlay"
+                                        >NHẬN</span
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Milestone 3 -->
+                            <div class="milestone-new" style="left: 61.6%">
+                                <img
+                                    src="images/hoa 2.png"
+                                    alt="Hoa"
+                                    class="milestone-icon"
+                                />
+                                <div class="milestone-text">500 Hoa</div>
+                                <div class="milestone-box">
+                                    <div class="item-grid">
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                    </div>
+                                </div>
+                                <div class="milestone-btn">
+                                    <img
+                                        src="images/buttonnhan.png"
+                                        alt="Nhận"
+                                        class="w-100 normal-img"
+                                    />
+                                    <img
+                                        src="images/buttonhoverform.png"
+                                        alt="Nhận Hover"
+                                        class="w-100 hover-img"
+                                    />
+                                    <span class="btn-text btn-text-overlay"
+                                        >NHẬN</span
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Milestone 4 -->
+                            <div class="milestone-new" style="left: 85%">
+                                <img
+                                    src="images/hoa 2.png"
+                                    alt="Hoa"
+                                    class="milestone-icon"
+                                />
+                                <div class="milestone-text">1000 Hoa</div>
+                                <div class="milestone-box">
+                                    <div class="item-grid">
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                        <div class="item-square"></div>
+                                    </div>
+                                </div>
+                                <div class="milestone-btn">
+                                    <img
+                                        src="images/buttonnhan.png"
+                                        alt="Nhận"
+                                        class="w-100 normal-img"
+                                    />
+                                    <img
+                                        src="images/buttonhoverform.png"
+                                        alt="Nhận Hover"
+                                        class="w-100 hover-img"
+                                    />
+                                    <span class="btn-text btn-text-overlay"
+                                        >NHẬN</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bảng xếp hạng -->
+            <div class="row g-4 pb-5 mt-5" id="bang-xep-hang">
+                <div class="col-12 mt-4">
+                    <div
+                        class="bxh-container mx-auto position-relative"
+                        style="max-width: 1200px; padding-top: 80px"
+                    >
+                        <!-- Header bxh.png đè lên viền -->
+                        <div
+                            class="text-center"
+                            style="
+                                position: absolute;
+                                top: -50px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                z-index: 2;
+                                width: 100%;
+                            "
+                        >
+                            <img
+                                src="images/bxh.png"
+                                alt="Bảng Xếp Hạng"
+                                class="img-fluid"
+                                style="max-width: 550px"
+                            />
+                        </div>
+
+                        <!-- Lớp viền phát sáng hòa trộn nền -->
+                        <div
+                            style="
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: url(&quot;images/khungbxh_transparent.png?v=2&quot;)
+                                    no-repeat center top;
+                                background-size: 100% 100%;
+                                pointer-events: none;
+                            "
+                        ></div>
+
+                        <!-- Lớp nội dung -->
+                        <div class="position-relative" style="z-index: 1">
+                            <div class="bxh-tabs mb-4 mt-4" style="gap: 20px">
+                                <div
+                                    class="bxh-tab-item btn-hover-effect"
+                                    style="width: 220px"
+                                >
+                                    <img
+                                        src="images/bxhmynhan.png"
+                                        class="bxh-tab-img normal-img"
+                                        alt="Mỹ Nhân"
+                                    />
+                                    <img
+                                        src="images/buttonhoverphai.png"
+                                        class="bxh-tab-img hover-img"
+                                        alt="Hover"
+                                    />
+                                    <span
+                                        class="btn-text-overlay fw-bold"
+                                        style="
+                                            font-size: 0.8rem;
+                                            white-space: nowrap;
+                                        "
+                                        >BXH Đệ Nhất Mỹ Nhân</span
+                                    >
+                                </div>
+                                <div
+                                    class="bxh-tab-item btn-hover-effect"
+                                    style="width: 220px"
+                                >
+                                    <img
+                                        src="images/bxhmynam.png"
+                                        class="bxh-tab-img normal-img"
+                                        alt="Mỹ Nam"
+                                    />
+                                    <img
+                                        src="images/buttonhoverphai.png"
+                                        class="bxh-tab-img hover-img"
+                                        alt="Hover"
+                                    />
+                                    <span
+                                        class="btn-text-overlay fw-bold"
+                                        style="
+                                            font-size: 0.8rem;
+                                            white-space: nowrap;
+                                        "
+                                        >BXH Tuyệt Thế Mỹ Nam</span
+                                    >
+                                </div>
+                                <div
+                                    class="bxh-tab-item btn-hover-effect"
+                                    style="width: 220px"
+                                >
+                                    <img
+                                        src="images/bxhphugiap.png"
+                                        class="bxh-tab-img normal-img"
+                                        alt="Phụ Giáp"
+                                    />
+                                    <img
+                                        src="images/buttonhoverphai.png"
+                                        class="bxh-tab-img hover-img"
+                                        alt="Hover"
+                                    />
+                                    <span
+                                        class="btn-text-overlay fw-bold"
+                                        style="
+                                            font-size: 0.8rem;
+                                            white-space: nowrap;
+                                        "
+                                        >BXH Phú Giáp Thiên Hạ</span
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- BXH Content -->
+                            <div
+                                class="px-md-5 bxh-content-area"
+                                style="
+                                    padding-left: 150px !important;
+                                    padding-right: 150px !important;
+                                "
+                            >
+                                <div
+                                    class="bxh-header d-flex text-white fw-bold py-3 mb-4 text-center"
+                                >
+                                    <div style="width: 15%">HẠNG</div>
+                                    <div
+                                        style="
+                                            width: 35%;
+                                            text-align: left;
+                                            padding-left: 30px;
+                                        "
+                                    >
+                                        TÊN NHÂN VẬT
+                                    </div>
+                                    <div style="width: 25%">MÁY CHỦ</div>
+                                    <div style="width: 25%">HOA NHẬN</div>
+                                </div>
+
+                                <div
+                                    class="bxh-row d-flex align-items-center text-white text-center mb-3 py-2"
+                                >
+                                    <div style="width: 15%">
+                                        <img
+                                            src="images/hang1.png"
+                                            style="width: 50px"
+                                            alt="Hạng 1"
+                                        />
+                                    </div>
+                                    <div
+                                        style="
+                                            width: 35%;
+                                            text-align: left;
+                                            padding-left: 30px;
+                                        "
+                                    >
+                                        Lục Trà Bạc Hà
+                                    </div>
+                                    <div style="width: 25%">S1 - Lý Bạch</div>
+                                    <div style="width: 25%">9999.9999</div>
+                                </div>
+
+                                <div
+                                    class="bxh-row d-flex align-items-center text-white text-center mb-3 py-2"
+                                >
+                                    <div style="width: 15%">
+                                        <img
+                                            src="images/hang2.png"
+                                            style="width: 50px"
+                                            alt="Hạng 2"
+                                        />
+                                    </div>
+                                    <div
+                                        style="
+                                            width: 35%;
+                                            text-align: left;
+                                            padding-left: 30px;
+                                        "
+                                    ></div>
+                                    <div style="width: 25%"></div>
+                                    <div style="width: 25%"></div>
+                                </div>
+
+                                <div
+                                    class="bxh-row d-flex align-items-center text-white text-center mb-3 py-2"
+                                >
+                                    <div style="width: 15%">
+                                        <img
+                                            src="images/hang3.png"
+                                            style="width: 50px"
+                                            alt="Hạng 3"
+                                        />
+                                    </div>
+                                    <div
+                                        style="
+                                            width: 35%;
+                                            text-align: left;
+                                            padding-left: 30px;
+                                        "
+                                    ></div>
+                                    <div style="width: 25%"></div>
+                                    <div style="width: 25%"></div>
+                                </div>
+
+                                <div
+                                    class="bxh-row d-flex align-items-center text-white text-center mb-3 py-2"
+                                >
+                                    <div
+                                        style="
+                                            width: 15%;
+                                            font-size: 1.5rem;
+                                            font-weight: bold;
+                                        "
+                                    >
+                                        4
+                                    </div>
+                                    <div
+                                        style="
+                                            width: 35%;
+                                            text-align: left;
+                                            padding-left: 30px;
+                                        "
+                                    ></div>
+                                    <div style="width: 25%"></div>
+                                    <div style="width: 25%"></div>
+                                </div>
+
+                                <div
+                                    class="bxh-row d-flex align-items-center text-white text-center mb-3 py-2"
+                                >
+                                    <div
+                                        style="
+                                            width: 15%;
+                                            font-size: 1.5rem;
+                                            font-weight: bold;
+                                        "
+                                    >
+                                        5
+                                    </div>
+                                    <div
+                                        style="
+                                            width: 35%;
+                                            text-align: left;
+                                            padding-left: 30px;
+                                        "
+                                    ></div>
+                                    <div style="width: 25%"></div>
+                                    <div style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End position-relative content wrapper -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modals -->
+        <!-- Modal Thể Lệ -->
+
+
+        <!-- Modal Hướng Dẫn -->
+        <div
+            class="modal fade custom-modal"
+            id="modalHuongDan"
+            tabindex="-1"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div
+                    class="modal-content bg-transparent border-0 position-relative"
+                >
+                    <button
+                        type="button"
+                        class="btn-close-custom btn-close-thele-hd"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <img
+                            src="images/nut_tat.png"
+                            alt="Đóng"
+                            class="img-fluid"
+                        />
+                    </button>
+                    <div class="modal-body p-0">
+                        <img
+                            src="images/popup_huongdan.png"
+                            class="img-fluid w-100"
+                            alt="Hướng Dẫn"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Thông Tin Thí Sinh -->
+        <div class="modal fade custom-modal" id="modalThongTin" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom ttts-close-btn" data-bs-dismiss="modal" aria-label="Close" style="z-index: 10;">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <div class="modal-body p-0 position-relative">
+                        <img src="images/pop up_thongtinthising.png" class="img-fluid w-100" alt="Thông Tin Thí Sinh" />
+                        
+                        <div class="position-absolute w-100 h-100 top-0 start-0 d-flex ttts-content-wrapper">
+                            <!-- Cột Trái (Ảnh) -->
+                            <div class="ttts-left-col">
+                                <div class="ttts-main-img-box mb-2">
+                                    <img src="images/anhto.png" class="img-fluid" alt="Ảnh To" />
+                                </div>
+                                <div class="d-flex justify-content-between ttts-small-imgs-box">
+                                    <img src="images/anhnho1.png" class="ttts-small-img" alt="Ảnh 1" />
+                                    <img src="images/anhnho2.png" class="ttts-small-img" alt="Ảnh 2" />
+                                    <img src="images/anhnho3.png" class="ttts-small-img" alt="Ảnh 3" />
+                                </div>
+                                <div class="text-center text-white mt-1 ttts-img-note">
+                                    *Bắt buộc phải đăng ký đủ 4 ảnh dự thi
+                                </div>
+                            </div>
+
+                            <!-- Cột Phải (Thông Tin) -->
+                            <div class="ttts-right-col text-white">
+                                <div class="d-flex ttts-info-row">
+                                    <div class="me-4"><span class="ttts-info-label">Nhân Vật:</span> <span class="ttts-info-value">Lục Trà Bạc Hà</span></div>
+                                    <div><span class="ttts-info-label">SBD:</span> <span class="ttts-info-value">01239</span></div>
+                                </div>
+                                <div class="ttts-info-row">
+                                    <span class="ttts-info-label">Bang Hội:</span> <span class="ttts-info-value">Lạc Viên</span>
+                                </div>
+                                <div class="ttts-info-row mb-2">
+                                    <span class="ttts-info-label">Máy Chủ:</span> <span class="ttts-info-value">S1-Lý Bạch</span>
+                                </div>
+                                <div class="ttts-desc-box mb-3">
+                                    <div class="ttts-info-label">Lời giới thiệu:</div>
+                                    <div class="ttts-desc-text">Xin chào, mình là [Tên nhân vật]. Mình tham gia Mister để lưu giữ lại kỉ niệm và những khoảnh khắc đẹp.</div>
+                                </div>
+
+                                <!-- Box số hoa và Hạng -->
+                                <div class="ttts-box-rank position-relative mb-2">
+                                    <img src="images/boxsohoa.png" class="img-fluid w-100" alt="Box Số Hoa" />
+                                    <div class="position-absolute w-100 h-100 top-0 start-0 d-flex flex-column ttts-box-rank-inner">
+                                        <!-- Headers -->
+                                        <div class="d-flex ttts-rank-headers w-100 text-center">
+                                            <div class="ttts-box-hoa-col">Số hoa đã nhận</div>
+                                            <div class="ttts-box-hang-col"><i class="fa-solid fa-ranking-star me-1"></i>Hạng</div>
+                                        </div>
+                                        <!-- Numbers -->
+                                        <div class="d-flex ttts-rank-numbers w-100 align-items-center">
+                                            <div class="ttts-box-hoa-col d-flex align-items-center justify-content-center">
+                                                <span class="ttts-hoa-num">9999</span> <img src="images/hoa.png" class="ttts-hoa-icon" alt="Hoa" />
+                                            </div>
+                                            <div class="ttts-box-hang-col d-flex align-items-center justify-content-center">
+                                                <span class="ttts-hang-num">77</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tặng hoa input -->
+                                <div class="ttts-input-section mb-3">
+                                    <div class="ttts-info-label mb-2">Số hoa muốn tặng</div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="position-relative ttts-input-wrapper me-2">
+                                            <img src="images/tihanh+-.png" class="img-fluid w-100" alt="Input BG" />
+                                            <div class="position-absolute w-100 h-100 top-0 start-0 d-flex align-items-center justify-content-between px-3">
+                                                <button class="btn ttts-btn-minus text-white fw-bold border-0 bg-transparent p-0">-</button>
+                                                <input type="text" class="ttts-input-number bg-transparent border-0 text-center text-white fw-bold" value="10.000" readonly />
+                                                <button class="btn ttts-btn-plus text-white fw-bold border-0 bg-transparent p-0">+</button>
+                                            </div>
+                                        </div>
+                                        <img src="images/buttonmax.png" class="cursor-pointer ttts-btn-max" alt="MAX" />
+                                    </div>
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="d-flex gap-2 ttts-action-btns">
+                                    <img src="images/buttontanghoa.png" class="cursor-pointer ttts-btn-action" alt="Tặng Hoa" data-bs-toggle="modal" data-bs-target="#modalTangHoa" />
+                                    <img src="images/buttonlstang.png" class="cursor-pointer ttts-btn-action" alt="Lịch Sử Tặng" onclick="new bootstrap.Modal(document.getElementById('modalLichSu')).show()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Lịch Sử -->
+        <div class="modal fade custom-modal" id="modalLichSu" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 650px;">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom lichsu-close-btn" data-bs-dismiss="modal" aria-label="Close" style="z-index: 20;">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <!-- Body -->
+                    <div class="modal-body p-0 position-relative mt-2">
+                        <img src="images/popup_lichsu.png" class="img-fluid w-100" alt="Lịch Sử" />
+                        <div class="position-absolute w-100 h-100 top-0 start-0 p-4 pt-5 d-flex flex-column align-items-center justify-content-center">
+                            <div style="width: 90%; height: 80%; padding-top: 15px;">
+                                <table class="table text-center table-bordered ttts-history-table mb-0 w-100 h-100">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 15%">STT</th>
+                                            <th scope="col" style="width: 20%">Loại</th>
+                                            <th scope="col" style="width: 40%">Phần thưởng</th>
+                                            <th scope="col" style="width: 25%">Ngày</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Hoa</td>
+                                            <td>Đã tặng 100 hoa cho Lục Trà Bạc Hà</td>
+                                            <td>23/07/2026</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Code</td>
+                                            <td>ABACA0145656</td>
+                                            <td>23/07/2026</td>
+                                        </tr>
+                                        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+                                        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+                                        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Tặng Hoa Thành Công -->
+        <div class="modal fade custom-modal" id="modalTangHoa" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 500px;">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close" style="z-index: 10;">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <div class="modal-body p-0 position-relative">
+                        <img src="images/popup_thongbao.png" class="img-fluid w-100" alt="Thông báo" />
+                        <div class="position-absolute w-100 h-100 top-0 start-0 d-flex justify-content-center align-items-center">
+                            <h5 class="text-white text-center fw-bold mb-0" style="font-size: 1.3rem; margin-top: 20px;">ĐÃ TẶNG HOA THÀNH CÔNG</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Nhận Hoa Free -->
+        <div class="modal fade custom-modal" id="modalNhanHoaFree" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 900px;">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom btn-close-hoa-free" data-bs-dismiss="modal" aria-label="Close" style="z-index: 10;">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <div class="modal-body p-0 position-relative">
+                        <img src="images/popup_nhanhoafree.png" alt="Nh?n Hoa Free" class="w-100" />
+                        
+                        <div class="position-absolute w-100 h-100 top-0 start-0 d-flex flex-column" style="padding: 130px 100px 80px 100px; overflow-y: auto;">
+                            <!-- Task 1 -->
+                            <div class="p-0 position-relative mb-3 mx-auto d-flex align-items-center justify-content-between" style="width: 605px; height: 70px;">
+                                <img src="images/box.png" class="position-absolute w-100 h-100 top-0 start-0" style="object-fit: fill; z-index: 0;" alt="Box" />
+                                <div class="text-white fw-bold position-relative z-1" style="font-size: 1.1rem; margin-left: 50px;">
+                                    Đăng nhập mỗi ngày: +10 hoa
+                                </div>
+                                <div class="btn-nhan-hoa-free position-relative" style="margin-right: 20px;">
+                                    <img src="images/buttonnhan.png" alt="Nhận" class="w-100 normal-img" />
+                                    <img src="images/buttonhoverform.png" alt="Nhận Hover" class="w-100 hover-img" />
+                                    <span class="btn-text btn-text-overlay">NHẬN</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Task 2 -->
+                            <div class="p-0 position-relative mb-3 mx-auto d-flex align-items-center justify-content-between" style="width: 605px; height: 70px;">
+                                <img src="images/box.png" class="position-absolute w-100 h-100 top-0 start-0" style="object-fit: fill; z-index: 0;" alt="Box" />
+                                <div class="text-white fw-bold position-relative z-1" style="font-size: 1.1rem; margin-left: 50px;">
+                                    Share Landing: +10 hoa
+                                </div>
+                                <div class="btn-nhan-hoa-free position-relative" style="margin-right: 20px;">
+                                    <img src="images/buttonnhan.png" alt="Nhận" class="w-100 normal-img" />
+                                    <img src="images/buttonhoverform.png" alt="Nhận Hover" class="w-100 hover-img" />
+                                    <span class="btn-text btn-text-overlay">NHẬN</span>
+                                </div>
+                            </div>
+
+                            <!-- Task 3 -->
+                            <div class="p-0 position-relative mb-3 mx-auto d-flex align-items-center justify-content-between" style="width: 605px; height: 70px;">
+                                <img src="images/box.png" class="position-absolute w-100 h-100 top-0 start-0" style="object-fit: fill; z-index: 0;" alt="Box" />
+                                <div class="text-white fw-bold position-relative z-1" style="font-size: 1.1rem; margin-left: 50px;">
+                                    Like Fanpage: +10 hoa
+                                </div>
+                                <div class="btn-nhan-hoa-free position-relative" style="margin-right: 20px;">
+                                    <img src="images/buttonnhan.png" alt="Nhận" class="w-100 normal-img" />
+                                    <img src="images/buttonhoverform.png" alt="Nhận Hover" class="w-100 hover-img" />
+                                    <span class="btn-text btn-text-overlay">NHẬN</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Task 4 -->
+                            <div class="p-0 position-relative mb-3 mx-auto d-flex align-items-center justify-content-between" style="width: 605px; height: 70px;">
+                                <img src="images/box.png" class="position-absolute w-100 h-100 top-0 start-0" style="object-fit: fill; z-index: 0;" alt="Box" />
+                                <div class="text-white fw-bold position-relative z-1" style="font-size: 1.1rem; margin-left: 50px;">
+                                    Like Post: +10 hoa
+                                </div>
+                                <div class="btn-nhan-hoa-free position-relative" style="margin-right: 20px;">
+                                    <img src="images/buttonnhan.png" alt="Nhận" class="w-100 normal-img" />
+                                    <img src="images/buttonhoverform.png" alt="Nhận Hover" class="w-100 hover-img" />
+                                    <span class="btn-text btn-text-overlay">NHẬN</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Task 5 -->
+                            <div class="p-0 position-relative mb-3 mx-auto d-flex align-items-center justify-content-between" style="width: 605px; height: 70px;">
+                                <img src="images/box.png" class="position-absolute w-100 h-100 top-0 start-0" style="object-fit: fill; z-index: 0;" alt="Box" />
+                                <div class="text-white fw-bold position-relative z-1" style="font-size: 1.1rem; margin-left: 50px;">
+                                    Tham gia group: +10 hoa
+                                </div>
+                                <div class="btn-nhan-hoa-free position-relative" style="margin-right: 20px;">
+                                    <img src="images/buttonnhan.png" alt="Nhận" class="w-100 normal-img" />
+                                    <img src="images/buttonhoverform.png" alt="Nhận Hover" class="w-100 hover-img" />
+                                    <span class="btn-text btn-text-overlay">NHẬN</span>
+                                </div>
+                            </div>
+                                    <span class="btn-text btn-text-overlay">NHẬN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="voting.js?v=1"></script>
+            <!-- Modal Nhận Code -->
+        <div class="modal fade custom-modal" id="modalNhanCode" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;">
+                <div class="modal-content bg-transparent border-0 position-relative">
+                    <button type="button" class="btn-close-custom mnc-close-btn" data-bs-dismiss="modal" aria-label="Close" style="z-index: 20;">
+                        <img src="images/nut_tat.png" alt="Đóng" class="img-fluid" />
+                    </button>
+                    <!-- Body -->
+                    <div class="modal-body p-0 position-relative mt-2">
+                        <img src="images/popup_thongbao.png" class="img-fluid w-100" alt="Background" />
+                        <div class="position-absolute w-100 h-100 top-0 start-0 d-flex flex-column align-items-center justify-content-center mnc-content-wrapper" style="padding-top: 15px;">
+                            <!-- Header Text -->
+                            <div class="text-center text-white fw-bold mnc-title" style="font-size: 1.25rem; line-height: 1.5; margin-bottom: 20px;">
+                                Đã đạt mốc XX,<br/>Code của Đại Hiệp là:
+                            </div>
+
+                            <!-- Code Box -->
+                            <div class="position-relative mnc-code-box" style="width: 75%; height: 48px;">
+                                <img src="images/nv.png" class="img-fluid w-100 h-100" alt="Code Box" />
+                                <div class="position-absolute w-100 h-100 top-0 start-0 d-flex justify-content-center align-items-center">
+                                    <span class="text-white mnc-code-text fw-bold" style="font-size: 1.2rem; letter-spacing: 1px;">ABACA0145656</span>
+                                </div>
+                            </div>
+
+                            <!-- Sao Chép Button -->
+                            <div class="mt-4" style="width: 200px;">
+                                <button type="button" class="btn p-0 border-0 bg-transparent mnc-btn-copy w-100">
+                                    <div class="position-relative btn-hover-effect">
+                                        <img src="images/buttonsaochep.png" alt="Sao Chép" class="img-fluid w-100 normal-img" />
+                                        <img src="images/buttonhoverform.png" alt="Sao Chép Hover" class="img-fluid w-100 hover-img" />
+                                        <span class="btn-text-overlay text-white fw-bold mnc-text-copy">SAO CHÉP</span>
+                                    </div>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var milestoneBtns = document.querySelectorAll('.milestone-btn');
+                milestoneBtns.forEach(function(btn) {
+                    btn.classList.add('cursor-pointer');
+                    btn.setAttribute('data-bs-toggle', 'modal');
+                    btn.setAttribute('data-bs-target', '#modalNhanCode');
+                });
+            });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+

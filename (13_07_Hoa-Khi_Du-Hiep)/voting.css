@@ -1,0 +1,959 @@
+﻿/* DangKyDuThi.css - Responsive implementation based on Figma Node 1:2 */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: url("images/BGTRANGVOTING.png") no-repeat top center;
+    background-size: cover;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+    background-color: #7b1fa2; /* M�u t�m */
+    border-bottom: 2px solid #ea80fc;
+    position: relative;
+    z-index: 999;
+}
+
+.topbar-icon {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.logo-container {
+    position: absolute;
+    top: -107px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.main-top-logo {
+    width: 100%;
+    max-width: 465px; /* K�ch th�?c chu?n t? Figma */
+}
+
+.btn-login-custom {
+    background-color: #0084ff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+.btn-login-custom:hover {
+    background-color: #006bce;
+    transform: scale(1.05);
+}
+
+
+/* ================= MENU BAR ================= */
+.text-visual-img {
+    width: 100%;
+    max-width: 550px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 150px; /* �?y xu?ng sau logo */
+}
+
+.nav-bar-bg {
+    width: 100%;
+    max-width: 1120px;
+    height: auto;
+    z-index: 0;
+    top: 65%;
+}
+
+.menu-img {
+    width: 100%;
+    max-width: 178px;
+    height: auto;
+}
+
+.btn-thamgia-wrapper {
+    margin: 0 30px;
+    position: relative;
+    top: 30px; /* Th?t xu?ng �? th? ��y qua thanh ngang */
+    z-index: 5;
+    display: inline-block;
+}
+
+.btn-thamgia-img {
+    width: 100%;
+    max-width: 210px;
+    height: auto;
+    margin-bottom: 120px;
+}
+
+/* ================= FORM SECTION ================= */
+.form-section {
+    max-width: 1120px; /* Kh?p v?i �? r?ng c?a thanh menu ngang b�n tr�n */
+    margin: 0 auto;
+}
+
+.title-dkdt {
+    max-width: 450px;
+}
+
+.upload-main-box {
+    background: url('images/themanh.png') no-repeat center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Tr? l?i k�ch th�?c to ch� b� nh� c? */
+    border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-sub-box {
+    background: url('images/themanhnho.png') no-repeat center;
+    background-size: 100% 100%;
+    width: 30%;
+    height: 100px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.cmnd-upload {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: 1;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+#box-cmnd-front {
+    background-image: url('images/mattruoc.png');
+}
+
+#box-cmnd-back {
+    background-image: url('images/matsau.png');
+}
+
+.text-note {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.file-input-hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Character Info */
+.info-line {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.highlight {
+    color: #ffd859; /* M�u v�ng t? text Figma */
+    font-weight: 700;
+}
+
+/* Gender Radio Buttons */
+/* RADIO BUTTONS (Thi Miss / Thi Misster) */
+.custom-radio {
+    cursor: pointer;
+}
+.radio-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #fff; /* Solid white for unselected */
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+input[type="radio"]:checked + .radio-circle {
+    background-color: transparent;
+    border: 3px solid #fff;
+}
+input[type="radio"]:checked + .radio-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #00d2ff; /* Ch?m xanh khi ch?n */
+    border-radius: 50%;
+}
+.gender-img {
+    height: 45px; /* Figma: 202x65 -> cao khoang 45-50px */
+}
+
+/* Input Boxes */
+.bg-input-img {
+    display: block;
+}
+
+.custom-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 70%;
+    background: transparent;
+    border: none;
+    color: #7D037F; /* �?i m�u ch? theo y�u c?u */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    z-index: 10; /* �?m b?o input n?m tr�n c�ng �? c� th? click v� g? ch? */
+}
+.custom-input::placeholder {
+    color: #7D037F;
+    opacity: 0.8;
+}
+/* Select dropdown styles */
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent; /* fallback */
+}
+.custom-select option {
+    background-color: #7b1fa2;
+    color: #fff;
+}
+
+/* Textarea styles */
+.textarea-input {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%; /* Text area chi?m nhi?u di?n t�ch h�n */
+    resize: none;
+    overflow-y: auto;
+}
+
+/* CMND Upload */
+.cmnd-upload {
+    width: 48%;
+}
+
+/* Submit Button */
+.btn-submit {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Hover effects for buttons that swap images and show text */
+.btn-hover-effect {
+    text-decoration: none;
+}
+.btn-hover-effect .normal-img {
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-hover-effect:hover .normal-img {
+    opacity: 0;
+}
+.btn-hover-effect .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 59px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-hover-effect:hover .hover-img {
+    opacity: 1;
+}
+
+.menu-btn-item .hover-img {
+    height: 62px;
+}
+.btn-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    pointer-events: none;
+    opacity: 0; /* Ch? hi?n khi hover */
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    line-height: 1.2;
+}
+.btn-hover-effect:hover .btn-text-overlay {
+    opacity: 1;
+}
+
+.text-thamgia {
+    font-size: 23px; /* Gi?m c? ch? �? v?a v?n nh� ?nh g?c */
+    width: 70%;
+    top: 27.5%; /* �i?u ch?nh nh? �? ngay gi?a khi�n */
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.text-menu {
+    font-size: 16px; /* Gi?m k�ch th�?c font cho n�t menu */
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.text-action {
+    font-size: 22.5px; /* K�ch th�?c font c?a �?NG ? v� H?Y B? */
+    white-space: nowrap;
+}
+
+.submit-img {
+    max-width: 250px;
+}
+
+/* RESPONSIVE MAPPING */
+@media (max-width: 991px) {
+    .logo-container {
+        top: -60px;
+    }
+    .main-top-logo {
+        max-width: 300px;
+    }
+    .text-visual-img {
+        margin-top: 100px;
+    }
+    .nav-bar-bg {
+        display: none; /* ?n n?n thanh ngang tr�n mobile do r?t d?ng */
+    }
+    .btn-thamgia-wrapper {
+        top: 0; /* Reset v? tr� l?i l?m tr�n mobile */
+    }
+}
+
+/* ================= MODAL POPUP ================= */
+.custom-modal .modal-content {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.btn-close-custom {
+    position: absolute;
+    top: 27px;
+    right: 27px;
+    z-index: 1060;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-close-custom:hover {
+    transform: scale(1.1);
+}
+
+/* N�t t?t ri�ng bi?t cho Th? L? v� H�?ng D?n (d? d�ng ghi ��) */
+.btn-close-thele-hd {
+    top: 74px;
+    right: 48px;
+
+}
+
+.popup-text-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    overflow-y: auto;
+    color: white !important;
+}
+
+/* Custom scrollbar cho popup text */
+.popup-text-content::-webkit-scrollbar {
+    width: 6px;
+}
+.popup-text-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.popup-text-content::-webkit-scrollbar-thumb {
+    background: #ea80fc;
+    border-radius: 10px;
+}
+
+/* Filter & Search */
+.filter-select {
+    background: url('images/mui_ten_xuong.svg') no-repeat right 15px center,
+                url('images/box.png') no-repeat center center !important;
+    background-size: 15px, 100% 100% !important;
+    appearance: none;
+    border: none;
+    color: white !important;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+.filter-select:focus {
+    color: white !important;
+    box-shadow: none;
+    outline: none;
+}
+.filter-select option {
+    background-color: #1a237e; /* Options need a background otherwise they are transparent on some browsers */
+}
+.filter-search {
+    background: url('images/box text.png') no-repeat center center !important;
+    background-size: 100% 100% !important;
+    border: none;
+    color: #1F46B4 !important;
+    height: 45px;
+    padding-right: 40px;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    font-size: 15px;
+}
+.filter-search::placeholder {
+    color: #1F46B4 !important;
+    opacity: 0.8;
+}
+.filter-search:focus {
+    box-shadow: none;
+    outline: none;
+    color: #1F46B4 !important;
+}
+
+/* Contestant Card Simple */
+.contestant-card-simple {
+    position: relative;
+    width: 100%;
+    transition: box-shadow 0.3s ease;
+}
+.contestant-card-simple:hover {
+    box-shadow: 0 0 5px 0 #FFF inset, 0 0 20px 0 #99D5FF;
+}
+.card-rank-badge-simple {
+    position: absolute;
+    left: 2%;
+    bottom: 27%; /* Adjust based on card.png baked-in badge position */
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white !important;
+    font-size: 1.25rem;
+}
+.card-rank-badge-simple img {
+    height: 18px;
+    margin-right: 5px;
+}
+.card-votes-badge-simple {
+    position: absolute;
+    right: 4%;
+    bottom: 27%; /* Adjust based on card.png baked-in badge position */
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white !important;
+    font-size: 1.25rem;
+}
+.card-votes-badge-simple img {
+    height: 18px;
+    margin-left: 5px;
+}
+.card-info-area-simple {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.contestant-name-simple {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFE779;
+    margin-bottom: 2px;
+}
+.contestant-server-simple {
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    margin-bottom: 0;
+}
+
+/* Pagination */
+.pagination-container {
+    margin-bottom: 30px;
+}
+.pagination-btn {
+    transition: box-shadow 0.3s ease;
+    font-size: 0.95rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.pagination-btn:hover {
+    box-shadow: 0 0 5px 0 #FFF inset, 0 0 20px 0 #99D5FF;
+}
+.btn-lon {
+    background: url('images/boxlon.png') no-repeat center center;
+    background-size: 100% 100%;
+    width: 120px;
+    height: 40px;
+}
+.btn-trung {
+    background: url('images/boxtrung.png') no-repeat center center;
+    background-size: 100% 100%;
+    width: 80px;
+    height: 40px;
+}
+.btn-nho {
+    background: url('images/boxnho.png') no-repeat center center;
+    background-size: 100% 100%;
+    width: 40px;
+    height: 40px;
+}
+
+
+/* Leaderboard */
+.bxh-container {
+    min-height: 500px;
+    padding: 70px 40px 50px;
+    position: relative;
+}
+.bxh-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 15px; /* Gi?n c�ch x�u �? kh�ng d�nh qu� */
+}
+.bxh-tab-item {
+    cursor: pointer;
+    width: 280px;
+    position: relative;
+}
+.bxh-tab-item:nth-child(2) {
+    margin: 0 -15px; /* slight overlap to make them tight */
+    z-index: 2;
+}
+.bxh-tab-item:nth-child(1), .bxh-tab-item:nth-child(3) {
+    z-index: 1;
+}
+.bxh-tab-img {
+    width: 100%;
+}
+
+.bxh-header {
+    background-color: rgba(36, 69, 184, 0.7);
+    border-radius: 4px;
+    font-size: 1.05rem;
+}
+.bxh-row {
+    font-size: 1.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bxh-row:last-child {
+    border-bottom: none;
+}
+.bxh-server {
+    font-size: 0.9rem;
+    color: #b0bec5;
+    margin: 0;
+}
+.bxh-votes {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Rewards Section */
+.rewards-container {
+    padding: 40px 20px;
+    position: relative;
+}
+.progress-bar-bg-new {
+    background: url('images/thanh.png') no-repeat center center;
+    background-size: 100% 100%;
+    height: 60px;
+    position: relative;
+    border-radius: 30px;
+    margin-top: 50px;
+    margin-bottom: 350px; /* Space for items and button */
+}
+.milestone-new {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px; /* Pull up by half the flower height to center flower on bar */
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    z-index: 2;
+}
+.milestone-icon {
+    width: 180px;
+    margin-bottom: 20px;
+}
+.milestone-text {
+    font-weight: bold;
+    color: white !important;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+.milestone-box {
+    background: url('images/boxitem.png') no-repeat center center;
+    background-size: 100% 100%;
+    width: 180px;
+    height: 210px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+}
+.item-square {
+    background-color: #d9d9d9;
+    border: 1px solid #999;
+}
+.milestone-btn {
+    position: relative;
+    width: 160px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+.milestone-btn .btn-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white !important;
+    /* font-weight: bold; */
+    font-size: 1.05rem;
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
+}
+
+.btn-close-hoa-free {
+    top: 85px;
+    right: 56px;
+}
+
+.btn-nhan-hoa-free {
+    position: relative;
+    width: 140px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.btn-nhan-hoa-free .btn-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white !important;
+    font-size: 0.95rem;
+}
+
+/* Hi?u ?ng hover ri?ng cho n?t Nh?n Qu? T?ch L?y */
+.milestone-btn .normal-img {
+    transition: opacity 0.3s ease-in-out;
+}
+.milestone-btn:hover .normal-img {
+    opacity: 0;
+}
+.milestone-btn .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.milestone-btn:hover .hover-img {
+    opacity: 1;
+}
+
+/* Hi?u ?ng hover ri?ng cho n?t Nh?n Hoa Free (theo y?u c?u t?ch CSS) */
+.btn-nhan-hoa-free .normal-img {
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-nhan-hoa-free:hover .normal-img {
+    opacity: 0;
+}
+.btn-nhan-hoa-free .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-nhan-hoa-free:hover .hover-img {
+    opacity: 1;
+}
+
+/* Hi?u ?ng hover ri?ng cho n?t THAM GIA NGAY */
+.btn-thamgia-wrapper {
+    text-decoration: none;
+}
+.btn-thamgia-wrapper .normal-img {
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-thamgia-wrapper:hover .normal-img {
+    opacity: 0;
+}
+.btn-thamgia-wrapper .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.btn-thamgia-wrapper:hover .hover-img {
+    opacity: 1;
+}
+.btn-thamgia-wrapper:hover .btn-text-overlay {
+    opacity: 1;
+}
+
+/* Hi?n th? ch? NH?N khi hover cho n?t Qu? T?ch L?y v? Hoa Free */
+.milestone-btn:hover .btn-text-overlay {
+    opacity: 1;
+}
+.btn-nhan-hoa-free:hover .btn-text-overlay {
+    opacity: 1;
+}
+
+
+/* ========================================= */
+/* MODAL TH�NG TIN TH� SINH (Ti?n t? ttts-)  */
+/* ========================================= */
+
+.ttts-close-btn {
+    position: absolute;
+    top: 79px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.ttts-content-wrapper {
+    padding: 110px 100px 90px 110px;
+}
+
+.ttts-left-col {
+    width: 53%;
+    padding-right: 15px;
+}
+
+.ttts-right-col {
+    width: 47%;
+    padding-left: 20px;
+    font-size: 13px;
+}
+
+.ttts-main-img-box img {
+    width: 100%;
+}
+
+.ttts-small-imgs-box {
+    gap: 8px;
+}
+
+.ttts-small-img {
+    width: 32%;
+    object-fit: cover;
+}
+
+.ttts-img-note {
+    font-size: 12px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.ttts-info-row {
+    margin-bottom: 8px;
+}
+
+.ttts-info-label {
+    color: #e5ccff;
+    font-weight: 500;
+}
+
+.ttts-info-value {
+    color: #ffd166;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.ttts-desc-box {
+    margin-top: 10px;
+}
+
+.ttts-desc-text {
+    color: #ffd166;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.ttts-box-rank {
+    width: 60%;
+}
+
+.ttts-rank-headers {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.ttts-rank-numbers {
+    height: calc(100% - 30px);
+}
+
+.ttts-box-hoa-col {
+    width: 65%;
+}
+
+.ttts-hoa-num {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.ttts-hoa-icon {
+    width: 25px;
+}
+
+.ttts-box-hang-col {
+    width: 35%;
+}
+
+.ttts-hang-num {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.ttts-input-wrapper {
+    width: 180px;
+}
+
+.ttts-input-number {
+    width: 80px;
+    outline: none;
+    font-size: 16px;
+}
+
+.ttts-btn-minus, .ttts-btn-plus {
+    font-size: 20px;
+}
+
+.ttts-btn-max {
+    width: 55px;
+}
+
+.ttts-action-btns img {
+    width: 140px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.ttts-action-btns img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+
+
+/* ========================================= */
+/* BẢNG LỊCH SỬ THÍ SINH                     */
+/* ========================================= */
+.ttts-history-table {
+    border-collapse: collapse;
+    color: white !important;
+    font-size: 13px;
+    border: 1px solid #162a74 !important;
+}
+.ttts-history-table thead th {
+    background: #1a3b8c !important;
+    color: white !important;
+    border: 1px solid #162a74 !important;
+    padding: 10px;
+    font-weight: bold;
+}
+.ttts-history-table tbody td {
+    background: rgba(22, 42, 116, 0.6) !important;
+    border: 1px solid #162a74 !important;
+    padding: 8px;
+    vertical-align: middle;
+    color: white !important;
+}
+
+
+.lichsu-close-btn {
+    position: absolute;
+    top: 64px;
+    right: 55px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
+/* ========================================= */
+/* MODAL NHẬN CODE (Tiền tố mnc-)            */
+/* ========================================= */
+.mnc-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.mnc-btn-copy .btn-text-overlay {
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 16px;
+    pointer-events: none;
+}
