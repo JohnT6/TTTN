@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Ký | MyE Website</title>
+    <meta name="description"
+        content="Tạo tài khoản MyE Website miễn phí và bắt đầu hành trình học tập thú vị của bạn." />
+
+    <!-- Tailwind CSS (cho Header/Footer components) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Styles -->
+    <style>
+/* ===== ĐĂNG KÝ STYLES - myE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --orange: #FF8A00;
+    --orange-dark: #E07800;
+    --blue: #063F93;
+    --blue-dark: #042D6B;
+    --white: #FFFFFF;
+    --border-in: #D5E2F0;
+    --border-focus: #5A8DD1;
+    --ph: #A0B3C8;
+    --text: #2D3748;
+    --label: #3A4A5E;
+    --title: #063F93;
+    --error: #E53E3E;
+    --success: #38A169;
+    --shadow-card: 0 4px 28px rgba(6, 63, 147, .10);
+    --ease: cubic-bezier(.4, 0, .2, 1);
+    --dur: .25s;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Main — 2 cards dọc ---- */
+.register-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 44px 20px 60px;
+    background: var(--white);
+}
+
+/* ---- Card ---- */
+.register-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 36px 36px 32px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid #E5EDF7;
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--title);
+    text-align: center;
+    letter-spacing: .6px;
+    margin-bottom: 26px;
+}
+
+/* ---- Form group ---- */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--label);
+    margin-bottom: 8px;
+}
+
+.required-star {
+    color: var(--error);
+    margin-left: 1px;
+}
+
+/* ---- Input wrapper pill (card 1) ---- */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 1.5px solid var(--border-in);
+    border-radius: 50px;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(90, 141, 209, .14);
+}
+
+/* ---- Input wrapper flat (card 2) ---- */
+.input-wrapper-flat {
+    border-radius: 10px;
+}
+
+.input-prefix {
+    position: absolute;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.input-suffix {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Input pill */
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 13px 46px 13px 50px;
+    font-size: 14.5px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--text);
+}
+
+/* Input flat */
+.form-input-flat {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.form-input::placeholder,
+.form-input-flat::placeholder {
+    color: var(--ph);
+}
+
+.form-input-email::placeholder {
+    color: var(--ph);
+    opacity: .85;
+}
+
+/* Date input */
+input[type="date"] {
+    padding-right: 40px;
+    color: var(--ph);
+    cursor: pointer;
+    appearance: none;
+}
+
+input[type="date"]:valid {
+    color: var(--text);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.form-input.error {
+    color: var(--error);
+}
+
+/* ---- Toggle mật khẩu ---- */
+.btn-toggle-pw {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--ph);
+    z-index: 1;
+    transition: color var(--dur) var(--ease);
+}
+
+.btn-toggle-pw:hover {
+    color: var(--blue);
+}
+
+/* ---- Lỗi trường ---- */
+.field-error {
+    display: none;
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 6px;
+    padding-left: 4px;
+}
+
+.field-error.show {
+    display: block;
+    animation: slideDown .2s var(--ease);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- Radio giới tính ---- */
+.radio-group {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--label);
+    user-select: none;
+}
+
+.radio-input {
+    display: none;
+}
+
+.radio-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-in);
+    border-radius: 50%;
+    background: var(--white);
+    transition: border-color var(--dur) var(--ease);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.radio-input:checked+.radio-custom {
+    border-color: var(--blue);
+}
+
+.radio-input:checked+.radio-custom::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 9px;
+    height: 9px;
+    background: var(--blue);
+    border-radius: 50%;
+}
+
+/* ---- Captcha ---- */
+.captcha-row {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.captcha-input-wrapper {
+    flex: 1;
+}
+
+.captcha-image-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.captcha-canvas {
+    width: 128px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border-in);
+    display: block;
+}
+
+.btn-refresh-captcha {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--blue);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.btn-refresh-captcha:hover {
+    color: var(--orange);
+    transform: rotate(180deg);
+}
+
+/* ---- Nút bấm ---- */
+.btn-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    letter-spacing: .5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 24px;
+    position: relative;
+    transition: transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease),
+        background var(--dur) var(--ease);
+}
+
+.btn-orange {
+    background: var(--orange);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(255, 138, 0, .28);
+}
+
+.btn-orange:hover {
+    background: var(--orange-dark);
+    box-shadow: 0 6px 20px rgba(255, 138, 0, .42);
+    transform: translateY(-1px);
+}
+
+.btn-orange:active {
+    transform: translateY(0);
+}
+
+.btn-orange:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ---- Spinner ---- */
+.btn-submit .spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, .3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+.btn-submit.loading .spinner {
+    display: block;
+}
+
+.btn-submit.loading .btn-text {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- Toast ---- */
+.toast {
+    position: fixed;
+    top: 86px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    max-width: 320px;
+    transform: translateX(120%);
+    transition: transform .4s var(--ease);
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    border-left: 4px solid var(--success);
+    color: var(--text);
+}
+
+.toast.error {
+    border-left: 4px solid var(--error);
+    color: var(--text);
+}
+
+@media (max-width: 520px) {
+    .register-card {
+        padding: 28px 18px 24px;
+    }
+
+    .card-title {
+        font-size: 19px;
+    }
+
+    .captcha-canvas {
+        width: 100px;
+    }
+}
+
+/* ---- Điều khoản sử dụng ---- */
+.terms-text {
+    text-align: center;
+    font-size: 12px;
+    color: var(--label);
+    margin-top: 14px;
+    line-height: 1.6;
+}
+
+.terms-link {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* ---- Divider "hoặc" ---- */
+.divider-or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 0;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-in);
+}
+
+.divider-text {
+    font-size: 13px;
+    color: var(--ph);
+    font-weight: 500;
+}
+
+/* ---- Nút Đăng nhập (xanh dương) ---- */
+.btn-login {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(6, 63, 147, .25);
+}
+
+.btn-login:hover {
+    background: var(--blue-dark);
+    box-shadow: 0 6px 20px rgba(6, 63, 147, .38);
+    transform: translateY(-1px);
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
+        <div class="mx-auto flex h-[72px] max-w-[1040px] items-center justify-between px-6 font-sans antialiased">
+            <a href="Tro_choi.html" class="flex items-center" aria-label="MYE">
+                <img src="../assets/images/logo.png" alt="MYE Logo" class="h-12 object-contain">
+            </a>
+            <nav class="hidden flex-1 justify-center items-center gap-10 text-[19px] font-medium text-[#0b3f86] md:flex">
+                <a href="Trang_chu.html" class="hover:text-orange-500">Trang Chủ</a>
+                <a href="Tro_choi.html" class="hover:text-orange-500">Trò Chơi</a>
+                <a href="Nap_game.html" class="hover:text-orange-500">Nạp Game</a>
+                <a href="#" class="hover:text-orange-500">Tin Tức</a>
+                <a href="#" class="hover:text-orange-500">Hỗ Trợ</a>
+            </nav>
+            <a href="Dang_nhap.html"
+                class="group relative inline-flex items-center justify-center px-8 py-3 text-[11px] uppercase tracking-wide text-white font-bold transition-all duration-300 active:scale-95 select-none">
+                <img src="../assets/images/Trang_Chu/button_dangnhap.png" alt=""
+                    class="absolute inset-0 w-full h-full object-fill transition-opacity duration-500 ease-in-out group-hover:opacity-0"
+                    draggable="false">
+                <img src="../assets/images/Trang_Chu/button_hover.png" alt=""
+                    class="absolute inset-0 w-full h-full object-fill opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+                    draggable="false">
+                <span class="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Đăng nhập</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Page wrapper -->
+    <div class="page-wrapper">
+        <!-- Main content -->
+        <div id="main-container">
+            <main class="register-main">
+
+                <!-- Card 1: Thông tin tài khoản -->
+                <div class="register-card" id="card-account">
+                    <h2 class="card-title">ĐĂNG KÝ TÀI KHOẢN</h2>
+
+                    <!-- Tên đăng nhập / Email -->
+                    <div class="form-group" id="group-username">
+                        <div class="input-wrapper">
+                            <span class="input-prefix"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="#5A7DB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg></span>
+                            <input type="text" id="input-username" name="username" class="form-input"
+                                placeholder="Tên đăng nhập hoặc Email" autocomplete="off" />
+                        </div>
+                        <div class="field-error" id="error-username"></div>
+                    </div>
+
+                    <!-- Mật khẩu -->
+                    <div class="form-group" id="group-password">
+                        <div class="input-wrapper">
+                            <span class="input-prefix"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="#5A7DB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg></span>
+                            <input type="password" id="input-password-ky" name="password" class="form-input"
+                                placeholder="Mật khẩu" autocomplete="new-password" />
+                            <button type="button" class="btn-toggle-pw" id="toggle-password"
+                                aria-label="Hiện/ẩn mật khẩu"><svg viewBox="0 0 24 24" width="18" height="18"
+                                    fill="none" stroke="#9BB0CC" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg></button>
+                        </div>
+                        <div class="field-error" id="error-password"></div>
+                    </div>
+
+                    <!-- Nhập lại mật khẩu -->
+                    <div class="form-group" id="group-confirmPassword">
+                        <div class="input-wrapper">
+                            <span class="input-prefix"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="#5A7DB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg></span>
+                            <input type="password" id="input-confirm-pw" name="confirmPassword" class="form-input"
+                                placeholder="Nhập lại mật khẩu" autocomplete="new-password" />
+                            <button type="button" class="btn-toggle-pw" id="toggle-confirm-pw"
+                                aria-label="Hiện/ẩn mật khẩu"><svg viewBox="0 0 24 24" width="18" height="18"
+                                    fill="none" stroke="#9BB0CC" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg></button>
+                        </div>
+                        <div class="field-error" id="error-confirmPassword"></div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Thông tin tài khoản (cá nhân) -->
+                <div class="register-card" id="card-personal">
+                    <h2 class="card-title">THÔNG TIN TÀI KHOẢN</h2>
+
+                    <form id="dang-ky-form" novalidate>
+
+                        <!-- Họ và tên -->
+                        <div class="form-group" id="group-fullname">
+                            <label class="field-label">Họ và tên<span class="required-star">(*)</span></label>
+                            <div class="input-wrapper input-wrapper-flat">
+                                <input type="text" id="input-fullname" name="fullname"
+                                    class="form-input form-input-flat" placeholder="Nguyễn Văn A" autocomplete="off" />
+                            </div>
+                            <div class="field-error" id="error-fullname"></div>
+                        </div>
+
+                        <!-- Giới tính -->
+                        <div class="form-group" id="group-gender">
+                            <label class="field-label">Giới tính<span class="required-star">(*)</span></label>
+                            <div class="radio-group">
+                                <label class="radio-label" for="gender-male">
+                                    <input type="radio" id="gender-male" name="gender" value="Nam"
+                                        class="radio-input" />
+                                    <span class="radio-custom"></span>
+                                    Nam
+                                </label>
+                                <label class="radio-label" for="gender-female">
+                                    <input type="radio" id="gender-female" name="gender" value="Nữ"
+                                        class="radio-input" />
+                                    <span class="radio-custom"></span>
+                                    Nữ
+                                </label>
+                            </div>
+                            <div class="field-error" id="error-gender"></div>
+                        </div>
+
+                        <!-- Ngày sinh -->
+                        <div class="form-group" id="group-birthday">
+                            <label class="field-label">Ngày sinh<span class="required-star">(*)</span></label>
+                            <div class="input-wrapper input-wrapper-flat input-wrapper-date">
+                                <input type="date" id="input-birthday" name="birthday"
+                                    class="form-input form-input-flat" placeholder="Ngày sinh" />
+                                <span class="input-suffix"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                        stroke="#9BB0CC" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                        <line x1="16" y1="2" x2="16" y2="6" />
+                                        <line x1="8" y1="2" x2="8" y2="6" />
+                                        <line x1="3" y1="10" x2="21" y2="10" />
+                                    </svg></span>
+                            </div>
+                            <div class="field-error" id="error-birthday"></div>
+                        </div>
+
+                        <!-- Địa chỉ -->
+                        <div class="form-group" id="group-address">
+                            <label class="field-label">Địa chỉ<span class="required-star">(*)</span></label>
+                            <div class="input-wrapper input-wrapper-flat">
+                                <input type="text" id="input-address" name="address" class="form-input form-input-flat"
+                                    placeholder="Địa chỉ" autocomplete="off" />
+                            </div>
+                            <div class="field-error" id="error-address"></div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group" id="group-email">
+                            <label class="field-label">Email<span class="required-star">(*)</span></label>
+                            <div class="input-wrapper input-wrapper-flat">
+                                <input type="email" id="input-email-ky" name="email"
+                                    class="form-input form-input-flat form-input-email" placeholder="Email"
+                                    autocomplete="off" />
+                            </div>
+                            <div class="field-error" id="error-email"></div>
+                        </div>
+
+                        <!-- Số điện thoại -->
+                        <div class="form-group" id="group-phone">
+                            <label class="field-label">Số điện thoại<span class="required-star">(*)</span></label>
+                            <div class="input-wrapper input-wrapper-flat">
+                                <input type="tel" id="input-phone" name="phone" class="form-input form-input-flat"
+                                    placeholder="Số điện thoại" autocomplete="off" />
+                            </div>
+                            <div class="field-error" id="error-phone"></div>
+                        </div>
+
+                        <!-- Mã xác nhận (Captcha) -->
+                        <div class="form-group" id="group-captcha">
+                            <div class="captcha-row">
+                                <div class="input-wrapper input-wrapper-flat captcha-input-wrapper">
+                                    <input type="text" id="input-captcha" name="captcha"
+                                        class="form-input form-input-flat" placeholder="Mã xác nhận" maxlength="6"
+                                        autocomplete="off" />
+                                </div>
+                                <div class="captcha-image-wrapper">
+                                    <canvas id="captcha-canvas" class="captcha-canvas"></canvas>
+                                    <button type="button" id="btn-refresh-captcha" class="btn-refresh-captcha"
+                                        aria-label="Làm mới mã">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5A7DB5"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="23 4 23 10 17 10" />
+                                            <polyline points="1 20 1 14 7 14" />
+                                            <path
+                                                d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="field-error" id="error-captcha"></div>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn-submit btn-orange" id="btn-submit-ky">
+                            <span class="btn-text">ĐĂNG KÝ</span>
+                            <div class="spinner"></div>
+                        </button>
+
+                        <!-- Điều khoản sử dụng -->
+                        <p class="terms-text">Bằng việc click vào nút Đăng Ký. Bạn đã đồng ý với <a href="#dieu-khoan"
+                                class="terms-link">Điều khoản sử dụng</a></p>
+
+                        <!-- Divider "hoặc" -->
+                        <div class="divider-or">
+                            <span class="divider-line"></span>
+                            <span class="divider-text">hoặc</span>
+                            <span class="divider-line"></span>
+                        </div>
+
+                        <!-- Nút Đăng nhập -->
+                        <a href="Dang_nhap.html" class="btn-submit btn-login">Đăng nhập</a>
+
+                    </form>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-10 bg-[#e9e9e9] py-8 text-center font-sans text-slate-600 antialiased">
+        <div class="mx-auto max-w-[720px] px-4 text-[15px] leading-6">
+            <div class="mb-4 flex justify-center">
+                <a href="#trang-chu" class="flex items-center" aria-label="MYE">
+                    <img src="../assets/images/logo.png" alt="MYE Logo" class="h-24 object-contain">
+                </a>
+            </div>
+            <p>Email: hotro@mye.vn</p>
+            <p>Hotline: 1900 2500 VN</p>
+            <p><strong>CÔNG TY CỔ PHẦN MYE</strong></p>
+            <p>Chịu trách nhiệm quản lí nội dung: Ông Trần Trung Hiệp</p>
+            <p>Địa chỉ: 477/22 Âu Cơ, Phường Phú Trung, Quận Tân Phú, Thành phố Hồ Chí Minh, Việt Nam</p>
+            <p>Giấy phép G1 số: 59/GP-BTTTT, ngày cấp 14/07/2020, nơi cấp Bộ Thông Tin và Truyền Thông</p>
+            <p>Điều khoản dịch vụ | Chính sách bảo mật</p>
+            <p>Copyright © 2026 MYE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+// ===== HEADER ACTIVE =====
+function initHeaderActive() {
+    const path = window.location.pathname;
+    const fileName = path.substring(path.lastIndexOf('/') + 1);
+    const navLinks = document.querySelectorAll('header nav a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        link.classList.remove(
+            'border-b-[3px]', 'border-orange-500',
+            'pb-1', 'font-bold', 'text-orange-500'
+        );
+        if (href === fileName) {
+            link.classList.add(
+                'border-b-[3px]', 'border-orange-500',
+                'pb-1', 'font-bold', 'text-orange-500'
+            );
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', initHeaderActive);
+
+// ===== ĐĂNG KÝ - LOGIC =====
+
+// ---- SVG ICONS (dùng cho toggle mật khẩu) ----
+const EYE_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#9BB0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+const EYE_SHOW_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#9BB0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+
+// ---- CAPTCHA ----
+const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+let currentCaptcha = '';
+
+function generateCaptcha() {
+    let result = '';
+    for (let i = 0; i < 6; i++) {
+        result += CAPTCHA_CHARS[Math.floor(Math.random() * CAPTCHA_CHARS.length)];
+    }
+    currentCaptcha = result;
+    return result;
+}
+
+function renderCaptchaCanvas(code) {
+    const canvas = document.getElementById('captcha-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = 130;
+    canvas.height = 44;
+
+    ctx.fillStyle = '#F0F0F0';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < 6; i++) {
+        ctx.strokeStyle = `rgba(${Math.random() * 150},${Math.random() * 150},${Math.random() * 150},0.4)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.stroke();
+    }
+
+    for (let i = 0; i < 80; i++) {
+        ctx.fillStyle = `rgba(${Math.random() * 200},${Math.random() * 200},${Math.random() * 200},0.5)`;
+        ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
+    }
+
+    const charWidth = canvas.width / (code.length + 1);
+    const fonts = ['Arial', 'Georgia', 'Courier New', 'Trebuchet MS'];
+    for (let i = 0; i < code.length; i++) {
+        ctx.save();
+        const x = charWidth * (i + 0.8);
+        const y = canvas.height / 2 + 6;
+        ctx.translate(x, y);
+        ctx.rotate((Math.random() - 0.5) * 0.4);
+        ctx.font = `bold ${18 + Math.floor(Math.random() * 4)}px ${fonts[i % fonts.length]}`;
+        ctx.fillStyle = `rgb(${Math.floor(Math.random() * 100)},${Math.floor(Math.random() * 100)},${Math.floor(Math.random() * 150 + 50)})`;
+        ctx.fillText(code[i], 0, 0);
+        ctx.restore();
+    }
+}
+
+function refreshCaptcha() {
+    const newCode = generateCaptcha();
+    renderCaptchaCanvas(newCode);
+    const input = document.getElementById('input-captcha');
+    if (input) {
+        input.value = '';
+        input.classList.remove('error', 'success');
+    }
+    const err = document.getElementById('error-captcha');
+    if (err) err.classList.remove('show');
+}
+
+// ---- VALIDATION RULES ----
+const validationRulesKy = {
+    username: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng nhập tên đăng nhập hoặc email" },
+        { test: (v) => v.trim().length >= 3, msg: "Tên đăng nhập phải từ 3 ký tự trở lên" },
+    ],
+    password: [
+        { test: (v) => v.length > 0, msg: "Mật khẩu không được để trống" },
+        { test: (v) => v.length >= 6, msg: "Mật khẩu phải có ít nhất 6 ký tự" },
+    ],
+    confirmPassword: [
+        { test: (v) => v.length > 0, msg: "Vui lòng nhập lại mật khẩu" },
+        {
+            test: (v) => {
+                const pw = document.getElementById("input-password-ky");
+                return pw && v === pw.value;
+            },
+            msg: "Mật khẩu xác nhận không khớp",
+        },
+    ],
+    fullname: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng nhập họ và tên" },
+        { test: (v) => v.trim().length >= 2, msg: "Họ tên phải có ít nhất 2 ký tự" },
+    ],
+    gender: [
+        { test: (v) => v !== '', msg: "Vui lòng chọn giới tính" },
+    ],
+    birthday: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng chọn ngày sinh" },
+    ],
+    address: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng nhập địa chỉ" },
+    ],
+    email: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng nhập email" },
+        { test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), msg: "Email không đúng định dạng" },
+    ],
+    phone: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng nhập số điện thoại" },
+        { test: (v) => /^(0|\+84)[0-9]{9,10}$/.test(v.trim()), msg: "Số điện thoại không đúng định dạng (VD: 0912345678)" },
+    ],
+    captcha: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng nhập mã xác nhận" },
+        { test: (v) => v.trim() === currentCaptcha, msg: "Mã xác nhận không đúng, vui lòng thử lại" },
+    ],
+};
+
+// ---- VALIDATION LOGIC ----
+function validateFieldKy(name, value) {
+    const rules = validationRulesKy[name];
+    if (!rules) return { valid: true };
+    for (const rule of rules) {
+        if (!rule.test(value)) return { valid: false, msg: rule.msg };
+    }
+    return { valid: true };
+}
+
+function showFieldErrorKy(name, msg) {
+    const input = document.querySelector(`[name="${name}"]`);
+    const errorEl = document.getElementById(`error-${name}`);
+    if (input) {
+        input.classList.remove("success");
+        input.classList.add("error");
+    }
+    if (errorEl) {
+        errorEl.textContent = msg;
+        errorEl.classList.add("show");
+    }
+}
+
+function clearFieldErrorKy(name) {
+    const input = document.querySelector(`[name="${name}"]`);
+    const errorEl = document.getElementById(`error-${name}`);
+    if (input) {
+        input.classList.remove("error");
+        input.classList.add("success");
+    }
+    if (errorEl) errorEl.classList.remove("show");
+}
+
+function clearAllErrorsKy() {
+    document.querySelectorAll(".field-error").forEach((el) => el.classList.remove("show"));
+    document.querySelectorAll(".form-input").forEach((el) => el.classList.remove("error", "success"));
+}
+
+// ---- TOAST ----
+function showToastKy(msg, type = "success") {
+    let toast = document.getElementById("toast-msg-ky");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast-msg-ky";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+    }
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<span>${type === "success" ? "✅" : "❌"}</span> ${msg}`;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3500);
+}
+
+// ---- FORM INITIALIZATION ----
+function initFormBehaviorKy() {
+    const form = document.getElementById("dang-ky-form");
+    const submitBtn = document.getElementById("btn-submit-ky");
+
+    form.querySelectorAll(".form-input").forEach((input) => {
+        input.addEventListener("blur", () => {
+            const result = validateFieldKy(input.name, input.value);
+            if (!result.valid) showFieldErrorKy(input.name, result.msg);
+            else clearFieldErrorKy(input.name);
+        });
+
+        input.addEventListener("input", () => {
+            if (input.classList.contains("error")) {
+                const result = validateFieldKy(input.name, input.value);
+                if (result.valid) clearFieldErrorKy(input.name);
+            }
+        });
+    });
+
+    document.querySelectorAll("#card-account .form-input").forEach((input) => {
+        input.addEventListener("blur", () => {
+            const result = validateFieldKy(input.name, input.value);
+            if (!result.valid) showFieldErrorKy(input.name, result.msg);
+            else clearFieldErrorKy(input.name);
+        });
+
+        input.addEventListener("input", () => {
+            if (input.classList.contains("error")) {
+                const result = validateFieldKy(input.name, input.value);
+                if (result.valid) clearFieldErrorKy(input.name);
+            }
+        });
+    });
+
+    const pwToggle = document.getElementById("toggle-password");
+    const pwInput = document.getElementById("input-password-ky");
+    if (pwToggle && pwInput) {
+        let vis = false;
+        pwToggle.addEventListener("click", () => {
+            vis = !vis;
+            pwInput.type = vis ? "text" : "password";
+            pwToggle.innerHTML = vis ? EYE_SHOW_SVG : EYE_SVG;
+        });
+    }
+
+    const confirmToggle = document.getElementById("toggle-confirm-pw");
+    const confirmInput = document.getElementById("input-confirm-pw");
+    if (confirmToggle && confirmInput) {
+        let vis = false;
+        confirmToggle.addEventListener("click", () => {
+            vis = !vis;
+            confirmInput.type = vis ? "text" : "password";
+            confirmToggle.innerHTML = vis ? EYE_SHOW_SVG : EYE_SVG;
+        });
+    }
+
+    if (confirmInput && pwInput) {
+        confirmInput.addEventListener("input", () => {
+            if (confirmInput.value && pwInput.value) {
+                if (confirmInput.value === pwInput.value) {
+                    clearFieldErrorKy("confirmPassword");
+                }
+            }
+        });
+    }
+
+    const refreshBtn = document.getElementById("btn-refresh-captcha");
+    if (refreshBtn) {
+        refreshBtn.addEventListener("click", refreshCaptcha);
+    }
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        clearAllErrorsKy();
+
+        let isValid = true;
+
+        const card1Fields = ['username', 'password', 'confirmPassword'];
+        card1Fields.forEach((name) => {
+            const input = document.querySelector(`[name="${name}"]`);
+            if (input) {
+                const result = validateFieldKy(name, input.value);
+                if (!result.valid) {
+                    showFieldErrorKy(name, result.msg);
+                    isValid = false;
+                }
+            }
+        });
+
+        const card2Fields = ['fullname', 'birthday', 'address', 'email', 'phone', 'captcha'];
+        card2Fields.forEach((name) => {
+            const input = document.querySelector(`[name="${name}"]`);
+            if (input) {
+                const result = validateFieldKy(name, input.value);
+                if (!result.valid) {
+                    showFieldErrorKy(name, result.msg);
+                    isValid = false;
+                }
+            }
+        });
+
+        const genderVal = document.querySelector('input[name="gender"]:checked')?.value || '';
+        const genderResult = validateFieldKy('gender', genderVal);
+        if (!genderResult.valid) {
+            showFieldErrorKy('gender', genderResult.msg);
+            isValid = false;
+        }
+
+        if (!isValid) {
+            showToastKy("Vui lòng kiểm tra lại thông tin!", "error");
+            return;
+        }
+
+        submitBtn.classList.add("loading");
+        submitBtn.disabled = true;
+        await new Promise((r) => setTimeout(r, 1800));
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+
+        showToastKy("Tạo tài khoản thành công! Đang chuyển hướng...", "success");
+        setTimeout(() => {
+            window.location.href = 'Dang_nhap.html';
+        }, 2000);
+    });
+}
+
+// ---- BOOT ----
+document.addEventListener("DOMContentLoaded", () => {
+    initFormBehaviorKy();
+
+    const code = generateCaptcha();
+    renderCaptchaCanvas(code);
+});
+    </script>
+</body>
+
+</html>

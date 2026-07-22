@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Nhập | MyE Website</title>
+    <meta name="description" content="Đăng nhập vào MyE Website để tiếp tục hành trình học tập và giải trí của bạn." />
+
+    <!-- Tailwind CSS (cho Header/Footer components) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Styles -->
+    <style>
+/* ===== ĐĂNG NHẬP STYLES - myE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --orange: #FF8A00;
+    --orange-dark: #E07800;
+    --blue: #063F93;
+    --blue-dark: #042D6B;
+    --white: #FFFFFF;
+    --border-in: #D5E2F0;
+    --border-focus: #5A8DD1;
+    --ph: #9BADC5;
+    --text: #2D3748;
+    --title: #063F93;
+    --error: #E53E3E;
+    --success: #38A169;
+    --shadow-card: 0 4px 28px rgba(6, 63, 147, .10);
+    --ease: cubic-bezier(.4, 0, .2, 1);
+    --dur: .25s;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Main ---- */
+.auth-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 20px;
+    background: var(--white);
+}
+
+/* ---- Card ---- */
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 42px 36px 36px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid #E5EDF7;
+}
+
+/* ---- Tiêu đề ---- */
+.form-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--title);
+    text-align: center;
+    letter-spacing: .6px;
+    margin-bottom: 28px;
+}
+
+/* ---- Form group ---- */
+.form-group {
+    margin-bottom: 12px;
+}
+
+/* ---- Input wrapper (pill) ---- */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 1.5px solid var(--border-in);
+    border-radius: 50px;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(90, 141, 209, .14);
+}
+
+.input-prefix {
+    position: absolute;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 13px 46px 13px 50px;
+    font-size: 14.5px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--text);
+}
+
+.form-input::placeholder {
+    color: var(--ph);
+}
+
+.form-input.error {
+    color: var(--error);
+}
+
+/* ---- Nút toggle mật khẩu ---- */
+.btn-toggle-pw {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--ph);
+    z-index: 1;
+    transition: color var(--dur) var(--ease);
+}
+
+.btn-toggle-pw:hover {
+    color: var(--blue);
+}
+
+/* ---- Lỗi trường ---- */
+.field-error {
+    display: none;
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 6px;
+    padding-left: 18px;
+}
+
+.field-error.show {
+    display: block;
+    animation: slideDown .2s var(--ease);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- Quên mật khẩu ---- */
+.forgot-row {
+    display: flex;
+    justify-content: flex-end;
+    margin: 6px 0 20px;
+}
+
+.forgot-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+    transition: color var(--dur) var(--ease);
+}
+
+.forgot-link:hover {
+    color: var(--orange);
+}
+
+/* ---- Nút bấm ---- */
+.btn-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    letter-spacing: .5px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 12px;
+    transition: transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease),
+        background var(--dur) var(--ease);
+}
+
+.btn-orange {
+    background: var(--orange);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(255, 138, 0, .28);
+}
+
+.btn-orange:hover {
+    background: var(--orange-dark);
+    box-shadow: 0 6px 20px rgba(255, 138, 0, .42);
+    transform: translateY(-1px);
+}
+
+.btn-orange:active {
+    transform: translateY(0);
+}
+
+.btn-orange:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-dark-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(6, 63, 147, .20);
+}
+
+.btn-dark-blue:hover {
+    background: var(--blue-dark);
+    box-shadow: 0 6px 20px rgba(6, 63, 147, .32);
+    transform: translateY(-1px);
+}
+
+.btn-dark-blue:active {
+    transform: translateY(0);
+}
+
+/* ---- Spinner ---- */
+.btn-submit .spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, .3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+.btn-submit.loading .spinner {
+    display: block;
+}
+
+.btn-submit.loading .btn-text {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- Mạng xã hội ---- */
+.social-section {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.social-text {
+    font-size: 13.5px;
+    color: #7A8FAD;
+    margin-bottom: 14px;
+}
+
+.social-link-text {
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--dur) var(--ease);
+}
+
+.social-link-text:hover {
+    color: var(--orange);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.social-icon-btn {
+    display: block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.social-icon-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .14);
+}
+
+.social-icon-btn svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+/* ---- Toast ---- */
+.toast {
+    position: fixed;
+    top: 86px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    max-width: 320px;
+    transform: translateX(120%);
+    transition: transform .4s var(--ease);
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    border-left: 4px solid var(--success);
+    color: var(--text);
+}
+
+.toast.error {
+    border-left: 4px solid var(--error);
+    color: var(--text);
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 32px 18px 28px;
+    }
+
+    .form-title {
+        font-size: 22px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
+        <div class="mx-auto flex h-[72px] max-w-[1040px] items-center justify-between px-6 font-sans antialiased">
+            <a href="Tro_choi.html" class="flex items-center" aria-label="MYE">
+                <img src="../assets/images/logo.png" alt="MYE Logo" class="h-12 object-contain">
+            </a>
+            <nav class="hidden flex-1 justify-center items-center gap-10 text-[19px] font-medium text-[#0b3f86] md:flex">
+                <a href="Trang_chu.html" class="hover:text-orange-500">Trang Chủ</a>
+                <a href="Tro_choi.html" class="hover:text-orange-500">Trò Chơi</a>
+                <a href="Nap_game.html" class="hover:text-orange-500">Nạp Game</a>
+                <a href="#" class="hover:text-orange-500">Tin Tức</a>
+                <a href="#" class="hover:text-orange-500">Hỗ Trợ</a>
+            </nav>
+            <a href="Dang_nhap.html"
+                class="group relative inline-flex items-center justify-center px-8 py-3 text-[11px] uppercase tracking-wide text-white font-bold transition-all duration-300 active:scale-95 select-none">
+                <img src="../assets/images/Trang_Chu/button_dangnhap.png" alt=""
+                    class="absolute inset-0 w-full h-full object-fill transition-opacity duration-500 ease-in-out group-hover:opacity-0"
+                    draggable="false">
+                <img src="../assets/images/Trang_Chu/button_hover.png" alt=""
+                    class="absolute inset-0 w-full h-full object-fill opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+                    draggable="false">
+                <span class="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Đăng nhập</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Page wrapper -->
+    <div class="page-wrapper">
+        <!-- Main content -->
+        <div id="main-container">
+            <main class="auth-main">
+                <div class="auth-card">
+                    <!-- Title -->
+                    <h1 class="form-title">ĐĂNG NHẬP</h1>
+
+                    <!-- Form -->
+                    <form id="dang-nhap-form" novalidate>
+
+                        <!-- Tên đăng nhập -->
+                        <div class="form-group" id="group-username">
+                            <div class="input-wrapper">
+                                <span class="input-prefix"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                        stroke="#5A7DB5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                    </svg></span>
+                                <input type="text" id="input-username" name="username" class="form-input"
+                                    placeholder="Tên đăng nhập hoặc Email" autocomplete="off" />
+                            </div>
+                            <div class="field-error" id="error-username"></div>
+                        </div>
+
+                        <!-- Mật khẩu -->
+                        <div class="form-group" id="group-password">
+                            <div class="input-wrapper">
+                                <span class="input-prefix"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                        stroke="#5A7DB5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg></span>
+                                <input type="password" id="input-password" name="password" class="form-input"
+                                    placeholder="Mật khẩu" autocomplete="off" />
+                                <button type="button" class="btn-toggle-pw" id="toggle-input-password"
+                                    aria-label="Hiện/ẩn mật khẩu"><svg viewBox="0 0 24 24" width="18" height="18"
+                                        fill="none" stroke="#9BB0CC" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                                        <line x1="1" y1="1" x2="23" y2="23" />
+                                    </svg></button>
+                            </div>
+                            <div class="field-error" id="error-password"></div>
+                        </div>
+
+                        <!-- Quên mật khẩu -->
+                        <div class="forgot-row">
+                            <a href="#" class="forgot-link" id="link-forgot">Quên mật khẩu?</a>
+                        </div>
+
+                        <!-- Nút đăng nhập -->
+                        <button type="submit" class="btn-submit btn-orange" id="btn-submit-login">
+                            <span class="btn-text">ĐĂNG NHẬP</span>
+                            <div class="spinner"></div>
+                        </button>
+
+                        <!-- Nút đăng ký -->
+                        <a href="Dang_ky.html" class="btn-submit btn-dark-blue" id="btn-go-register">
+                            ĐĂNG KÝ
+                        </a>
+                    </form>
+
+                    <!-- Đăng nhập bằng mạng xã hội -->
+                    <div class="social-section">
+                        <p class="social-text">
+                            hoặc <a href="Dang_ky.html" class="social-link-text">Đăng ký bằng</a>
+                        </p>
+                        <div class="social-icons">
+                            <a href="#" id="btn-facebook" aria-label="Đăng ký bằng Facebook" class="social-icon-btn">
+                                <svg viewBox="0 0 40 40" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="20" fill="#1877F2" />
+                                    <path
+                                        d="M22.5 20h-2v8h-3v-8h-1.5v-3H17.5v-1.8c0-2.4 1-3.7 3.7-3.7H23v3h-1.3c-1 0-1.2.5-1.2 1.2V17H23l-.5 3z"
+                                        fill="#fff" />
+                                </svg>
+                            </a>
+                            <a href="#" id="btn-google" aria-label="Đăng ký bằng Google" class="social-icon-btn">
+                                <svg viewBox="0 0 40 40" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="20" fill="#fff" stroke="#E0E0E0" />
+                                    <path
+                                        d="M29.6 20.2c0-.6-.1-1.2-.2-1.8H20v3.4h5.4c-.2 1.2-.9 2.2-2 2.9v2.4h3.2c1.9-1.7 3-4.3 3-6.9z"
+                                        fill="#4285F4" />
+                                    <path
+                                        d="M20 30c2.7 0 5-.9 6.7-2.4l-3.2-2.4c-.9.6-2 1-3.5 1-2.7 0-5-1.8-5.8-4.2H10.9v2.5C12.6 27.9 16 30 20 30z"
+                                        fill="#34A853" />
+                                    <path
+                                        d="M14.2 21.9c-.2-.6-.3-1.3-.3-1.9s.1-1.3.3-1.9v-2.5H10.9C10.3 17 10 18.5 10 20s.3 3 .9 4.4l3.3-2.5z"
+                                        fill="#FBBC05" />
+                                    <path
+                                        d="M20 13.9c1.5 0 2.9.5 3.9 1.5l2.9-2.9C25 10.9 22.7 10 20 10c-4 0-7.4 2.1-9.1 5.1l3.3 2.5c.8-2.4 3.1-3.7 5.8-3.7z"
+                                        fill="#EA4335" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-10 bg-[#e9e9e9] py-8 text-center font-sans text-slate-600 antialiased">
+        <div class="mx-auto max-w-[720px] px-4 text-[15px] leading-6">
+            <div class="mb-4 flex justify-center">
+                <a href="#trang-chu" class="flex items-center" aria-label="MYE">
+                    <img src="../assets/images/logo.png" alt="MYE Logo" class="h-24 object-contain">
+                </a>
+            </div>
+            <p>Email: hotro@mye.vn</p>
+            <p>Hotline: 1900 2500 VN</p>
+            <p><strong>CÔNG TY CỔ PHẦN MYE</strong></p>
+            <p>Chịu trách nhiệm quản lí nội dung: Ông Trần Trung Hiệp</p>
+            <p>Địa chỉ: 477/22 Âu Cơ, Phường Phú Trung, Quận Tân Phú, Thành phố Hồ Chí Minh, Việt Nam</p>
+            <p>Giấy phép G1 số: 59/GP-BTTTT, ngày cấp 14/07/2020, nơi cấp Bộ Thông Tin và Truyền Thông</p>
+            <p>Điều khoản dịch vụ | Chính sách bảo mật</p>
+            <p>Copyright © 2026 MYE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+// ===== HEADER ACTIVE =====
+function initHeaderActive() {
+    const path = window.location.pathname;
+    const fileName = path.substring(path.lastIndexOf('/') + 1);
+    const navLinks = document.querySelectorAll('header nav a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        link.classList.remove(
+            'border-b-[3px]', 'border-orange-500',
+            'pb-1', 'font-bold', 'text-orange-500'
+        );
+        if (href === fileName) {
+            link.classList.add(
+                'border-b-[3px]', 'border-orange-500',
+                'pb-1', 'font-bold', 'text-orange-500'
+            );
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', initHeaderActive);
+
+// ===== ĐĂNG NHẬP - LOGIC =====
+
+// ---- SVG ICONS (dùng cho toggle mật khẩu) ----
+const EYE_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#9BB0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+const EYE_SHOW_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#9BB0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+
+// ---- VALIDATION RULES ----
+const validationRules = {
+    username: [
+        { test: (v) => v.trim().length > 0, msg: "Vui lòng nhập tên đăng nhập hoặc email" },
+        { test: (v) => v.trim().length >= 3, msg: "Tên đăng nhập phải từ 3 ký tự trở lên" },
+    ],
+    password: [
+        { test: (v) => v.length > 0, msg: "Mật khẩu không được để trống" },
+        { test: (v) => v.length >= 6, msg: "Mật khẩu phải có ít nhất 6 ký tự" },
+    ],
+};
+
+// ---- VALIDATION LOGIC ----
+function validateField(name, value) {
+    const rules = validationRules[name];
+    if (!rules) return { valid: true };
+    for (const rule of rules) {
+        if (!rule.test(value)) return { valid: false, msg: rule.msg };
+    }
+    return { valid: true };
+}
+
+function showFieldError(name, msg) {
+    const input = document.querySelector(`[name="${name}"]`);
+    const errorEl = document.getElementById(`error-${name}`);
+    if (input) {
+        input.classList.remove("success");
+        input.classList.add("error");
+    }
+    if (errorEl) {
+        errorEl.textContent = msg;
+        errorEl.classList.add("show");
+    }
+}
+
+function clearFieldError(name) {
+    const input = document.querySelector(`[name="${name}"]`);
+    const errorEl = document.getElementById(`error-${name}`);
+    if (input) {
+        input.classList.remove("error");
+        input.classList.add("success");
+    }
+    if (errorEl) errorEl.classList.remove("show");
+}
+
+function clearAllErrors() {
+    document.querySelectorAll(".field-error").forEach((el) => el.classList.remove("show"));
+    document.querySelectorAll(".form-input").forEach((el) => el.classList.remove("error", "success"));
+}
+
+// ---- TOAST ----
+function showToast(msg, type = "success") {
+    let toast = document.getElementById("toast-msg");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast-msg";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+    }
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<span>${type === "success" ? "✅" : "❌"}</span> ${msg}`;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3500);
+}
+
+// ---- FORM INITIALIZATION ----
+function initFormBehavior() {
+    const form = document.getElementById("dang-nhap-form");
+    const submitBtn = document.getElementById("btn-submit-login");
+
+    form.querySelectorAll(".form-input").forEach((input) => {
+        input.addEventListener("blur", () => {
+            const result = validateField(input.name, input.value);
+            if (!result.valid) showFieldError(input.name, result.msg);
+            else clearFieldError(input.name);
+        });
+
+        input.addEventListener("input", () => {
+            if (input.classList.contains("error")) {
+                const result = validateField(input.name, input.value);
+                if (result.valid) clearFieldError(input.name);
+            }
+        });
+    });
+
+    const toggleBtn = document.getElementById("toggle-input-password");
+    const passwordInput = document.getElementById("input-password");
+    if (toggleBtn && passwordInput) {
+        let visible = false;
+        toggleBtn.addEventListener("click", () => {
+            visible = !visible;
+            passwordInput.type = visible ? "text" : "password";
+            toggleBtn.innerHTML = visible ? EYE_SHOW_SVG : EYE_SVG;
+        });
+    }
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        clearAllErrors();
+
+        const formData = new FormData(form);
+        let isValid = true;
+
+        const fieldNames = ['username', 'password'];
+        fieldNames.forEach((name) => {
+            const value = formData.get(name) || "";
+            const result = validateField(name, value);
+            if (!result.valid) {
+                showFieldError(name, result.msg);
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            showToast("Vui lòng kiểm tra lại thông tin!", "error");
+            return;
+        }
+
+        submitBtn.classList.add("loading");
+        submitBtn.disabled = true;
+
+        // Lưu thông tin người dùng vào localStorage với type: user_MYE
+        const usernameVal = formData.get('username') || 'myepro01';
+        const userObj = {
+            isLoggedIn: true,
+            loginType: 'user_MYE',
+            username: usernameVal,
+            myeId: '00123',
+            coin: 1000,
+            avatar: '../assets/images/Quan_ly_tai_khoan/avatar_user.png',
+            googleLinked: false,
+            facebookLinked: false
+        };
+        localStorage.setItem('mye_user', JSON.stringify(userObj));
+
+        await new Promise((r) => setTimeout(r, 1000));
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+        showToast("Đăng nhập thành công! Đang chuyển hướng...", "success");
+        
+        setTimeout(() => {
+            window.location.href = 'Trang_chu.html';
+        }, 800);
+    });
+
+    // Xử lý Đăng nhập qua Facebook
+    const fbBtn = document.getElementById("btn-facebook");
+    if (fbBtn) {
+        fbBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const userObj = {
+                isLoggedIn: true,
+                loginType: "facebook",
+                username: "myepro01 (FB)",
+                myeId: "00123",
+                coin: 1000,
+                avatar: "../assets/images/Quan_ly_tai_khoan/avatar_user.png",
+                googleLinked: false,
+                facebookLinked: true
+            };
+            localStorage.setItem("mye_user", JSON.stringify(userObj));
+            showToast("Đăng nhập bằng Facebook thành công!", "success");
+            setTimeout(() => {
+                window.location.href = "Trang_chu.html";
+            }, 800);
+        });
+    }
+
+    // Xử lý Đăng nhập qua Google
+    const ggBtn = document.getElementById("btn-google");
+    if (ggBtn) {
+        ggBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const userObj = {
+                isLoggedIn: true,
+                loginType: "google",
+                username: "myepro01 (GG)",
+                myeId: "00123",
+                coin: 1000,
+                avatar: "../assets/images/Quan_ly_tai_khoan/avatar_user.png",
+                googleLinked: true,
+                facebookLinked: false
+            };
+            localStorage.setItem("mye_user", JSON.stringify(userObj));
+            showToast("Đăng nhập bằng Google thành công!", "success");
+            setTimeout(() => {
+                window.location.href = "Trang_chu.html";
+            }, 800);
+        });
+    }
+}
+
+// ---- BOOT ----
+document.addEventListener("DOMContentLoaded", () => {
+    initFormBehavior();
+});
+    </script>
+</body>
+
+</html>

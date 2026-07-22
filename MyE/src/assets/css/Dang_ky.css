@@ -1,0 +1,497 @@
+/* ===== ĐĂNG KÝ STYLES - myE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --orange: #FF8A00;
+    --orange-dark: #E07800;
+    --blue: #063F93;
+    --blue-dark: #042D6B;
+    --white: #FFFFFF;
+    --border-in: #D5E2F0;
+    --border-focus: #5A8DD1;
+    --ph: #A0B3C8;
+    --text: #2D3748;
+    --label: #3A4A5E;
+    --title: #063F93;
+    --error: #E53E3E;
+    --success: #38A169;
+    --shadow-card: 0 4px 28px rgba(6, 63, 147, .10);
+    --ease: cubic-bezier(.4, 0, .2, 1);
+    --dur: .25s;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Main — 2 cards dọc ---- */
+.register-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 44px 20px 60px;
+    background: var(--white);
+}
+
+/* ---- Card ---- */
+.register-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 36px 36px 32px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid #E5EDF7;
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--title);
+    text-align: center;
+    letter-spacing: .6px;
+    margin-bottom: 26px;
+}
+
+/* ---- Form group ---- */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--label);
+    margin-bottom: 8px;
+}
+
+.required-star {
+    color: var(--error);
+    margin-left: 1px;
+}
+
+/* ---- Input wrapper pill (card 1) ---- */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 1.5px solid var(--border-in);
+    border-radius: 50px;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(90, 141, 209, .14);
+}
+
+/* ---- Input wrapper flat (card 2) ---- */
+.input-wrapper-flat {
+    border-radius: 10px;
+}
+
+.input-prefix {
+    position: absolute;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.input-suffix {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Input pill */
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 13px 46px 13px 50px;
+    font-size: 14.5px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--text);
+}
+
+/* Input flat */
+.form-input-flat {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.form-input::placeholder,
+.form-input-flat::placeholder {
+    color: var(--ph);
+}
+
+.form-input-email::placeholder {
+    color: var(--ph);
+    opacity: .85;
+}
+
+/* Date input */
+input[type="date"] {
+    padding-right: 40px;
+    color: var(--ph);
+    cursor: pointer;
+    appearance: none;
+}
+
+input[type="date"]:valid {
+    color: var(--text);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.form-input.error {
+    color: var(--error);
+}
+
+/* ---- Toggle mật khẩu ---- */
+.btn-toggle-pw {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--ph);
+    z-index: 1;
+    transition: color var(--dur) var(--ease);
+}
+
+.btn-toggle-pw:hover {
+    color: var(--blue);
+}
+
+/* ---- Lỗi trường ---- */
+.field-error {
+    display: none;
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 6px;
+    padding-left: 4px;
+}
+
+.field-error.show {
+    display: block;
+    animation: slideDown .2s var(--ease);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- Radio giới tính ---- */
+.radio-group {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--label);
+    user-select: none;
+}
+
+.radio-input {
+    display: none;
+}
+
+.radio-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-in);
+    border-radius: 50%;
+    background: var(--white);
+    transition: border-color var(--dur) var(--ease);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.radio-input:checked+.radio-custom {
+    border-color: var(--blue);
+}
+
+.radio-input:checked+.radio-custom::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 9px;
+    height: 9px;
+    background: var(--blue);
+    border-radius: 50%;
+}
+
+/* ---- Captcha ---- */
+.captcha-row {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.captcha-input-wrapper {
+    flex: 1;
+}
+
+.captcha-image-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.captcha-canvas {
+    width: 128px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border-in);
+    display: block;
+}
+
+.btn-refresh-captcha {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--blue);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.btn-refresh-captcha:hover {
+    color: var(--orange);
+    transform: rotate(180deg);
+}
+
+/* ---- Nút bấm ---- */
+.btn-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    letter-spacing: .5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 24px;
+    position: relative;
+    transition: transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease),
+        background var(--dur) var(--ease);
+}
+
+.btn-orange {
+    background: var(--orange);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(255, 138, 0, .28);
+}
+
+.btn-orange:hover {
+    background: var(--orange-dark);
+    box-shadow: 0 6px 20px rgba(255, 138, 0, .42);
+    transform: translateY(-1px);
+}
+
+.btn-orange:active {
+    transform: translateY(0);
+}
+
+.btn-orange:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ---- Spinner ---- */
+.btn-submit .spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, .3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+.btn-submit.loading .spinner {
+    display: block;
+}
+
+.btn-submit.loading .btn-text {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- Toast ---- */
+.toast {
+    position: fixed;
+    top: 86px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    max-width: 320px;
+    transform: translateX(120%);
+    transition: transform .4s var(--ease);
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    border-left: 4px solid var(--success);
+    color: var(--text);
+}
+
+.toast.error {
+    border-left: 4px solid var(--error);
+    color: var(--text);
+}
+
+@media (max-width: 520px) {
+    .register-card {
+        padding: 28px 18px 24px;
+    }
+
+    .card-title {
+        font-size: 19px;
+    }
+
+    .captcha-canvas {
+        width: 100px;
+    }
+}
+
+/* ---- Điều khoản sử dụng ---- */
+.terms-text {
+    text-align: center;
+    font-size: 12px;
+    color: var(--label);
+    margin-top: 14px;
+    line-height: 1.6;
+}
+
+.terms-link {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* ---- Divider "hoặc" ---- */
+.divider-or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 0;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-in);
+}
+
+.divider-text {
+    font-size: 13px;
+    color: var(--ph);
+    font-weight: 500;
+}
+
+/* ---- Nút Đăng nhập (xanh dương) ---- */
+.btn-login {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(6, 63, 147, .25);
+}
+
+.btn-login:hover {
+    background: var(--blue-dark);
+    box-shadow: 0 6px 20px rgba(6, 63, 147, .38);
+    transform: translateY(-1px);
+}

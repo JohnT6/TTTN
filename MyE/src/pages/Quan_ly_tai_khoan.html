@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quản lý tài khoản - MyE</title>
+
+        <!-- Embed Font Google -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+
+        <!-- Bootstrap 5.3 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Liên kết file CSS -->
+        <link rel="stylesheet" href="../assets/css/Quan_ly_tai_khoan.css" />
+
+        <!-- Liên kết file JS -->
+        <script defer src="../assets/js/Quan_ly_tai_khoan.js"></script>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header
+            class="sticky-top top-0 z-10 bg-white-95 backdrop-blur border-bottom border-slate-100"
+        >
+            <div
+                class="mx-auto d-flex flex-nowrap h-72px max-w-1040px align-items-center justify-content-between px-4 font-sans antialiased"
+            >
+                <a
+                    href="Tro_choi.html"
+                    class="d-flex align-items-center"
+                    aria-label="MYE"
+                >
+                    <img
+                        src="../assets/images/logo.png"
+                        alt="MYE Logo"
+                        class="h-12 object-contain"
+                    />
+                </a>
+                <nav
+                    class="d-none justify-content-center align-items-center gap-10 text-19px fw-medium text-0b3f86 d-md-flex"
+                >
+                    <a href="Trang_chu.html" class="hover-text-orange-500"
+                        >Trang Chủ</a
+                    >
+                    <a href="Tro_choi.html" class="hover-text-orange-500"
+                        >Trò Chơi</a
+                    >
+                    <a href="Nap_game.html" class="hover-text-orange-500"
+                        >Nạp Game</a
+                    >
+                    <a href="#" class="hover-text-orange-500">Tin Tức</a>
+                    <a href="#" class="hover-text-orange-500">Hỗ Trợ</a>
+                </nav>
+                <!-- User Logged-in Header State with Dropdown -->
+                <div
+                    class="user-logged-in position-relative"
+                    id="user-profile-wrapper"
+                >
+                    <div
+                        class="user-profile-toggle d-flex align-items-center gap-2 cursor-pointer user-select-none"
+                        id="user-profile-toggle"
+                    >
+                        <img
+                            id="header-user-avatar"
+                            src="../assets/images/Quan_ly_tai_khoan/avatar_user.png"
+                            alt="Avatar"
+                            class="user-avatar-img"
+                        />
+                        <div class="user-info-text d-flex flex-column ms-1">
+                            <span
+                                id="header-user-name"
+                                class="fw-bold text-ff7900 text-14px leading-tight"
+                                >myepro01</span
+                            >
+                            <span
+                                id="header-user-id"
+                                class="text-0b3f86 text-11px"
+                                >MyE ID: 00123</span
+                            >
+                        </div>
+                        <div
+                            class="user-balance-badge d-flex align-items-center gap-1 ms-2"
+                        >
+                            <img
+                                src="../assets/images/Quan_ly_tai_khoan/coin_M.png"
+                                alt="coin"
+                                class="h-20px w-20px object-contain"
+                            />
+                            <span class="fw-bold text-0b3f86 text-15px"
+                                >1000</span
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Menu Card -->
+                    <div
+                        class="user-dropdown-card position-absolute end-0 mt-2 bg-white rounded-4 shadow-lg border p-3"
+                        id="user-dropdown-menu"
+                    >
+                        <div
+                            class="dropdown-user-header d-flex align-items-center gap-3 pb-3 mb-2 border-bottom"
+                        >
+                            <img
+                                id="dropdown-user-avatar"
+                                src="../assets/images/Quan_ly_tai_khoan/avatar_user.png"
+                                alt="Avatar"
+                                class="dropdown-avatar-img"
+                            />
+                            <div class="d-flex flex-column">
+                                <span
+                                    id="dropdown-user-name"
+                                    class="fw-bold text-dark text-14px"
+                                    >myepro01</span
+                                >
+                                <span
+                                    id="dropdown-user-id"
+                                    class="text-muted text-11px"
+                                    >MyE ID: 00123</span
+                                >
+                            </div>
+                        </div>
+                        <ul
+                            class="list-unstyled mb-2 d-flex flex-column gap-2 text-14px"
+                        >
+                            <li>
+                                <a
+                                    href="Quan_ly_tai_khoan.html"
+                                    class="dropdown-item-link d-flex align-items-center gap-2 text-dark text-decoration-none py-1"
+                                >
+                                    <i
+                                        class="fa-regular fa-credit-card text-muted"
+                                    ></i>
+                                    Quản lý thanh toán
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="Quan_ly_tai_khoan.html"
+                                    class="dropdown-item-link d-flex align-items-center gap-2 text-dark text-decoration-none py-1"
+                                >
+                                    <i
+                                        class="fa-regular fa-user text-muted"
+                                    ></i>
+                                    Quản lý tài khoản
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="Dang_nhap.html"
+                                    id="btn-logout"
+                                    class="dropdown-item-link d-flex align-items-center gap-2 text-dark text-decoration-none py-1"
+                                >
+                                    <i
+                                        class="fa-solid fa-arrow-right-from-bracket text-muted"
+                                    ></i>
+                                    Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pt-2 border-top text-center">
+                            <img
+                                src="../assets/images/logo.png"
+                                alt="MYE Logo"
+                                class="h-24px object-contain mx-auto"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="account-management-page bg-slate-50 pb-5">
+            <!-- User Profile Hero Banner -->
+            <section class="user-hero-banner text-white">
+                <div class="container max-w-1040px">
+                    <div
+                        class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-4"
+                    >
+                        <!-- Left: Avatar + Details -->
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="hero-avatar-wrapper">
+                                <img
+                                    id="banner-user-avatar"
+                                    src="../assets/images/Quan_ly_tai_khoan/avatar_user.png"
+                                    alt="User Avatar"
+                                    class="hero-avatar-img"
+                                />
+                            </div>
+                            <div class="hero-user-details">
+                                <h2
+                                    id="banner-user-name"
+                                    class="fw-bold text-white text-24px mb-2"
+                                >
+                                    Nguyễn Văn A
+                                </h2>
+                                <div
+                                    class="d-flex flex-column gap-1 text-14px text-white-80"
+                                >
+                                    <div
+                                        class="d-flex align-items-center gap-2"
+                                    >
+                                        <img
+                                            src="../assets/images/Quan_ly_tai_khoan/tai_khoan.png"
+                                            alt=""
+                                            class="h-16px w-16px"
+                                        />
+                                        <span id="banner-account-type"
+                                            >Tài khoản: fb712314335</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center gap-2"
+                                    >
+                                        <img
+                                            src="../assets/images/Quan_ly_tai_khoan/mye_id.png"
+                                            alt=""
+                                            class="h-16px w-16px"
+                                        />
+                                        <span id="banner-mye-id"
+                                            >MYE ID: TG212314214</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center gap-2"
+                                    >
+                                        <img
+                                            src="../assets/images/Quan_ly_tai_khoan/ngay_tao_tk.png"
+                                            alt=""
+                                            class="h-16px w-16px"
+                                        />
+                                        <span
+                                            >Ngày tạo tài khoản:
+                                            19/06/2026</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Navigation Tabs -->
+                        <div
+                            class="hero-tabs d-flex align-items-center gap-2 align-self-end mt-4 mt-md-0"
+                        >
+                            <button class="btn btn-hero-tab active">
+                                Tài khoản
+                            </button>
+                            <button class="btn btn-hero-tab">Bảo mật</button>
+                            <button class="btn btn-hero-tab">
+                                Lịch sử giao dịch
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Content Area -->
+            <div class="container max-w-1040px py-4">
+                <!-- Security Level Section -->
+                <div
+                    class="card security-card p-4 border-0 shadow-sm rounded-4 mb-4"
+                >
+                    <div class="d-flex align-items-center gap-4">
+                        <!-- Progress Circle 20% -->
+                        <div class="progress-circle-wrapper flex-shrink-0">
+                            <svg class="progress-ring" width="150" height="150">
+                                <circle
+                                    class="progress-ring-bg"
+                                    stroke="#D1D5DB"
+                                    stroke-width="12"
+                                    fill="transparent"
+                                    r="60"
+                                    cx="75"
+                                    cy="75"
+                                />
+                                <circle
+                                    class="progress-ring-fill"
+                                    stroke="#FF7900"
+                                    stroke-width="12"
+                                    stroke-dasharray="377"
+                                    stroke-dashoffset="302"
+                                    fill="transparent"
+                                    r="60"
+                                    cx="75"
+                                    cy="75"
+                                />
+                            </svg>
+                            <span
+                                class="progress-text fw-bold text-ff7900 text-24px"
+                                >20%</span
+                            >
+                        </div>
+                        <div>
+                            <h4 class="fw-bold text-dark text-26px mb-1">
+                                Mức độ bảo mật
+                            </h4>
+                            <p class="text-muted text-14px mb-0">
+                                Tài khoản của bạn hiện tại có thể bị đe dọa bảo
+                                mật. Hãy hoàn thiện các thông tin bên dưới.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Information Header -->
+                <div class="mb-4">
+                    <h3 class="fw-bold text-26px mb-2">
+                        Thông tin tài khoản
+                    </h3>
+                    <p class="text-muted text-13px mb-0">
+                        Bạn có thể cập nhật Hồ sơ Công khai của mình tại đây và thông tin sẽ tự động đồng bộ tất cả các tài khoản Game đã được kết nối.
+                    </p>
+                </div>
+
+                <!-- Card 1: Thông tin cá nhân -->
+                <div
+                    class="card section-card p-4 p-md-5 border border-slate-200 shadow-sm rounded-4 mb-4 bg-white"
+                    id="card-info-person"
+                >
+                    <!-- Card Header -->
+                    <div
+                        class="d-flex align-items-center justify-content-between pb-4 mb-2"
+                    >
+                        <div class="d-flex align-items-center gap-3">
+                            <img
+                                src="../assets/images/Quan_ly_tai_khoan/avatar_user.png"
+                                alt=""
+                                class="section-header-avatar"
+                            />
+                            <div class="d-flex flex-column">
+                                <h4 class="fw-bold text-0b3f86 text-22px mb-0">
+                                    Thông tin cá nhân
+                                </h4>
+                                <span
+                                    class="text-orange-500 text-12px fw-semibold"
+                                    >Chưa hoàn thiện</span
+                                >
+                            </div>
+                        </div>
+                        
+                        <!-- Read Mode Action Button -->
+                        <button
+                            id="btn-edit-info"
+                            class="btn btn-outline-orange px-4 py-2 text-13px rounded-3 fw-bold"
+                        >
+                            Chỉnh Sửa
+                        </button>
+
+                        <!-- Edit Mode Action Buttons (Default Hidden) -->
+                        <div id="edit-header-actions" class="d-flex align-items-center gap-2 d-none">
+                            <button
+                                id="btn-cancel-edit"
+                                class="btn btn-outline-blue px-4 py-2 text-13px rounded-3 fw-bold"
+                            >
+                                HỦY
+                            </button>
+                            <button
+                                id="btn-save-edit"
+                                class="btn btn-solid-orange px-4 py-2 text-13px rounded-3 fw-bold"
+                            >
+                                LƯU
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Info Rows Container -->
+                    <div class="info-rows-container">
+                        <!-- Row 1: Họ và tên -->
+                        <div
+                            class="info-row-item d-flex align-items-center py-3"
+                        >
+                            <div
+                                class="info-label-col d-flex align-items-center gap-3 text-0b3f86 fw-bold text-15px"
+                            >
+                                <img
+                                    src="../assets/images/Quan_ly_tai_khoan/Thong_tin_ca_nhan/ho_va_ten.png"
+                                    alt=""
+                                    class="h-20px w-20px"
+                                />
+                                <span>Họ và tên</span>
+                            </div>
+                            <div class="info-value-col">
+                                <span class="view-mode-text text-slate-600 text-14px fw-medium" id="info-fullname">Nguyễn Văn A</span>
+                                <input type="text" id="input-edit-fullname" class="form-control form-control-edit edit-mode-input d-none max-w-320px" value="Nguyễn Văn A">
+                            </div>
+                        </div>
+
+                        <!-- Standalone Divider 1 -->
+                        <div class="info-divider"></div>
+
+                        <!-- Row 2: Giới tính -->
+                        <div
+                            class="info-row-item d-flex align-items-center py-3"
+                        >
+                            <div
+                                class="info-label-col d-flex align-items-center gap-3 text-0b3f86 fw-bold text-15px"
+                            >
+                                <img
+                                    src="../assets/images/Quan_ly_tai_khoan/Thong_tin_ca_nhan/gioi_tinh.png"
+                                    alt=""
+                                    class="h-20px w-20px"
+                                />
+                                <span>Giới tính</span>
+                            </div>
+                            <div class="info-value-col">
+                                <span class="view-mode-text text-slate-600 text-14px fw-medium" id="info-gender">Nam</span>
+                                <div class="edit-mode-input d-none max-w-320px">
+                                    <select id="select-edit-gender" class="form-select form-control-edit">
+                                        <option value="Nam" selected>Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                        <option value="Khác">Khác</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Standalone Divider 2 -->
+                        <div class="info-divider"></div>
+
+                        <!-- Row 3: Ngày sinh -->
+                        <div
+                            class="info-row-item d-flex align-items-center py-3"
+                        >
+                            <div
+                                class="info-label-col d-flex align-items-center gap-3 text-0b3f86 fw-bold text-15px"
+                            >
+                                <img
+                                    src="../assets/images/Quan_ly_tai_khoan/Thong_tin_ca_nhan/ngay_sinh.png"
+                                    alt=""
+                                    class="h-20px w-20px"
+                                />
+                                <span>Ngày sinh</span>
+                            </div>
+                            <div class="info-value-col">
+                                <span class="view-mode-text text-slate-600 text-14px fw-medium" id="info-birthday">01/01/1999</span>
+                                <div class="edit-mode-input d-none max-w-320px position-relative">
+                                    <input type="text" id="input-edit-birthday" class="form-control form-control-edit pe-5" value="01/01/1999">
+                                    <i class="fa-regular fa-calendar-days position-absolute end-0 top-50 translate-middle-y me-3 text-0b3f86"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Standalone Divider 3 -->
+                        <div class="info-divider"></div>
+
+                        <!-- Row 4: Địa chỉ -->
+                        <div
+                            class="info-row-item d-flex align-items-center py-3"
+                        >
+                            <div
+                                class="info-label-col d-flex align-items-center gap-3 text-0b3f86 fw-bold text-15px"
+                            >
+                                <img
+                                    src="../assets/images/Quan_ly_tai_khoan/Thong_tin_ca_nhan/dia_chi.png"
+                                    alt=""
+                                    class="h-20px w-20px"
+                                />
+                                <span>Địa chỉ</span>
+                            </div>
+                            <div class="info-value-col">
+                                <span class="view-mode-text text-slate-600 text-14px fw-medium" id="info-address">TP.Hồ Chí Minh</span>
+                                <input type="text" id="input-edit-address" class="form-control form-control-edit edit-mode-input d-none max-w-320px" value="TP. Hồ Chí Minh">
+                            </div>
+                        </div>
+
+                        <!-- Standalone Divider 4 -->
+                        <div class="info-divider"></div>
+
+                        <!-- Row 5: Email -->
+                        <div
+                            class="info-row-item d-flex align-items-center py-3"
+                        >
+                            <div
+                                class="info-label-col d-flex align-items-center gap-3 text-0b3f86 fw-bold text-15px"
+                            >
+                                <img
+                                    src="../assets/images/Quan_ly_tai_khoan/Thong_tin_ca_nhan/email.png"
+                                    alt=""
+                                    class="h-20px w-20px"
+                                />
+                                <span>Email</span>
+                            </div>
+                            <div
+                                class="info-value-col d-flex align-items-center gap-2 text-282828-muted text-14px fw-medium"
+                            >
+                                <span id="info-email">Cameee@gmail.com</span>
+                                <img
+                                    src="../assets/images/Quan_ly_tai_khoan/Thong_tin_ca_nhan/check.png"
+                                    alt="verified"
+                                    class="h-18px w-18px"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Standalone Divider 5 -->
+                        <div class="info-divider"></div>
+
+                        <!-- Row 6: Số điện thoại -->
+                        <div
+                            class="info-row-item d-flex align-items-center justify-content-between pt-3"
+                        >
+                            <div class="d-flex align-items-center flex-grow-1">
+                                <div
+                                    class="info-label-col d-flex align-items-center gap-3 text-0b3f86 fw-bold text-15px"
+                                >
+                                    <img
+                                        src="../assets/images/Quan_ly_tai_khoan/Thong_tin_ca_nhan/so_dien_thoai.png"
+                                        alt=""
+                                        class="h-20px w-20px"
+                                    />
+                                    <span>Số điện thoại</span>
+                                </div>
+                                <div
+                                    class="info-value-col text-282828-muted text-14px fw-medium"
+                                >
+                                    Chưa có số điện thoại
+                                </div>
+                            </div>
+                            <button
+                                class="btn btn-outline-orange px-3 py-2 text-13px rounded-3 fw-bold flex-shrink-0"
+                            >
+                                Liên kết xác thực
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Đồng bộ tài khoản -->
+                <div
+                    class="card section-card p-4 p-md-5 border border-slate-200 shadow-sm rounded-4 mb-4 bg-white"
+                >
+                    <!-- Card Header -->
+                    <div
+                        class="d-flex align-items-center justify-content-between pb-3"
+                    >
+                        <div class="d-flex align-items-center gap-3">
+                            <img
+                                src="../assets/images/Quan_ly_tai_khoan/avatar_user.png"
+                                alt=""
+                                class="section-header-avatar"
+                            />
+                            <h4 class="fw-bold text-0b3f86 text-22px mb-0">
+                                Đồng bộ tài khoản
+                            </h4>
+                        </div>
+                        <div class="btn-circle-arrow" id="sync-card-toggle" title="Bật/Tắt Form đồng bộ">
+                            <i class="fa-solid fa-chevron-right text-15px"></i>
+                        </div>
+                    </div>
+
+                    <div class="sync-section-body mt-2">
+                        <p class="fw-bold text-dark text-15px mb-3">
+                            Tài khoản hiện tại
+                        </p>
+
+                        <!-- View State A: Unlinked / Linked Account Exchange Box (Default Initial - Image 2) -->
+                        <div id="sync-exchange-box-initial" class="sync-exchange-box border border-slate-200 rounded-4 p-3 p-md-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 bg-white">
+                            <!-- Left: Current Provider Account -->
+                            <div class="d-flex align-items-center gap-3">
+                                <img id="sync-provider-logo" src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/logos_facebook.png" alt="" class="h-42px w-42px object-contain">
+                                <div class="d-flex flex-column">
+                                    <span id="sync-provider-name" class="fw-bold text-dark text-15px">Nguyễn Văn A</span>
+                                    <span id="sync-provider-id" class="text-muted text-12px">fb.231244</span>
+                                </div>
+                            </div>
+
+                            <!-- Center: Exchange Arrow Icon -->
+                            <div class="sync-exchange-arrow px-md-3">
+                                <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/arrow.png" alt="Exchange" class="h-20px w-20px opacity-60">
+                            </div>
+
+                            <!-- Right: MYE Target Account Status -->
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="mye-account-avatar-box bg-slate-100 rounded-3 p-2 d-flex align-items-center justify-content-center">
+                                    <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/user.png" alt="MYE User" class="h-24px w-24px object-contain">
+                                </div>
+                                <span id="mye-account-status-text" class="fw-semibold text-dark text-14px">Chưa có tài khoản MYE</span>
+                            </div>
+
+                            <!-- Far Right Badge / Button -->
+                            <div class="sync-badge-wrapper ms-md-auto">
+                                <span id="badge-sync-status" class="badge-unlinked-pink px-4 py-2 text-13px fw-bold rounded-pill cursor-pointer select-none">
+                                    Chưa đồng bộ
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- View State B: Single Account Box (Shown when Expanded in Unsynced State - Image 1 & 3) -->
+                        <div id="sync-single-account-box" class="sync-exchange-box border border-slate-200 rounded-4 p-3 p-md-4 d-flex align-items-center justify-content-between bg-white d-none">
+                            <div class="d-flex align-items-center gap-3">
+                                <img id="sync-single-provider-logo" src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/logos_facebook.png" alt="" class="h-42px w-42px object-contain">
+                                <span id="sync-single-provider-name" class="fw-bold text-dark text-15px">Nguyễn Văn A</span>
+                            </div>
+                            <span id="sync-single-provider-id" class="text-muted text-14px fw-medium">fb.01020</span>
+                        </div>
+
+                        <!-- View State C: Compact Synced 2-Way Exchange Box (Shown when toggled in Synced State) -->
+                        <div id="sync-exchange-box-synced" class="sync-exchange-box border border-slate-200 rounded-4 p-3 p-md-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 bg-white d-none">
+                            <!-- Left: Current Provider Account -->
+                            <div class="d-flex align-items-center gap-3">
+                                <img id="sync-synced-provider-logo" src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/logos_facebook.png" alt="" class="h-42px w-42px object-contain">
+                                <div class="d-flex flex-column">
+                                    <span id="sync-synced-provider-name" class="fw-bold text-dark text-15px">Nguyễn Văn A</span>
+                                    <span id="sync-synced-provider-id" class="text-muted text-12px">fb.231244</span>
+                                </div>
+                            </div>
+
+                            <!-- Center: Exchange Arrow Icon -->
+                            <div class="sync-exchange-arrow px-md-3">
+                                <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/arrow.png" alt="Exchange" class="h-20px w-20px opacity-60">
+                            </div>
+
+                            <!-- Right: MYE Target Account Status -->
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="mye-account-avatar-box bg-slate-100 rounded-3 p-2 d-flex align-items-center justify-content-center">
+                                    <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/user.png" alt="MYE User" class="h-24px w-24px object-contain">
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <span class="fw-bold text-dark text-14px">Tài khoản MYE</span>
+                                    <span id="sync-synced-mye-username" class="text-muted text-12px">myepro456</span>
+                                </div>
+                            </div>
+
+                            <!-- Far Right Badge / Button -->
+                            <div class="sync-badge-wrapper ms-md-auto">
+                                <span class="badge-synced-green-center px-4 py-2 text-13px fw-bold rounded-pill select-none">
+                                    Đã đồng bộ
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- View State D: MYE Login Type Unavailable Box (When loginType === 'user_MYE' - New Screenshot) -->
+                        <div id="sync-exchange-box-mye-type" class="sync-exchange-box border border-slate-200 rounded-4 p-3 p-md-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 bg-white d-none">
+                            <!-- Left: Current MYE Account -->
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="mye-account-avatar-box bg-slate-100 rounded-3 p-2 d-flex align-items-center justify-content-center">
+                                    <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/user.png" alt="MYE User" class="h-24px w-24px object-contain">
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <span class="fw-bold text-dark text-15px">Tài khoản MYE</span>
+                                    <span id="sync-mye-type-username" class="text-muted text-12px">myepro1123</span>
+                                </div>
+                            </div>
+
+                            <!-- Center: Exchange Arrow Icon -->
+                            <div class="sync-exchange-arrow px-md-2">
+                                <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/arrow.png" alt="Exchange" class="h-20px w-20px opacity-60">
+                            </div>
+
+                            <!-- Right: Notice Text for MYE Users -->
+                            <div class="d-flex align-items-center gap-3 max-w-320px">
+                                <div class="mye-account-avatar-box bg-slate-100 rounded-3 p-2 d-flex align-items-center justify-content-center flex-shrink-0">
+                                    <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/user.png" alt="MYE User" class="h-24px w-24px object-contain">
+                                </div>
+                                <span class="text-muted text-12px leading-tight">Chỉ khả dụng với tài khoản đăng nhập qua Facebook hoặc Google.</span>
+                            </div>
+
+                            <!-- Far Right Badge -->
+                            <div class="sync-badge-wrapper ms-md-auto">
+                                <span class="badge-disabled-gray px-4 py-2 text-13px fw-bold rounded-pill select-none">
+                                    Không khả dụng
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- View State E: MYE Login Type Expanded View (When toggled in user_MYE state - New Screenshot) -->
+                        <div id="sync-mye-expanded-container" class="d-none">
+                            <!-- Top Box: Single MYE Account Box -->
+                            <div class="sync-exchange-box border border-slate-200 rounded-4 p-3 p-md-4 d-flex align-items-center justify-content-between bg-white">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="mye-account-avatar-box bg-slate-100 rounded-3 p-2 d-flex align-items-center justify-content-center">
+                                        <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/user.png" alt="MYE User" class="h-24px w-24px object-contain">
+                                    </div>
+                                    <span class="fw-bold text-dark text-15px">Tài khoản MYE</span>
+                                </div>
+                                <span id="sync-mye-expanded-username" class="text-muted text-14px fw-medium">myepro1123</span>
+                            </div>
+
+                            <!-- Warning Info Banner with mingcute_information-line.png -->
+                            <div class="alert-sync-warning p-3 py-md-4 rounded-4 d-flex align-items-center justify-content-center gap-2 text-14px fw-semibold mt-4">
+                                <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/mingcute_information-line.png" alt="Info" class="h-18px w-18px object-contain me-1" onerror="this.outerHTML='<i class=\'fa-solid fa-circle-info text-18px me-1\'></i>'">
+                                <span>Tính năng đồng bộ chỉ khả dụng với tài khoản đăng nhập gốc được tạo qua Facebook hoặc Google</span>
+                            </div>
+                        </div>
+
+                        <!-- View State C: Synced Success View (New Screenshot State) -->
+                        <div id="sync-success-container" class="d-none">
+                            <!-- Top Box: Provider Account -->
+                            <div class="sync-exchange-box border border-slate-200 rounded-4 p-3 p-md-4 d-flex align-items-center justify-content-between bg-white">
+                                <div class="d-flex align-items-center gap-3">
+                                    <img id="sync-success-provider-logo" src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/logos_facebook.png" alt="" class="h-42px w-42px object-contain">
+                                    <span id="sync-success-provider-name" class="fw-bold text-dark text-15px">Nguyễn Văn A</span>
+                                </div>
+                                <span id="sync-success-provider-id" class="text-muted text-14px fw-medium">fb.01020</span>
+                            </div>
+
+                            <!-- Dashed Lines + White Space Gap + Centered Green Badge -->
+                            <div class="d-flex align-items-center justify-content-between my-4 gap-3">
+                                <div class="flex-grow-1 border-top border-dashed-custom"></div>
+                                <span class="badge-synced-green-center px-4 py-2 text-13px fw-bold rounded-pill select-none flex-shrink-0">
+                                    Đã đồng bộ
+                                </span>
+                                <div class="flex-grow-1 border-top border-dashed-custom"></div>
+                            </div>
+
+                            <!-- Bottom Box: Synced MYE Account -->
+                            <div class="sync-exchange-box border border-slate-200 rounded-4 p-3 p-md-4 d-flex align-items-center justify-content-between bg-white mb-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="mye-account-avatar-box bg-slate-100 rounded-3 p-2 d-flex align-items-center justify-content-center">
+                                        <img src="../assets/images/Quan_ly_tai_khoan/Dong_bo_tai_khoan/user.png" alt="MYE User" class="h-24px w-24px object-contain">
+                                    </div>
+                                    <span class="fw-bold text-dark text-15px">Tài khoản MYE</span>
+                                </div>
+                                <span id="sync-success-mye-username" class="text-muted text-14px fw-medium">myepro456</span>
+                            </div>
+
+                            <!-- Success Alert Banner -->
+                            <div class="alert-sync-success p-3 py-md-4 rounded-4 d-flex align-items-center justify-content-center gap-2 text-14px fw-semibold">
+                                <i class="fa-solid fa-circle-check text-268133 text-18px me-1"></i>
+                                <span id="sync-success-alert-text">Tài khoản đã được đồng bộ. Bạn có thể đăng nhập bằng tài khoản Facebook hoặc tài khoản MYE</span>
+                            </div>
+                        </div>
+
+                        <!-- Form Section (Image 1 & 3, shown when clicking right arrow) -->
+                        <div id="sync-form-section" class="sync-form-container mt-4 pt-2 d-none">
+                            <h5 class="fw-bold text-dark text-16px mb-1">
+                                Đồng bộ tài khoản MYE
+                            </h5>
+                            <p class="text-muted text-13px mb-4">
+                                Chỉ đồng bộ được tài khoản MYE chưa có dữ liệu trong Game. Sau khi đồng bộ, bạn có thể đăng nhập bằng Facebook hoặc tài khoản MYE
+                            </p>
+
+                            <form id="form-sync-mye" class="d-flex flex-column gap-3" novalidate>
+                                <div>
+                                    <label class="form-label text-14px fw-bold text-dark mb-1">Tạo tên đăng nhập MYE</label>
+                                    <input type="text" id="input-sync-username" class="form-control form-control-mye" placeholder="Tối thiểu 6 kí tự">
+                                    <span id="error-sync-username" class="text-danger text-12px mt-1 fw-semibold d-none"></span>
+                                </div>
+                                <div>
+                                    <label class="form-label text-14px fw-bold text-dark mb-1">Tạo mật khẩu</label>
+                                    <input type="password" id="input-sync-password" class="form-control form-control-mye" placeholder="Tối thiểu 8 kí tự">
+                                    <span id="error-sync-password" class="text-danger text-12px mt-1 fw-semibold d-none"></span>
+                                </div>
+                                <div>
+                                    <label class="form-label text-14px fw-bold text-dark mb-1">Xác nhận lại mật khẩu</label>
+                                    <input type="password" id="input-sync-confirm-password" class="form-control form-control-mye" placeholder="Tối thiểu 8 kí tự">
+                                    <span id="error-sync-confirm-password" class="text-danger text-12px mt-1 fw-semibold d-none"></span>
+                                </div>
+                                <button type="submit" class="btn btn-sync-submit text-white fw-bold py-3 mt-3 rounded-3 text-15px w-100">
+                                    Xác nhận đồng bộ
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Lịch sử hoạt động -->
+                <div class="card section-card p-4 p-md-5 border border-slate-200 shadow-sm rounded-4 bg-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="../assets/images/Quan_ly_tai_khoan/avatar_user.png" alt="" class="section-header-avatar">
+                            <h4 class="fw-bold text-0b3f86 text-22px mb-0">Lịch sử hoạt động</h4>
+                        </div>
+                        <div class="btn-circle-arrow" id="history-card-toggle" title="Mở/Đóng Lịch sử hoạt động">
+                            <i class="fa-solid fa-chevron-right text-15px"></i>
+                        </div>
+                    </div>
+
+                    <!-- History Section Body (Toggleable) -->
+                    <div id="history-section-body" class="sync-section-body mt-4 pt-2 d-none">
+                        <!-- Section Sub-Header -->
+                        <h5 class="fw-bold text-dark text-16px mb-1">Gỡ tất cả các phiên đăng nhập đã lưu</h5>
+                        <p class="text-muted text-13px mb-4">Tăng cường kiểm soát và bảo vệ tài khoản của bạn</p>
+
+                        <!-- Notice Box + Action Button -->
+                        <div class="border border-slate-200 rounded-4 p-4 mb-5 d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 bg-white shadow-sm">
+                            <div class="d-flex flex-column gap-1">
+                                <p class="fw-bold text-dark text-14px mb-0">
+                                    Khi thực hiện thao tác này, các thiết bị đang đăng nhập sẽ bị đăng xuất.<br class="d-none d-md-block">
+                                    Bạn sẽ cần phải đăng nhập lại.
+                                </p>
+                                <span class="text-muted text-12px mt-2">
+                                    Lưu ý: Để đảm bảo an toàn tài khoản, vui lòng thay đổi mật khẩu trước khi tiến hành gỡ toàn bộ các phiên bản đăng nhập trên mọi thiết bị.
+                                </span>
+                            </div>
+                            <button id="btn-logout-all-devices" class="btn btn-outline-orange-custom text-14px fw-bold px-4 py-2 rounded-3 flex-shrink-0 select-none">
+                                Gỡ tất cả
+                            </button>
+                        </div>
+
+                        <!-- Activity History Table -->
+                        <div class="activity-history-table-container">
+                            <!-- Table Header (Orange line stays full width, content indented with px-3 px-md-4) -->
+                            <div class="row align-items-center pb-3 text-dark fw-bold text-14px border-bottom border-2 border-orange-line gx-0 px-3 px-md-4">
+                                <div class="col-3 text-start">Thời gian</div>
+                                <div class="col-4 text-start">Hoạt động</div>
+                                <div class="col-3 text-start">Thiết bị</div>
+                                <div class="col-2 text-start">IP</div>
+                            </div>
+
+                            <!-- Table Rows (Indented with px-3 px-md-4 matching header) -->
+                            <div class="d-flex flex-column">
+                                <!-- Row 1 -->
+                                <div class="row align-items-center py-3 border-bottom border-slate-100 text-13px gx-0 px-3 px-md-4">
+                                    <div class="col-3 text-dark fw-medium d-flex align-items-center gap-2 text-start">
+                                        <i class="fa-regular fa-clock text-muted"></i>
+                                        <span>02/06/2026 08:53:18</span>
+                                    </div>
+                                    <div class="col-4 text-dark fw-medium text-start">Kích hoạt tài khoản</div>
+                                    <div class="col-3 d-flex align-items-center gap-2 text-start">
+                                        <img src="../assets/images/Quan_ly_tai_khoan/Lich_su_hoat_dong/logos_chrome.png" alt="Chrome" class="h-24px w-24px object-contain">
+                                        <div class="d-flex flex-column text-start">
+                                            <span class="fw-bold text-dark text-13px">Chrome Mobile</span>
+                                            <span class="text-muted text-11px">Mobile</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-dark fw-medium text-start">210.86.237.19</div>
+                                </div>
+
+                                <!-- Row 2 -->
+                                <div class="row align-items-center py-3 border-bottom border-slate-100 text-13px gx-0 px-3 px-md-4">
+                                    <div class="col-3 text-dark fw-medium d-flex align-items-center gap-2 text-start">
+                                        <i class="fa-regular fa-clock text-muted"></i>
+                                        <span>02/06/2026 08:52:18</span>
+                                    </div>
+                                    <div class="col-4 text-dark fw-medium text-start">Cập nhật thông tin tài khoản</div>
+                                    <div class="col-3 d-flex align-items-center gap-2 text-start">
+                                        <img src="../assets/images/Quan_ly_tai_khoan/Lich_su_hoat_dong/devicon_safari.png" alt="Safari" class="h-24px w-24px object-contain">
+                                        <div class="d-flex flex-column text-start">
+                                            <span class="fw-bold text-dark text-13px">Safari</span>
+                                            <span class="text-muted text-11px">Macbook</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-dark fw-medium text-start">210.86.237.19</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer
+            class="mt-10 bg-e9e9e9 py-8 text-center font-sans text-slate-600 antialiased"
+        >
+            <div class="mx-auto max-w-720px px-4 text-15px leading-6">
+                <div class="mb-4 d-flex justify-content-center">
+                    <a
+                        href="#trang-chu"
+                        class="d-flex align-items-center"
+                        aria-label="MYE"
+                    >
+                        <img
+                            src="../assets/images/logo.png"
+                            alt="MYE Logo"
+                            class="h-24 object-contain"
+                        />
+                    </a>
+                </div>
+                <p>Email: hotro@mye.vn</p>
+                <p>Hotline: 1900 2500 VN</p>
+                <p><strong>CÔNG TY CỔ PHẦN MYE</strong></p>
+                <p>Chịu trách nhiệm quản lí nội dung: Ông Trần Trung Hiệp</p>
+                <p>
+                    Địa chỉ: 477/22 Âu Cơ, Phường Phú Trung, Quận Tân Phú, Thành
+                    phố Hồ Chí Minh, Việt Nam
+                </p>
+                <p>
+                    Giấy phép G1 số: 59/GP-BTTTT, ngày cấp 14/07/2020, nơi cấp
+                    Bộ Thông Tin và Truyền Thông
+                </p>
+                <p>Điều khoản dịch vụ | Chính sách bảo mật</p>
+                <p>Copyright © 2026 MYE. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

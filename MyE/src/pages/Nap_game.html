@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nạp Game - MyE</title>
+
+    <!-- Embed font google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Liên kết file CSS -->
+    <link rel="stylesheet" href="../assets/css/Nap_game.css">
+
+    <!-- Liên kết file JS -->
+    <script defer src="../assets/js/Nap_game.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="sticky-top top-0 z-10 bg-white-95 backdrop-blur border-bottom border-slate-100">
+        <div class="mx-auto d-flex h-72px max-w-1040px align-items-center justify-content-between px-4 font-sans antialiased">
+            <a href="Tro_choi.html" class="d-flex align-items-center" aria-label="MYE">
+                <img src="../assets/images/logo.png" alt="MYE Logo" class="h-12 object-contain">
+            </a>
+            <nav class="d-none flex-grow-1 justify-content-center align-items-center gap-10 text-19px fw-medium text-0b3f86 d-md-flex">
+                <a href="Trang_chu.html" class="hover-text-orange-500">Trang Chủ</a>
+                <a href="Tro_choi.html" class="hover-text-orange-500">Trò Chơi</a>
+                <a href="Nap_game.html" class="hover-text-orange-500">Nạp Game</a>
+                <a href="#" class="hover-text-orange-500">Tin Tức</a>
+                <a href="#" class="hover-text-orange-500">Hỗ Trợ</a>
+            </nav>
+            <a href="Dang_nhap.html"
+                class="group position-relative d-inline-flex align-items-center justify-content-center px-8 py-3 text-11px text-uppercase tracking-wide text-white fw-bold transition-all duration-300 active-scale-95 user-select-none text-decoration-none">
+                <img src="../assets/images/Trang_Chu/button_dangnhap.png" alt=""
+                    class="position-absolute top-0 start-0 bottom-0 end-0 w-100 h-100 object-fill transition-opacity duration-500 ease-in-out group-hover-opacity-0"
+                    draggable="false">
+                <img src="../assets/images/Trang_Chu/button_hover.png" alt=""
+                    class="position-absolute top-0 start-0 bottom-0 end-0 w-100 h-100 object-fill opacity-0 transition-opacity duration-500 ease-in-out group-hover-opacity-100"
+                    draggable="false">
+                <span class="position-relative z-10 drop-shadow-sm">Đăng nhập</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="nap-game-app">
+        <section class="banner-section">
+            <div class="banner-container">
+                <img src="../assets/images/Nap_Game/Hero-banner.png" alt="Cổng nạp chính thức" class="main-banner">
+                <button class="btn-history">Lịch sử giao dịch</button>
+            </div>
+        </section>
+
+        <section class="game-list-section">
+            <div class="section-header">
+                <h2>DANH SÁCH GAME</h2>
+                <div class="search-box">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M16 8C16 3.59 12.41 0 8 0C3.59 0 0 3.59 0 8C0 12.41 3.59 16 8 16C9.85 16 11.54 15.37 12.9 14.31L18 19.41L19.41 18L14.31 12.9C15.4015 11.4995 15.9961 9.77562 16 8ZM2 8C2 4.69 4.69 2 8 2C11.31 2 14 4.69 14 8C14 11.31 11.31 14 8 14C4.69 14 2 11.31 2 8Z"
+                            fill="currentColor" />
+                    </svg>
+
+                    <input type="text" placeholder="Hào Khí Chiến Hồn">
+                </div>
+            </div>
+
+            <div class="category-tabs">
+
+            </div>
+
+            <div id="game-grid-container" class="game-grid">
+            </div>
+
+            <div class="pagination">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-10 bg-e9e9e9 py-8 text-center font-sans text-slate-600 antialiased">
+        <div class="mx-auto max-w-720px px-4 text-15px leading-6">
+            <div class="mb-4 d-flex justify-content-center">
+                <a href="#trang-chu" class="d-flex align-items-center" aria-label="MYE">
+                    <img src="../assets/images/logo.png" alt="MYE Logo" class="h-24 object-contain">
+                </a>
+            </div>
+            <p>Email: hotro@mye.vn</p>
+            <p>Hotline: 1900 2500 VN</p>
+            <p><strong>CÔNG TY CỔ PHẦN MYE</strong></p>
+            <p>Chịu trách nhiệm quản lí nội dung: Ông Trần Trung Hiệp</p>
+            <p>Địa chỉ: 477/22 Âu Cơ, Phường Phú Trung, Quận Tân Phú, Thành phố Hồ Chí Minh, Việt Nam</p>
+            <p>Giấy phép G1 số: 59/GP-BTTTT, ngày cấp 14/07/2020, nơi cấp Bộ Thông Tin và Truyền Thông</p>
+            <p>Điều khoản dịch vụ | Chính sách bảo mật</p>
+            <p>Copyright © 2026 MYE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

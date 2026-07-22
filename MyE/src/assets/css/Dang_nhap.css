@@ -1,0 +1,375 @@
+/* ===== ĐĂNG NHẬP STYLES - myE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --orange: #FF8A00;
+    --orange-dark: #E07800;
+    --blue: #063F93;
+    --blue-dark: #042D6B;
+    --white: #FFFFFF;
+    --border-in: #D5E2F0;
+    --border-focus: #5A8DD1;
+    --ph: #9BADC5;
+    --text: #2D3748;
+    --title: #063F93;
+    --error: #E53E3E;
+    --success: #38A169;
+    --shadow-card: 0 4px 28px rgba(6, 63, 147, .10);
+    --ease: cubic-bezier(.4, 0, .2, 1);
+    --dur: .25s;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Main ---- */
+.auth-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 20px;
+    background: var(--white);
+}
+
+/* ---- Card ---- */
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 42px 36px 36px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid #E5EDF7;
+}
+
+/* ---- Tiêu đề ---- */
+.form-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--title);
+    text-align: center;
+    letter-spacing: .6px;
+    margin-bottom: 28px;
+}
+
+/* ---- Form group ---- */
+.form-group {
+    margin-bottom: 12px;
+}
+
+/* ---- Input wrapper (pill) ---- */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 1.5px solid var(--border-in);
+    border-radius: 50px;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(90, 141, 209, .14);
+}
+
+.input-prefix {
+    position: absolute;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 13px 46px 13px 50px;
+    font-size: 14.5px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--text);
+}
+
+.form-input::placeholder {
+    color: var(--ph);
+}
+
+.form-input.error {
+    color: var(--error);
+}
+
+/* ---- Nút toggle mật khẩu ---- */
+.btn-toggle-pw {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--ph);
+    z-index: 1;
+    transition: color var(--dur) var(--ease);
+}
+
+.btn-toggle-pw:hover {
+    color: var(--blue);
+}
+
+/* ---- Lỗi trường ---- */
+.field-error {
+    display: none;
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 6px;
+    padding-left: 18px;
+}
+
+.field-error.show {
+    display: block;
+    animation: slideDown .2s var(--ease);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- Quên mật khẩu ---- */
+.forgot-row {
+    display: flex;
+    justify-content: flex-end;
+    margin: 6px 0 20px;
+}
+
+.forgot-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+    transition: color var(--dur) var(--ease);
+}
+
+.forgot-link:hover {
+    color: var(--orange);
+}
+
+/* ---- Nút bấm ---- */
+.btn-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    letter-spacing: .5px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 12px;
+    transition: transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease),
+        background var(--dur) var(--ease);
+}
+
+.btn-orange {
+    background: var(--orange);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(255, 138, 0, .28);
+}
+
+.btn-orange:hover {
+    background: var(--orange-dark);
+    box-shadow: 0 6px 20px rgba(255, 138, 0, .42);
+    transform: translateY(-1px);
+}
+
+.btn-orange:active {
+    transform: translateY(0);
+}
+
+.btn-orange:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-dark-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(6, 63, 147, .20);
+}
+
+.btn-dark-blue:hover {
+    background: var(--blue-dark);
+    box-shadow: 0 6px 20px rgba(6, 63, 147, .32);
+    transform: translateY(-1px);
+}
+
+.btn-dark-blue:active {
+    transform: translateY(0);
+}
+
+/* ---- Spinner ---- */
+.btn-submit .spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, .3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+.btn-submit.loading .spinner {
+    display: block;
+}
+
+.btn-submit.loading .btn-text {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- Mạng xã hội ---- */
+.social-section {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.social-text {
+    font-size: 13.5px;
+    color: #7A8FAD;
+    margin-bottom: 14px;
+}
+
+.social-link-text {
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--dur) var(--ease);
+}
+
+.social-link-text:hover {
+    color: var(--orange);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.social-icon-btn {
+    display: block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.social-icon-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .14);
+}
+
+.social-icon-btn svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+/* ---- Toast ---- */
+.toast {
+    position: fixed;
+    top: 86px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    max-width: 320px;
+    transform: translateX(120%);
+    transition: transform .4s var(--ease);
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    border-left: 4px solid var(--success);
+    color: var(--text);
+}
+
+.toast.error {
+    border-left: 4px solid var(--error);
+    color: var(--text);
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 32px 18px 28px;
+    }
+
+    .form-title {
+        font-size: 22px;
+    }
+}
