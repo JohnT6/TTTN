@@ -1,0 +1,52 @@
+model Order {
+  id               String        @id @default(uuid()) @db.VarChar(191)
+  code             String        @unique @db.VarChar(100)
+  userId           String?       @map("user_id")
+  fullName         String        @map("full_name") @db.VarChar(255)
+  phone            String        @db.VarChar(50)
+  email            String?       @db.VarChar(255)
+  address          String        @db.Text
+  note             String?       @db.Text
+  subtotal         Int
+  shippingFee      Int           @default(0) @map("shipping_fee")
+  grandTotal       Int           @map("grand_total")
+  paymentMethod    String        @default("SePay") @map("payment_method") @db.VarChar(50)
+  paymentStatus    PaymentStatus @default(UNPAID) @map("payment_status")
+  transactionNo    String?       @map("transaction_no") @db.VarChar(100)
+  bankCode         String?       @map("bank_code") @db.VarChar(50)
+  paidAt           DateTime?     @map("paid_at") @db.Timestamp(0)
+  paymentExpiredAt DateTime?     @map("payment_expired_at") @db.Timestamp(0)
+  status           OrderStatus   @default(PENDING)
+  createdAt        DateTime      @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt        DateTime      @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  user       User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  orderItems OrderItem[]
+
+  @@index([code])
+  @@index([userId])
+  @@index([status])
+  @@index([paymentStatus])
+  @@map("orders")
+}
+
+model OrderItem {
+  id           String   @id @default(uuid()) @db.VarChar(191)
+  orderId      String   @map("order_id")
+  productId    String?  @map("product_id")
+  productName  String   @map("product_name") @db.VarChar(255)
+  productImage String?  @map("product_image") @db.VarChar(550)
+  productSize  String?  @map("product_size") @db.VarChar(50)
+  productColor String?  @map("product_color") @db.VarChar(100)
+  price        Int
+  quantity     Int      @default(1)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  order   Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
+}

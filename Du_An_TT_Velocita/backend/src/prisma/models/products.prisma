@@ -1,0 +1,35 @@
+model Product {
+  id          String         @id @default(uuid()) @db.VarChar(191)
+  categoryId  String         @map("category_id")
+  name        String         @db.VarChar(255)
+  slug        String         @unique @db.VarChar(255)
+  styleCode   String?        @map("style_code") @db.VarChar(100)
+  colorName   String?        @map("color_name") @db.VarChar(100)
+  image       String         @db.VarChar(550)
+  hoverImage  String?        @map("hover_image") @db.VarChar(550)
+  price       Int
+  salePrice   Int?           @map("sale_price")
+  description String?        @db.LongText
+  details     String?        @db.LongText
+  gender      GenderCategory @default(UNISEX)
+  isNew       Boolean        @default(false) @map("is_new")
+  isBest      Boolean        @default(false) @map("is_best")
+  isSale      Boolean        @default(false) @map("is_sale")
+  status      Boolean        @default(true)
+  createdAt   DateTime       @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime       @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  category   Category         @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  images     ProductImage[]
+  variants   ProductVariant[]
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+  reviews    Review[]
+  favorites  Favorite[]
+
+  @@index([categoryId])
+  @@index([slug])
+  @@index([status])
+  @@index([styleCode])
+  @@map("products")
+}

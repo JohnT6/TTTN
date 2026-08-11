@@ -1,0 +1,19 @@
+model News {
+  id        String       @id @default(uuid()) @db.VarChar(191)
+  title     String       @db.VarChar(255)
+  slug      String       @unique @db.VarChar(255)
+  category  NewsCategory @default(GENERAL)
+  image     String       @db.VarChar(550)
+  desc      String?      @db.Text
+  content   String?      @db.LongText
+  author    String?      @db.VarChar(100)
+  showDate  Boolean      @default(false) @map("show_date")
+  date      String?      @db.VarChar(100)
+  status    Boolean      @default(true)
+  createdAt DateTime     @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime     @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([slug])
+  @@index([status])
+  @@map("news")
+}

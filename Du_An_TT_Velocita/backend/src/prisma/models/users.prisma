@@ -1,0 +1,22 @@
+model User {
+  id        String   @id @default(uuid()) @db.VarChar(191)
+  fullName  String   @map("full_name") @db.VarChar(255)
+  email     String   @unique @db.VarChar(255)
+  phone     String?  @unique @db.VarChar(50)
+  password  String   @db.VarChar(255)
+  role      UserRole @default(USER)
+  avatar    String?  @db.VarChar(550)
+  address   String?  @db.Text
+  status    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  carts     Cart[]
+  orders    Order[]
+  reviews   Review[]
+  favorites Favorite[]
+
+  @@index([email])
+  @@index([role])
+  @@map("users")
+}

@@ -1,0 +1,19 @@
+model Banner {
+  id         String          @id @default(uuid()) @db.VarChar(191)
+  title      String          @db.VarChar(255)
+  subtitle   String?         @db.VarChar(255)
+  image      String          @db.VarChar(550)
+  videoUrl   String?         @map("video_url") @db.VarChar(550)
+  mediaType  BannerMediaType @default(IMAGE) @map("media_type")
+  link       String?         @db.VarChar(255)
+  buttonText String?         @default("Khám phá ngay") @map("button_text") @db.VarChar(100)
+  position   BannerPosition  @default(HOME_HERO)
+  sortOrder  Int             @default(0) @map("sort_order")
+  status     Boolean         @default(true)
+  createdAt  DateTime        @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt  DateTime        @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([status])
+  @@index([mediaType])
+  @@map("banners")
+}
